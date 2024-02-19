@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="addCategory()">
+  <app-input-control
+    [form]="form"
+    [fb]="newTitle"
+    placeholder="Kategori Adını Giriniz"
+  />
+  <app-input-control
+    [form]="form"
+    [fb]="newDescription"
+    placeholder="Kategori Açıklamasını Giriniz"
+  />
+  <app-button-control
+    [disabled]="!form.valid"
+    content="Kategori Ekle"
+  ></app-button-control>
+</form>

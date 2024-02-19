@@ -1,0 +1,36 @@
+<div class="btn-right">
+  <app-button-control path="/admin/add-category" content="Kategori Ekle" />
+</div>
+
+<table style="overflow-x: auto">
+  <thead>
+    <tr>
+      <th>Kategori ID'si</th>
+      <th>Kategori İsmi</th>
+      <th>Kategori Açıklaması</th>
+      <th>Düzenle & Sil</th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="categories.length > 0">
+    <tr *ngFor="let category of categories">
+      <td>{{ category.id }}</td>
+      <td>{{ category.title }}</td>
+      <td>{{ category.description }}</td>
+      <td class="xd">
+        <app-button-control
+          color="warning"
+          [path]="'/admin/edit-category/:' + category.id"
+          content="Düzenle"
+        ></app-button-control>
+        <p-button
+          (click)="deleteCategory($event)"
+          icon="pi pi-times"
+          label="Sil"
+          styleClass="btn btn-danger"
+        ></p-button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="categories.length === 0" class="empty">Kategoriler Bulunamadı</div>

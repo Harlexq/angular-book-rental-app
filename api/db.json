@@ -1,0 +1,52 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "",
+      "description": "",
+      "imageUrl": "",
+      "publisher": "Lopus",
+      "author": "",
+      "category": "Aksiyon",
+      "price": 1500,
+      "publicationDate": "01.01.2018",
+      "pageNumber": 286,
+      "rentInformation": {
+        "rent": true,
+        "byWhom": 1
+      }
+    },
+    {
+      "id": 2,
+      "title": "",
+      "description": "",
+      "imageUrl": "",
+      "publisher": "Lopus",
+      "author": "",
+      "category": "",
+      "price": 1500,
+      "publicationDate": "01.01.2018",
+      "pageNumber": 286,
+      "rentInformation": {
+        "rent": false
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": "d761",
+      "title": "asvasv",
+      "description": "avsasvas"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Serhan",
+      "lastName": "Bakır",
+      "accountDate": "14.02.2024",
+      "email": "serhanbakir5@gmail.com",
+      "password": "123456789"
+    }
+  ]
+}
