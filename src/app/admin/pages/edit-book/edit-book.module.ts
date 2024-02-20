@@ -1,27 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AddCategoryComponent } from './add-category.component';
+import { EditBookComponent } from './edit-book.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
-  declarations: [AddCategoryComponent],
+  declarations: [EditBookComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
         path: '',
-        component: AddCategoryComponent,
+        component: EditBookComponent,
       },
     ]),
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
-    ConfirmDialogModule,
     ToastModule,
+    ConfirmDialogModule,
+    AngularEditorModule,
   ],
 })
-export class AddCategoryModule {}
+export class EditBookModule {}

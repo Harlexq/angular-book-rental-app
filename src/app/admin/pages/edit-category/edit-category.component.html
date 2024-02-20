@@ -1,1 +1,27 @@
-<p>edit-category works!</p>
+<div class="content">
+  <form [formGroup]="form" class="form" (ngSubmit)="editCategory($event)">
+    <app-input-control
+      [form]="form"
+      [fb]="newTitle"
+      placeholder="Kategori Başlığını Giriniz"
+    />
+    <app-input-control
+      [form]="form"
+      [fb]="newDescription"
+      placeholder="Kategori Açıklamasını Giriniz"
+    />
+    <app-button-control
+      [disabled]="!form.valid"
+      content="Kategoriyi Güncelle"
+    />
+    <p-toast></p-toast>
+    <p-confirmDialog></p-confirmDialog>
+  </form>
+  <div class="preview">
+    <h1>Kategori Güncelleme</h1>
+    <div class="preview-text">
+      <p><strong>Kategori Başlığı: </strong>{{ newTitle.value }}</p>
+      <p><strong>Kategori Açıklaması: </strong>{{ newDescription.value }}</p>
+    </div>
+  </div>
+</div>

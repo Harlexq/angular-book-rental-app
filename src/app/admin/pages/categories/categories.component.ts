@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Category } from 'src/app/models/Category';
-import { HttpClientService } from 'src/app/services/common/http-client.service';
+import { HttpClientService } from 'src/app/services/http-client.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
@@ -27,26 +27,31 @@ export class CategoriesComponent {
     });
   }
 
-  deleteCategory(event: Event) {
+  deleteCategory(event: Event, id: number) {
     this.confirmationService.confirm({
       target: event.target as EventTarget,
       message: 'Bu Kategoriyi Silmek İstediğinize Emin Misiniz?',
       header: 'Kategori Sil',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-text',
+      acceptLabel: 'Evet',
+      rejectLabel: 'Hayır',
       rejectButtonStyleClass: 'p-button-text p-button-text',
       accept: () => {
         this.messageService.add({
           severity: 'info',
-          summary: 'Confirmed',
-          detail: 'Record deleted',
+          summary: 'Silindi',
+          detail: 'Kategori Silme İşlemi Başarılı',
+        });
+        this.http.delete('categories', id, () => {
+          window.location.reload();
         });
       },
       reject: () => {
         this.messageService.add({
           severity: 'error',
-          summary: 'Rejected',
-          detail: 'You have rejected',
+          summary: 'İptal Edildi',
+          detail: 'Kategoriyi Silme İşlemi İptal Edildi',
         });
       },
     });

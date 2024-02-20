@@ -20,15 +20,17 @@
       <td class="xd">
         <app-button-control
           color="warning"
-          [path]="'/admin/edit-category/:' + category.id"
+          [path]="'/admin/edit-category/' + category.id"
           content="Düzenle"
-        ></app-button-control>
+        />
         <p-button
-          (click)="deleteCategory($event)"
+          (click)="deleteCategory($event, category.id)"
           icon="pi pi-times"
           label="Sil"
           styleClass="btn btn-danger"
-        ></p-button>
+        />
+        <p-toast></p-toast>
+        <p-confirmDialog></p-confirmDialog>
       </td>
     </tr>
   </tbody>

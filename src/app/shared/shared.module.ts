@@ -4,6 +4,7 @@ import { InputControlComponent } from './input-control/input-control.component';
 import { ButtonControlComponent } from './button-control/button-control.component';
 import { RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   declarations: [InputControlComponent, ButtonControlComponent],
@@ -13,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgClass,
     ReactiveFormsModule,
     FormsModule,
+    InputTextModule,
   ],
   exports: [InputControlComponent, ButtonControlComponent],
 })

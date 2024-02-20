@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-button-control',
   templateUrl: './button-control.component.html',
   styleUrls: ['./button-control.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ButtonControlComponent {
   @Input() path: string = '';

@@ -35,7 +35,7 @@ export class HttpClientService extends ErrorHandlerService {
       });
   }
 
-  getDetail<T>(api: string, id: string, callBack: (res: T) => void) {
+  getDetail<T>(api: string, id: number, callBack: (res: T) => void) {
     this.http
       .get<T>(this.apiUrl + api + '/' + id, this.httpOptions)
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)))
@@ -57,7 +57,7 @@ export class HttpClientService extends ErrorHandlerService {
       });
   }
 
-  put<T>(api: string, id: string, model: T, callBack: (res: T) => void) {
+  put<T>(api: string, id: number, model: T, callBack: (res: T) => void) {
     this.http
       .put<T>(this.apiUrl + api + '/' + id, model, this.httpOptions)
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)))
@@ -68,7 +68,7 @@ export class HttpClientService extends ErrorHandlerService {
       });
   }
 
-  delete<T>(api: string, id: string, callBack: (res: T) => void) {
+  delete<T>(api: string, id: number, callBack: (res: T) => void) {
     this.http
       .delete<T>(this.apiUrl + api + '/' + id, this.httpOptions)
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)))

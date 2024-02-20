@@ -6,8 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Category } from 'src/app/models/Category';
-import { HttpClientService } from 'src/app/services/common/http-client.service';
+import { HttpClientService } from 'src/app/services/http-client.service';
 
 @Component({
   selector: 'app-add-category',
@@ -20,7 +21,9 @@ export class AddCategoryComponent {
   constructor(
     private http: HttpClientService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService
   ) {}
 
   ngOnInit() {
@@ -34,9 +37,35 @@ export class AddCategoryComponent {
     });
   }
 
-  addCategory() {
-    this.http.post<Category>('categories', this.form.value, (res) => {
-      this.router.navigateByUrl('/admin/categories');
+  addCategory(event: Event) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Bir Kategori Eklemek İstediğinize Emin Misiniz?',
+      header: 'Kategori Ekleme',
+      icon: 'pi pi-info-circle',
+      acceptButtonStyleClass: 'p-button-danger p-button-text',
+      acceptLabel: 'Evet',
+      rejectLabel: 'Hayır',
+      rejectButtonStyleClass: 'p-button-text p-button-text',
+
+      accept: () => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Güncellendi',
+          detail: 'Kategori Ekleme İşlemi Başarılı',
+        });
+
+        this.http.post<Category>('categories', this.form.value, (res) => {
+          this.router.navigateByUrl('/admin/categories');
+        });
+      },
+      reject: () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'İptal Edildi',
+          detail: 'Kategori Ekleme İşlemi İptal Edildi',
+        });
+      },
     });
   }
 

@@ -7,7 +7,8 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./input-control.component.scss'],
 })
 export class InputControlComponent {
-  @Input() type: 'text' | 'number' | 'email' | 'password' | 'tel' = 'text';
+  @Input() type: 'text' | 'number' | 'email' | 'password' | 'tel' | 'date' =
+    'text';
   @Input() placeholder: string = '';
   @Input({ required: true }) form!: FormGroup;
   @Input({ required: true }) fb!: FormControl;

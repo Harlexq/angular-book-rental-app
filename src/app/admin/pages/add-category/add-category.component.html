@@ -1,16 +1,27 @@
-<form [formGroup]="form" (ngSubmit)="addCategory()">
-  <app-input-control
-    [form]="form"
-    [fb]="newTitle"
-    placeholder="Kategori Adını Giriniz"
-  />
-  <app-input-control
-    [form]="form"
-    [fb]="newDescription"
-    placeholder="Kategori Açıklamasını Giriniz"
-  />
-  <app-button-control
-    [disabled]="!form.valid"
-    content="Kategori Ekle"
-  ></app-button-control>
-</form>
+<div class="content">
+  <form [formGroup]="form" (ngSubmit)="addCategory($event)" class="form">
+    <app-input-control
+      [form]="form"
+      [fb]="newTitle"
+      placeholder="Kategori Adını Giriniz"
+    />
+    <app-input-control
+      [form]="form"
+      [fb]="newDescription"
+      placeholder="Kategori Açıklamasını Giriniz"
+    />
+    <app-button-control
+      [disabled]="!form.valid"
+      content="Kategori Ekle"
+    ></app-button-control>
+  </form>
+  <div class="preview">
+    <h1>Kategori Ekle</h1>
+    <div class="preview-text">
+      <p><strong>Kategori Başlığı: </strong>{{ newTitle.value }}</p>
+      <p><strong>Kategori Açıklaması: </strong>{{ newDescription.value }}</p>
+    </div>
+  </div>
+  <p-toast></p-toast>
+  <p-confirmDialog></p-confirmDialog>
+</div>

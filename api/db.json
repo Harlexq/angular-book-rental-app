@@ -1,42 +1,97 @@
 {
   "books": [
     {
-      "id": 1,
-      "title": "",
-      "description": "",
-      "imageUrl": "",
-      "publisher": "Lopus",
-      "author": "",
-      "category": "Aksiyon",
-      "price": 1500,
-      "publicationDate": "01.01.2018",
-      "pageNumber": 286,
       "rentInformation": {
-        "rent": true,
-        "byWhom": 1
-      }
-    },
-    {
-      "id": 2,
-      "title": "",
-      "description": "",
-      "imageUrl": "",
-      "publisher": "Lopus",
-      "author": "",
-      "category": "",
-      "price": 1500,
-      "publicationDate": "01.01.2018",
-      "pageNumber": 286,
-      "rentInformation": {
-        "rent": false
-      }
+        "rent": false,
+        "byWhom": null
+      },
+      "title": "Siyah Sancak",
+      "description": "Fatih Sultan Mehmet, vefat etmeden &#246;nce son seferine haz&#305;rlan&#305;rken, Roma'dan bir mektup alm&#305;&#351;. Mektupta H&#305;ristiyan bir kardinal, 'Efendim, &#246;mr&#252;m&#252;n son zaman&#305;n&#305; kendi vatan&#305;mda ge&#231;irmek isterim. Beni, &#304;stanbul'da bir kiliseye alman&#305;z m&#252;mk&#252;n m&#252;?' diye ricada bulunmu&#351;. Sultan Fatih &#231;ok sinirlenmi&#351;, kardinale emir g&#246;ndermi&#351;: 'G&#246;revimiz tamam olmadan asla!'",
+      "imageUrl": "https://i.dr.com.tr/cache/500x400-0/originals/0000000599917-1.jpg",
+      "publisher": "Kariyer Yayınları",
+      "author": "Ali Kuzu",
+      "category": "Tarih",
+      "price": "150",
+      "publicationDate": "2014-01-01",
+      "pageNumber": "272",
+      "id": 1
     }
   ],
   "categories": [
     {
-      "id": "d761",
-      "title": "asvasv",
-      "description": "avsasvas"
+      "id": 1,
+      "title": "Roman",
+      "description": "Roman türündeki kitaplar."
+    },
+    {
+      "id": 2,
+      "title": "Bilim Kurgu",
+      "description": "Bilim kurgu türündeki kitaplar."
+    },
+    {
+      "id": 3,
+      "title": "Polisiye",
+      "description": "Polisiye türündeki kitaplar."
+    },
+    {
+      "id": 4,
+      "title": "Fantastik",
+      "description": "Fantastik türündeki kitaplar."
+    },
+    {
+      "id": 5,
+      "title": "Tarih",
+      "description": "Tarih kitapları."
+    },
+    {
+      "id": 6,
+      "title": "Biyografi",
+      "description": "Biyografi kitapları."
+    },
+    {
+      "id": 7,
+      "title": "Edebiyat",
+      "description": "Edebiyat eserleri."
+    },
+    {
+      "id": 8,
+      "title": "Felsefe",
+      "description": "Felsefi eserler."
+    },
+    {
+      "id": 9,
+      "title": "Dini",
+      "description": "Dini eserler."
+    },
+    {
+      "id": 10,
+      "title": "Korku",
+      "description": "Korku türündeki kitaplar."
+    },
+    {
+      "id": 11,
+      "title": "Çocuk",
+      "description": "Çocuk kitapları."
+    },
+    {
+      "id": 12,
+      "title": "Klasik",
+      "description": "Klasik eserler."
+    },
+    {
+      "id": 13,
+      "title": "Kültür",
+      "description": "Kültürel eserler."
+    },
+    {
+      "id": 14,
+      "title": "Sanat",
+      "description": "Sanat kitapları."
+    },
+    {
+      "id": 15,
+      "title": "Müzik",
+      "description": "Müzik kitapları."
     }
   ],
   "users": [

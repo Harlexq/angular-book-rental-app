@@ -4,6 +4,7 @@ import { CategoriesComponent } from './categories.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
@@ -20,6 +21,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     SharedModule,
     ConfirmDialogModule,
     HttpClientModule,
+    ToastModule,
   ],
   providers: [ConfirmationService, MessageService],
 })

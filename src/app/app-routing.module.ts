@@ -21,6 +21,20 @@ const routes: Routes = [
           import('./admin/pages/books/books.module').then((m) => m.BooksModule),
       },
       {
+        path: 'add-book',
+        loadChildren: () =>
+          import('./admin/pages/add-book/add-book.module').then(
+            (m) => m.AddBookModule
+          ),
+      },
+      {
+        path: 'edit-book/:id',
+        loadChildren: () =>
+          import('./admin/pages/edit-book/edit-book.module').then(
+            (m) => m.EditBookModule
+          ),
+      },
+      {
         path: 'categories',
         loadChildren: () =>
           import('./admin/pages/categories/categories.module').then(
@@ -32,6 +46,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./admin/pages/add-category/add-category.module').then(
             (m) => m.AddCategoryModule
+          ),
+      },
+      {
+        path: 'edit-category/:id',
+        loadChildren: () =>
+          import('./admin/pages/edit-category/edit-category.module').then(
+            (m) => m.EditCategoryModule
           ),
       },
       {
