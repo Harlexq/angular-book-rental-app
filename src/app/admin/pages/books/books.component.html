@@ -23,7 +23,9 @@
     <tr *ngFor="let book of books">
       <td>{{ book.id }}</td>
       <td>{{ book.title }}</td>
-      <td>{{ book.description }}</td>
+      <td>
+        <p class="desc">{{ book.description }}</p>
+      </td>
       <td class="img">
         <img [src]="book.imageUrl" [alt]="book.title" width="50px" />
       </td>

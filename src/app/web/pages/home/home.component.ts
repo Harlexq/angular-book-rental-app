@@ -33,7 +33,7 @@ export class HomeComponent {
   }
 
   getFantasticBooks() {
-    this.http.get<Books[]>('books?category=Roman', (res) => {
+    this.http.get<Books[]>('books?category=Fantastik', (res) => {
       this.fantastics = res;
     });
   }
