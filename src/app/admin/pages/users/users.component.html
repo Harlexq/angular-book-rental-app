@@ -1,1 +1,38 @@
-<p>users works!</p>
+<table style="overflow-x: auto">
+  <thead>
+    <tr>
+      <th>Kullanıcı ID'si</th>
+      <th>Kullanıcı İsmi</th>
+      <th>Kullanıcı Soyismi</th>
+      <th>Kullanıcı Hesap Oluşturma Tarihi</th>
+      <th>Kullanıcı E-Mail Adresi</th>
+      <th>Kullanıcı Düzenle & Sil</th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="users.length > 0">
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.accountDate }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <app-button-control
+          color="warning"
+          [path]="'/admin/edit-book/' + user.id"
+          content="Düzenle"
+        />
+        <p-button
+          (click)="deleteUser($event, user.id)"
+          icon="pi pi-times"
+          label="Sil"
+          styleClass="btn btn-danger"
+        />
+        <p-toast></p-toast>
+        <p-confirmDialog></p-confirmDialog>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="users.length === 0" class="empty">Kullanıcılar Bulunamadı</div>

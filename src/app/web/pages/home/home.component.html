@@ -1,1 +1,65 @@
-<p>home works!</p>
+<ng-container *ngIf="historys.length > 0">
+  <h2 class="page-title">Tarih Kategorisi</h2>
+  <div class="cards">
+    <div class="card" *ngFor="let history of historys">
+      <div class="card-head">
+        <img [src]="history.imageUrl" [alt]="history.title" />
+      </div>
+      <div class="card-body">
+        <h2 class="title">{{ history.title }}</h2>
+        <p class="desc">{{ history.description }}</p>
+      </div>
+      <div class="card-foot">
+        <app-button-control
+          content="Kitabı Gör"
+          [path]="'/book-detail/' + history.id"
+        />
+        <app-button-control color="warning" content="Kirala" />
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="romans.length > 0">
+  <h2 class="page-title">Roman Kategorisi</h2>
+  <div class="cards">
+    <div class="card" *ngFor="let roman of romans">
+      <div class="card-head">
+        <img [src]="roman.imageUrl" [alt]="roman.title" />
+      </div>
+      <div class="card-body">
+        <h2 class="title">{{ roman.title }}</h2>
+        <p class="desc">{{ roman.description }}</p>
+      </div>
+      <div class="card-foot">
+        <app-button-control
+          content="Kitabı Gör"
+          [path]="'/book-detail/' + roman.id"
+        />
+        <app-button-control color="warning" content="Kirala" />
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="fantastics.length > 0">
+  <h2 class="page-title">Fantastik Kategorisi</h2>
+  <div class="cards">
+    <div class="card" *ngFor="let fantastic of fantastics">
+      <div class="card-head">
+        <img [src]="fantastic.imageUrl" [alt]="fantastic.title" />
+      </div>
+      <div class="card-body">
+        <h2 class="title">{{ fantastic.title }}</h2>
+        <p class="desc">{{ fantastic.description }}</p>
+      </div>
+      <div class="card-foot">
+        <app-button-control
+          content="Kitabı Gör"
+          [path]="'/book-detail/' + fantastic.id"
+        />
+        <app-button-control color="warning" content="Kirala" />
+      </div>
+    </div>
+  </div>
+</ng-container>

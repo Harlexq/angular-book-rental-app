@@ -6,10 +6,9 @@
       placeholder="Kitap Adını Giriniz"
     />
     <angular-editor
-      formControlName="htmlContent"
       [formControl]="newDescription"
       [config]="editorConfig"
-    />
+    ></angular-editor>
     <app-input-control
       [form]="form"
       [fb]="newImageUrl"
@@ -25,10 +24,11 @@
       [fb]="newAuthor"
       placeholder="Kitap Yazarını Giriniz"
     />
-    <app-input-control
-      [form]="form"
-      [fb]="newCategory"
-      placeholder="Kitap Kategorisini Giriniz"
+    <p-dropdown
+      [options]="categories"
+      [(ngModel)]="selectedCategory"
+      optionLabel="title"
+      placeholder="Kitap Kategorisini Seçiniz"
     />
     <app-input-control
       [form]="form"
@@ -61,7 +61,6 @@
       </p>
       <p><strong>Kitap Yayıncısı: </strong>{{ newPublisher.value }}</p>
       <p><strong>Kitap Yazarı: </strong>{{ newAuthor.value }}</p>
-      <p><strong>Kitap Kategorisi: </strong>{{ newCategory.value }}</p>
       <p><strong>Kitap Fiyatı: </strong>{{ newPrice.value }}</p>
       <p><strong>Kitap Yayın Tarihi: </strong>{{ newPublicationDate.value }}</p>
       <p><strong>Kitap Sayfa Sayısı: </strong>{{ newPageNumber.value }}</p>

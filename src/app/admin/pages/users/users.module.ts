@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 import { UsersComponent } from './users.component';
 import { RouterModule } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [UsersComponent],
@@ -13,6 +16,15 @@ import { RouterModule } from '@angular/router';
         component: UsersComponent,
       },
     ]),
+    ToastModule,
+    SharedModule,
+    ConfirmDialogModule,
+  ],
+  providers: [
+    {
+      provide: DATE_PIPE_DEFAULT_OPTIONS,
+      useValue: { dateFormat: 'longDate' },
+    },
   ],
 })
 export class UsersModule {}

@@ -81,6 +81,18 @@ const routes: Routes = [
         loadChildren: () =>
           import('./web/pages/home/home.module').then((m) => m.HomeModule),
       },
+      {
+        path: 'books',
+        loadChildren: () =>
+          import('./web/pages/books/books.module').then((m) => m.BooksModule),
+      },
+      {
+        path: 'book-detail/:id',
+        loadChildren: () =>
+          import('./web/pages/book-detail/book-detail.module').then(
+            (m) => m.BookDetailModule
+          ),
+      },
     ],
   },
 ];

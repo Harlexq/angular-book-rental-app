@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [AddBookComponent],
@@ -19,6 +20,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ToastModule,
     ConfirmDialogModule,
     AngularEditorModule,
+    DropdownModule,
   ],
 })
 export class AddBookModule {}

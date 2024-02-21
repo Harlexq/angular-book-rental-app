@@ -30,9 +30,9 @@
             "assets": ["src/assets"],
             "styles": [
               "src/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": []
           },
@@ -96,9 +96,9 @@
             "assets": ["src/assets"],
             "styles": [
               "src/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": []
           }

@@ -5,4 +5,5 @@ export interface Users {
   accountDate: string;
   email: string;
   password: string;
+  banned: boolean;
 }

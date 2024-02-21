@@ -59,7 +59,7 @@ export class EditBookComponent {
         tag: 'h1',
       },
     ],
-    sanitize: true,
+    sanitize: false,
   };
 
   ngOnInit() {

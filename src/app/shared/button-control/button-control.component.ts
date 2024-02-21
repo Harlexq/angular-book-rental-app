@@ -7,8 +7,8 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class ButtonControlComponent {
-  @Input() path: string = '';
+  @Input() path: string | any = '';
   @Input() color: 'primary' | 'warning' | 'danger' = 'primary';
-  @Input() content: string = '';
+  @Input({ required: true }) content: string = '';
   @Input() disabled: any;
 }

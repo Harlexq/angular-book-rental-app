@@ -8,7 +8,6 @@ import { WebModule } from './web/web.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, AdminModule, WebModule],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

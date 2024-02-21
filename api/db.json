@@ -5,16 +5,31 @@
         "rent": false,
         "byWhom": null
       },
-      "title": "Siyah Sancak",
-      "description": "Fatih Sultan Mehmet, vefat etmeden &#246;nce son seferine haz&#305;rlan&#305;rken, Roma'dan bir mektup alm&#305;&#351;. Mektupta H&#305;ristiyan bir kardinal, 'Efendim, &#246;mr&#252;m&#252;n son zaman&#305;n&#305; kendi vatan&#305;mda ge&#231;irmek isterim. Beni, &#304;stanbul'da bir kiliseye alman&#305;z m&#252;mk&#252;n m&#252;?' diye ricada bulunmu&#351;. Sultan Fatih &#231;ok sinirlenmi&#351;, kardinale emir g&#246;ndermi&#351;: 'G&#246;revimiz tamam olmadan asla!'",
-      "imageUrl": "https://i.dr.com.tr/cache/500x400-0/originals/0000000599917-1.jpg",
-      "publisher": "Kariyer Yayınları",
-      "author": "Ali Kuzu",
-      "category": "Tarih",
-      "price": "150",
-      "publicationDate": "2014-01-01",
-      "pageNumber": "272",
+      "title": "Kırdığın Yerden Kırıl ",
+      "description": "Kırdığın Yerden Kırıl Kitap Açıklaması\n\nBazen gitmek gerek, hiç görmediğin yerleri görmek için... Bazen her şeyi unutmak gerek, en sevdiğin şarkıyı silip ilk defa duyuyormuş gibi dinlemek gerek. Sevmek gerek, sanki hiç o acıları tatmamış gibi yeniden tanışmak gerek. Yardım etmek gerek, bazen de yardım edilmesine izin vermek gerek. Yaraların derin de olsa dikiş atılmasına izin vermek gerek. İçindeki merhamet seni sen yapan şey olsa da, bazen merhameti bir kenara bırakman gerek.\nKalbini bazen kilitleyip saklamak gerek, bazen de gül bahçeleri sunmak gerek. En önemlisi “ah” almamak gerek. Gün gelecek, herkes buluşacak ya öbür tarafta. Ben sırf seni öte tarafta görmeyeyim diye hakkımı helal ediyorum. Ama sana tek bir cümle edeceksem, yüreğimden geçirerek şunu söylemek istiyorum: KIRDIĞIN YERDEN KIRIL! Kırdığın yerden kırıl sevgilim, kırdığın yerden kırıl.\n\n(Tanıtım Bülteninden)",
+      "imageUrl": "https://i.dr.com.tr/cache/500x400-0/originals/0002103164001-1.jpg",
+      "publisher": "Hayykitap",
+      "author": "Zeus Kabadayı",
+      "price": "117.80",
+      "category": "Roman",
+      "publicationDate": "2024-02-01",
+      "pageNumber": "248",
       "id": 1
+    },
+    {
+      "rentInformation": {
+        "rent": false,
+        "byWhom": null
+      },
+      "title": "Herkes İçin Kısa Osmanlı Tarihi",
+      "description": "\n\nHERKES İÇİN KISA OSMANLI TARİHİ Kısa Özet\n\nOsmanlı İmparatorluğu, tarihin gördüğü en büyük imparatorluklardan birisiydi. 16. yüzyılda dünya siyasetine yön vererek, bugünkü dünyanın siyasi ve dini yapısının oluşmasına büyük katkıda bulundu. Osmanlı İmparatorluğu, tarih sahnesinden çekilmesine rağmen hâlâ izleri duruyor. Ancak hayatımızın hemen hemen her safhasında izleriyle karşılaşmamıza rağmen Osmanlı tarihi özellikle akademik dünyanın dışındaki okurlar için hâlâ karanlıklar içerisinde.\n\nSon 50-60 yılda bütün dünyada Osmanlı tarih yazıcılığı büyük aşama kaydetmesine rağmen, akademik araştırmalarda ortaya çıkan sonuçlar ülkemizde kamuoyuna fazla ulaşamadı. Bu kitapta Osmanlı tarihi ana hatlarıyla anlatılırken akademik araştırmaların sonucunda ortaya çıkan bilgilerden hareket edilmiş, ancak konular anlaşılır bir üslupla verilmeye çalışılmıştır.",
+      "imageUrl": "https://i.dr.com.tr/cache/500x400-0/originals/0001704992001-1.jpg",
+      "publisher": "Yeditepe Yayınevi",
+      "author": "Erhan Afyoncu",
+      "price": "120.00",
+      "publicationDate": "2024-02-02",
+      "pageNumber": "288",
+      "id": 2
     }
   ],
   "categories": [
@@ -96,12 +111,13 @@
   ],
   "users": [
     {
-      "id": 1,
       "firstName": "Serhan",
       "lastName": "Bakır",
-      "accountDate": "14.02.2024",
       "email": "serhanbakir5@gmail.com",
-      "password": "123456789"
+      "password": "Serhan342.",
+      "accountDate": "21-02-2024",
+      "banned": false,
+      "id": 1
     }
   ]
 }

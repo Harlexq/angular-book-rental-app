@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Books } from 'src/app/models/Books';
+import { Category } from 'src/app/models/Category';
 import { HttpClientService } from 'src/app/services/http-client.service';
 
 @Component({
@@ -19,6 +20,8 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 export class AddBookComponent {
   form!: FormGroup;
   editorDescription: string = '';
+  categories: Category[] = [];
+  selectedCategory: string = '';
 
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -50,7 +53,7 @@ export class AddBookComponent {
         tag: 'h1',
       },
     ],
-    sanitize: true,
+    sanitize: false,
   };
 
   constructor(
@@ -63,6 +66,14 @@ export class AddBookComponent {
 
   ngOnInit() {
     this.addBookForm();
+    this.getCategories();
+    console.log('Seçilen kategori başlığı:', this.selectedCategory);
+  }
+
+  getCategories() {
+    this.http.get<Category[]>('categories', (res) => {
+      this.categories = res;
+    });
   }
 
   addBookForm() {
@@ -72,7 +83,6 @@ export class AddBookComponent {
       imageUrl: ['', Validators.required],
       publisher: ['', Validators.required],
       author: ['', Validators.required],
-      category: ['', Validators.required],
       price: ['', Validators.required],
       publicationDate: ['', Validators.required],
       pageNumber: ['', Validators.required],
@@ -137,10 +147,6 @@ export class AddBookComponent {
 
   get newAuthor(): FormControl {
     return this.form.get('author') as FormControl;
-  }
-
-  get newCategory(): FormControl {
-    return this.form.get('category') as FormControl;
   }
 
   get newPrice(): FormControl {
