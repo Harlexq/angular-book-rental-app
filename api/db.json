@@ -209,6 +209,7 @@
       "password": "Serhan342.",
       "accountDate": "21-02-2024",
       "banned": false,
+      "booksHired": [1, 2, 3],
       "id": 1
     }
   ]
