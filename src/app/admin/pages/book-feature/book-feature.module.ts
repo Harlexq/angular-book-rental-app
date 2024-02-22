@@ -1,26 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AddBookComponent } from './add-book.component';
-import { RouterModule } from '@angular/router';
+import { BookFeatureComponent } from './book-feature.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { AngularEditorModule } from '@kolkov/angular-editor';
-import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
-  declarations: [AddBookComponent],
+  declarations: [BookFeatureComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild([{ path: '', component: AddBookComponent }]),
     SharedModule,
+    DropdownModule,
     ReactiveFormsModule,
     FormsModule,
+    AngularEditorModule,
     ToastModule,
     ConfirmDialogModule,
-    AngularEditorModule,
-    DropdownModule,
   ],
+  exports: [BookFeatureComponent],
 })
-export class AddBookModule {}
+export class BookFeatureModule {}

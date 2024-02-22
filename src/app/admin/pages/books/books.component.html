@@ -1,6 +1,16 @@
 <div class="btn-right">
-  <app-button-control path="/admin/add-book" content="Kitap Ekle" />
+  <app-button-control (click)="toggleSidebar()" content="Kitap Ekle" />
 </div>
+
+<p-sidebar
+  [(visible)]="sidebarVisible"
+  position="right"
+  styleClass="w-30"
+  appSidebar
+>
+  <app-book-feature [selectedBookId]="selectedBookId" />
+</p-sidebar>
+
 <table style="overflow-x: auto">
   <thead>
     <tr>
@@ -31,7 +41,7 @@
       </td>
       <td>{{ book.publisher }}</td>
       <td>{{ book.author }}</td>
-      <td>{{ book.category }}</td>
+      <td>{{ getCategoryName(book.categoryId) }}</td>
       <td>{{ book.price }}</td>
       <td>{{ book.publicationDate | date }}</td>
       <td>{{ book.pageNumber }}</td>
@@ -44,19 +54,19 @@
       <td>
         <app-button-control
           color="warning"
-          [path]="'/admin/edit-book/' + book.id"
+          (click)="toggleSidebar(book.id)"
           content="Düzenle"
         />
         <p-button
-          (click)="deleteBook($event, book.id)"
+          (click)="deleteBook(book.id)"
           icon="pi pi-times"
           label="Sil"
           styleClass="btn btn-danger"
         />
-        <p-toast></p-toast>
-        <p-confirmDialog></p-confirmDialog>
       </td>
     </tr>
   </tbody>
 </table>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
 <div *ngIf="books.length === 0" class="empty">Kitaplar Bulunamadı</div>

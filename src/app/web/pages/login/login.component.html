@@ -1,0 +1,29 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="login()" class="form">
+      <div class="title">
+        <h1>Kitapçı Dayı'ya Giriş Yap</h1>
+      </div>
+      <app-input-control
+        [fb]="newEmail"
+        [form]="form"
+        placeholder="E-Mail Adresinizi Giriniz"
+      />
+      <app-input-control
+        [fb]="newPassword"
+        [type]="passType"
+        [form]="form"
+        placeholder="Şifrenizi Giriniz"
+      />
+      <p>{{ userError }}</p>
+      <button type="button" (click)="passwordShow()" class="password-btn">
+        <ng-container *ngIf="passType == 'password'; else textInput">
+          <i class="fa-regular fa-eye"></i>
+        </ng-container>
+        <ng-template #textInput>
+          <i #textInput class="fa-regular fa-eye-slash"></i
+        ></ng-template>
+      </button>
+      <app-button-control [disabled]="!form.valid" content="Giriş Yap" />
+    </form>
+  </div>
+  

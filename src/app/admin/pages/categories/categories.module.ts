@@ -7,6 +7,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { SidebarModule } from 'primeng/sidebar';
+import { CategoryFeatureModule } from '../category-feature/category-feature.module';
 
 @NgModule({
   declarations: [CategoriesComponent],
@@ -22,6 +24,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     ConfirmDialogModule,
     HttpClientModule,
     ToastModule,
+    SidebarModule,
+    CategoryFeatureModule,
   ],
   providers: [ConfirmationService, MessageService],
 })

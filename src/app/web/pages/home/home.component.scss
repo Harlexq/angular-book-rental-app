@@ -24,6 +24,10 @@
         font-size: 20px;
         font-weight: 600;
         color: #0011ca;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
       }
       .desc {
         margin: 10px 0;

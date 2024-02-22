@@ -5,32 +5,16 @@
         "rent": false,
         "byWhom": null
       },
-      "title": "Kırdığın Yerden Kırıl ",
-      "description": "Kırdığın Yerden Kırıl Kitap Açıklaması\n\nBazen gitmek gerek, hiç görmediğin yerleri görmek için... Bazen her şeyi unutmak gerek, en sevdiğin şarkıyı silip ilk defa duyuyormuş gibi dinlemek gerek. Sevmek gerek, sanki hiç o acıları tatmamış gibi yeniden tanışmak gerek. Yardım etmek gerek, bazen de yardım edilmesine izin vermek gerek. Yaraların derin de olsa dikiş atılmasına izin vermek gerek. İçindeki merhamet seni sen yapan şey olsa da, bazen merhameti bir kenara bırakman gerek.\nKalbini bazen kilitleyip saklamak gerek, bazen de gül bahçeleri sunmak gerek. En önemlisi “ah” almamak gerek. Gün gelecek, herkes buluşacak ya öbür tarafta. Ben sırf seni öte tarafta görmeyeyim diye hakkımı helal ediyorum. Ama sana tek bir cümle edeceksem, yüreğimden geçirerek şunu söylemek istiyorum: KIRDIĞIN YERDEN KIRIL! Kırdığın yerden kırıl sevgilim, kırdığın yerden kırıl.\n\n(Tanıtım Bülteninden)",
-      "imageUrl": "https://i.dr.com.tr/cache/500x400-0/originals/0002103164001-1.jpg",
-      "publisher": "Hayykitap",
-      "author": "Zeus Kabadayı",
-      "price": "117.80",
-      "category": "Roman",
-      "publicationDate": "2024-02-01",
-      "pageNumber": "248",
-      "id": 1
-    },
-    {
-      "rentInformation": {
-        "rent": false,
-        "byWhom": null
-      },
       "title": "Herkes İçin Kısa Osmanlı Tarihi",
       "description": "\n\nHERKES İÇİN KISA OSMANLI TARİHİ Kısa Özet\n\nOsmanlı İmparatorluğu, tarihin gördüğü en büyük imparatorluklardan birisiydi. 16. yüzyılda dünya siyasetine yön vererek, bugünkü dünyanın siyasi ve dini yapısının oluşmasına büyük katkıda bulundu. Osmanlı İmparatorluğu, tarih sahnesinden çekilmesine rağmen hâlâ izleri duruyor. Ancak hayatımızın hemen hemen her safhasında izleriyle karşılaşmamıza rağmen Osmanlı tarihi özellikle akademik dünyanın dışındaki okurlar için hâlâ karanlıklar içerisinde.\n\nSon 50-60 yılda bütün dünyada Osmanlı tarih yazıcılığı büyük aşama kaydetmesine rağmen, akademik araştırmalarda ortaya çıkan sonuçlar ülkemizde kamuoyuna fazla ulaşamadı. Bu kitapta Osmanlı tarihi ana hatlarıyla anlatılırken akademik araştırmaların sonucunda ortaya çıkan bilgilerden hareket edilmiş, ancak konular anlaşılır bir üslupla verilmeye çalışılmıştır.",
       "imageUrl": "https://i.dr.com.tr/cache/500x400-0/originals/0001704992001-1.jpg",
       "publisher": "Yeditepe Yayınevi",
       "author": "Erhan Afyoncu",
       "price": "120.00",
-      "category": "Roman",
+      "categoryId": 1,
       "publicationDate": "2024-02-02",
       "pageNumber": "288",
-      "id": 2
+      "id": 1
     },
     {
       "rentInformation": {
@@ -43,10 +27,10 @@
       "publisher": "Martı Yayınları",
       "author": "Kolektif",
       "price": "148.40",
-      "category": "Roman",
+      "categoryId": 1,
       "publicationDate": "2022-02-02",
       "pageNumber": "217",
-      "id": 3
+      "id": 2
     },
     {
       "rentInformation": {
@@ -60,9 +44,9 @@
       "author": "Mustafa Kemal Atatürk",
       "price": "54.40",
       "publicationDate": "2010-02-02",
-      "category": "Roman",
+      "categoryId": 1,
       "pageNumber": "176",
-      "id": 4
+      "id": 3
     },
     {
       "rentInformation": {
@@ -76,9 +60,9 @@
       "author": "Antoine de Saint-Exupery",
       "price": "48.00",
       "publicationDate": "2017-11-01",
-      "category": "Roman",
+      "categoryId": 1,
       "pageNumber": "112",
-      "id": 5
+      "id": 4
     },
     {
       "rentInformation": {
@@ -92,9 +76,9 @@
       "author": "Andy Weir",
       "price": "245",
       "publicationDate": "2014-01-01",
-      "category": "Tarih",
+      "categoryId": 4,
       "pageNumber": "416",
-      "id": 6
+      "id": 5
     },
     {
       "rentInformation": {
@@ -107,10 +91,10 @@
       "publisher": "Martı Yayınları",
       "author": "Fatih Şalvan",
       "price": "48.75",
-      "category": "Tarih",
+      "categoryId": 5,
       "publicationDate": "2022-01-01",
       "pageNumber": "160",
-      "id": 7
+      "id": 6
     },
     {
       "rentInformation": {
@@ -124,9 +108,9 @@
       "author": "Furkan Çırak",
       "price": "69.30",
       "publicationDate": "2021-01-01",
-      "category": "Tarih",
+      "categoryId": 5,
       "pageNumber": "256",
-      "id": 8
+      "id": 7
     }
   ],
   "categories": [
@@ -201,12 +185,23 @@
       "description": "Sanat kitapları."
     },
     {
-      "id": 15,
       "title": "Müzik",
-      "description": "Müzik kitapları."
+      "description": "Müzik kitapları.",
+      "id": 15
     }
   ],
-  "users": [
+  "adminUsers": [
+    {
+      "firstName": "Serhan",
+      "lastName": "Bakır",
+      "email": "serhanbakir5@gmail.com",
+      "password": "Serhan342.",
+      "accountDate": "21-02-2024",
+      "banned": false,
+      "id": 1
+    }
+  ],
+  "webUsers": [
     {
       "firstName": "Serhan",
       "lastName": "Bakır",

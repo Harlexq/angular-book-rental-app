@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Books } from 'src/app/models/Books';
+import { Category } from 'src/app/models/Category';
 import { HttpClientService } from 'src/app/services/http-client.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 })
 export class BooksComponent {
   books: Books[] = [];
+  categories: Category[] = [];
 
   constructor(
     private http: HttpClientService,
@@ -19,6 +21,7 @@ export class BooksComponent {
 
   ngOnInit() {
     this.getBooks();
+    this.getCategoty();
   }
 
   getBooks() {
@@ -27,9 +30,19 @@ export class BooksComponent {
     });
   }
 
-  deleteBook(event: Event, id: number) {
+  getCategoty() {
+    this.http.get<Category[]>('categories', (res) => {
+      this.categories = res;
+    });
+  }
+
+  getCategoryName(categoryId: number): string {
+    const category = this.categories.find((c) => c.id === categoryId);
+    return category ? category.title : '';
+  }
+
+  deleteBook(id: number) {
     this.confirmationService.confirm({
-      target: event.target as EventTarget,
       message: 'Bu Kitabı Silmek İstediğinize Emin Misiniz?',
       header: 'Kitabı Sil',
       icon: 'pi pi-info-circle',
@@ -55,5 +68,13 @@ export class BooksComponent {
         });
       },
     });
+  }
+
+  sidebarVisible: boolean = false;
+  selectedBookId: number | null = null;
+
+  toggleSidebar(id?: number) {
+    this.selectedBookId = id || null;
+    this.sidebarVisible = !this.sidebarVisible;
   }
 }

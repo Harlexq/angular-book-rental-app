@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AdminUsers } from 'src/app/models/AdminUsers';
+import { WebUsers } from 'src/app/models/WebUsers';
 import { HttpClientService } from 'src/app/services/http-client.service';
 
 @Component({
@@ -73,8 +73,8 @@ export class SignupComponent {
       ...formValue,
       banned: false,
     };
-    this.http.post<AdminUsers>('adminUsers', model, (res) => {
-      this.router.navigateByUrl('/admin/login');
+    this.http.post<WebUsers>('webUsers', model, (res) => {
+      this.router.navigateByUrl('/login');
     });
   }
 

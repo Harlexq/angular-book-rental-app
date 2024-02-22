@@ -1,6 +1,15 @@
 <div class="btn-right">
-  <app-button-control path="/admin/add-category" content="Kategori Ekle" />
+  <app-button-control (click)="toggleSidebar()" content="Kategori Ekle" />
 </div>
+
+<p-sidebar
+  [(visible)]="sidebarVisible"
+  position="right"
+  styleClass="w-30"
+  appSidebar
+>
+  <app-category-feature [selectedBookId]="selectedBookId" />
+</p-sidebar>
 
 <table style="overflow-x: auto">
   <thead>
@@ -17,22 +26,23 @@
       <td>{{ category.id }}</td>
       <td>{{ category.title }}</td>
       <td>{{ category.description }}</td>
-      <td class="xd">
+      <td>
         <app-button-control
           color="warning"
-          [path]="'/admin/edit-category/' + category.id"
+          (click)="toggleSidebar(category.id)"
           content="Düzenle"
         />
         <p-button
-          (click)="deleteCategory($event, category.id)"
+          (click)="deleteCategory(category.id)"
           icon="pi pi-times"
           label="Sil"
           styleClass="btn btn-danger"
+          [attr.data-id]="category.id"
         />
-        <p-toast></p-toast>
-        <p-confirmDialog></p-confirmDialog>
       </td>
     </tr>
   </tbody>
 </table>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
 <div *ngIf="categories.length === 0" class="empty">Kategoriler Bulunamadı</div>

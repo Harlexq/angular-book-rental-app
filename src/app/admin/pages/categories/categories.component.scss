@@ -34,3 +34,10 @@ table {
   font-size: 20px;
   font-weight: 600;
 }
+
+::ng-deep {
+  .ng-trigger {
+    width: 550px;
+    padding: 0 20px;
+  }
+}

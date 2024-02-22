@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { Users } from 'src/app/models/Users';
+import { WebUsers } from 'src/app/models/WebUsers';
 import { HttpClientService } from 'src/app/services/http-client.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { HttpClientService } from 'src/app/services/http-client.service';
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent {
-  users: Users[] = [];
+  users: WebUsers[] = [];
 
   constructor(
     private http: HttpClientService,
@@ -18,11 +18,11 @@ export class UsersComponent {
   ) {}
 
   ngOnInit() {
-    this.getTokens();
+    this.getWebUsers();
   }
 
-  getTokens() {
-    this.http.get<Users[]>('users', (res) => {
+  getWebUsers() {
+    this.http.get<WebUsers[]>('webUsers', (res) => {
       this.users = res;
     });
   }
@@ -43,7 +43,7 @@ export class UsersComponent {
           summary: 'Silindi',
           detail: 'Kullanıcı Silme İşlemi Başarılı',
         });
-        this.http.delete('users', id, () => {
+        this.http.delete('adminUsers', id, () => {
           window.location.reload();
         });
       },

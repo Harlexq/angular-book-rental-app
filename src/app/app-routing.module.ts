@@ -21,38 +21,10 @@ const routes: Routes = [
           import('./admin/pages/books/books.module').then((m) => m.BooksModule),
       },
       {
-        path: 'add-book',
-        loadChildren: () =>
-          import('./admin/pages/add-book/add-book.module').then(
-            (m) => m.AddBookModule
-          ),
-      },
-      {
-        path: 'edit-book/:id',
-        loadChildren: () =>
-          import('./admin/pages/edit-book/edit-book.module').then(
-            (m) => m.EditBookModule
-          ),
-      },
-      {
         path: 'categories',
         loadChildren: () =>
           import('./admin/pages/categories/categories.module').then(
             (m) => m.CategoriesModule
-          ),
-      },
-      {
-        path: 'add-category',
-        loadChildren: () =>
-          import('./admin/pages/add-category/add-category.module').then(
-            (m) => m.AddCategoryModule
-          ),
-      },
-      {
-        path: 'edit-category/:id',
-        loadChildren: () =>
-          import('./admin/pages/edit-category/edit-category.module').then(
-            (m) => m.EditCategoryModule
           ),
       },
       {
@@ -63,12 +35,12 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'login',
+    path: 'admin/login',
     loadChildren: () =>
       import('./admin/pages/login/login.module').then((m) => m.LoginModule),
   },
   {
-    path: 'signup',
+    path: 'admin/signup',
     loadChildren: () =>
       import('./admin/pages/signup/signup.module').then((m) => m.SignupModule),
   },
@@ -91,6 +63,18 @@ const routes: Routes = [
         loadChildren: () =>
           import('./web/pages/book-detail/book-detail.module').then(
             (m) => m.BookDetailModule
+          ),
+      },
+      {
+        path: 'login',
+        loadChildren: () =>
+          import('./web/pages/login/login.module').then((m) => m.LoginModule),
+      },
+      {
+        path: 'signup',
+        loadChildren: () =>
+          import('./web/pages/signup/signup.module').then(
+            (m) => m.SignupModule
           ),
       },
     ],

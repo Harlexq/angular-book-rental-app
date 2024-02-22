@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { SidebarModule } from 'primeng/sidebar';
+import { BookFeatureModule } from '../book-feature/book-feature.module';
 
 @NgModule({
   declarations: [BooksComponent],
@@ -19,6 +21,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule,
     ConfirmDialogModule,
     ToastModule,
+    SidebarModule,
+    BookFeatureModule,
   ],
   providers: [
     {

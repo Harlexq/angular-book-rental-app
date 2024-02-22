@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AdminUsers } from 'src/app/models/AdminUsers';
+import { WebUsers } from 'src/app/models/WebUsers';
 import { HttpClientService } from 'src/app/services/http-client.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginComponent {
   form!: FormGroup;
   passType = 'password';
   userError = '';
-  userData: AdminUsers[] = [];
+  userData: WebUsers[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,7 +46,7 @@ export class LoginComponent {
   }
 
   login() {
-    this.http.get<AdminUsers[]>('adminUsers', (res) => {
+    this.http.get<WebUsers[]>('webUsers', (res) => {
       this.userData = res;
       const resFind = res.find(
         (user) =>
@@ -57,7 +57,7 @@ export class LoginComponent {
         if (resFind.banned) {
           this.userError = 'Kullanıcı Banlandı Giriş Yapamazsınız';
         } else {
-          this.router.navigateByUrl('/admin');
+          this.router.navigateByUrl('/');
         }
       } else {
         this.userError = 'Kullanıcı Bulunamadı';

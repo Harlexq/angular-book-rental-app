@@ -27,9 +27,8 @@ export class CategoriesComponent {
     });
   }
 
-  deleteCategory(event: Event, id: number) {
+  deleteCategory(id: number) {
     this.confirmationService.confirm({
-      target: event.target as EventTarget,
       message: 'Bu Kategoriyi Silmek İstediğinize Emin Misiniz?',
       header: 'Kategori Sil',
       icon: 'pi pi-info-circle',
@@ -55,5 +54,13 @@ export class CategoriesComponent {
         });
       },
     });
+  }
+
+  sidebarVisible: boolean = false;
+  selectedBookId: number | null = null;
+
+  toggleSidebar(id?: number) {
+    this.selectedBookId = id || null;
+    this.sidebarVisible = !this.sidebarVisible;
   }
 }
