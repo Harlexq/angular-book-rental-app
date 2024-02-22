@@ -1,12 +1,14 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminLayoutComponent } from './admin/layout/layout.component';
 import { WebLayoutComponent } from './web/layout/layout.component';
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
   {
     path: 'admin',
     component: AdminLayoutComponent,
+    canActivateChild: [() => inject(AuthService).checkIsAuth()],
     children: [
       {
         path: '',
@@ -76,6 +78,11 @@ const routes: Routes = [
           import('./web/pages/signup/signup.module').then(
             (m) => m.SignupModule
           ),
+      },
+      {
+        path: 'rent',
+        loadChildren: () =>
+          import('./web/pages/rent/rent.module').then((m) => m.RentModule),
       },
     ],
   },

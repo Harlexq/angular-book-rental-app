@@ -69,9 +69,15 @@ export class SignupComponent {
   signup() {
     const { rePassword, ...formValue } = this.form.value;
 
+    const today = new Date();
+    const formattedDate = `${today.getDate()}-${
+      today.getMonth() + 1
+    }-${today.getFullYear()}`;
+
     const model = {
       ...formValue,
       banned: false,
+      accountDate: formattedDate,
     };
     this.http.post<AdminUsers>('adminUsers', model, (res) => {
       this.router.navigateByUrl('/admin/login');

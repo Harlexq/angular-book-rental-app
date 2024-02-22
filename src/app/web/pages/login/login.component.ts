@@ -45,6 +45,17 @@ export class LoginComponent {
     }
   }
 
+  generateToken(length: number): string {
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let token = '';
+    for (let i = 0; i < length; i++) {
+      token += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return token;
+  }
+
   login() {
     this.http.get<WebUsers[]>('webUsers', (res) => {
       this.userData = res;
@@ -57,6 +68,8 @@ export class LoginComponent {
         if (resFind.banned) {
           this.userError = 'Kullanıcı Banlandı Giriş Yapamazsınız';
         } else {
+          const token = this.generateToken(32);
+          localStorage.setItem('webUserToken', token);
           this.router.navigateByUrl('/');
         }
       } else {
