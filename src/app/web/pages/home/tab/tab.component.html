@@ -1,0 +1,65 @@
+<p-tabView [activeIndex]="0">
+  <p-tabPanel header="Romanlar">
+    <div class="card-container">
+      <div class="card" *ngFor="let roman of romans">
+        <a [routerLink]="'book-detail/' + roman.id" class="card-head">
+          <img [src]="roman.imageUrl" [alt]="roman.title" />
+        </a>
+        <div class="card-body">
+          <a
+            [routerLink]="'book-detail/' + roman.id"
+            class="title"
+            [title]="roman.title"
+            >{{ roman.title }}</a
+          >
+          <p class="publisher">{{ roman.publisher }}</p>
+        </div>
+        <div class="card-foot">
+          <p class="price">{{ roman.price | currency }}</p>
+        </div>
+      </div>
+    </div>
+  </p-tabPanel>
+  <p-tabPanel header="Tarih Kitapları">
+    <div class="card-container">
+      <div class="card" *ngFor="let history of historys">
+        <a [routerLink]="'book-detail/' + history.id" class="card-head">
+          <img [src]="history.imageUrl" [alt]="history.title" />
+        </a>
+        <div class="card-body">
+          <a
+            [routerLink]="'book-detail/' + history.id"
+            class="title"
+            [title]="history.title"
+            >{{ history.title }}</a
+          >
+          <p class="publisher">{{ history.publisher }}</p>
+        </div>
+        <div class="card-foot">
+          <p class="price">{{ history.price | currency }}</p>
+        </div>
+      </div>
+    </div>
+  </p-tabPanel>
+  <p-tabPanel header="Fantastik Kitaplar">
+    <div class="card-container">
+      <div class="card" *ngFor="let fantastic of fantastics">
+        <a [routerLink]="'book-detail/' + fantastic.id" class="card-head">
+          <img [src]="fantastic.imageUrl" [alt]="fantastic.title" />
+        </a>
+        <div class="card-body">
+          <a
+            [routerLink]="'book-detail/' + fantastic.id"
+            class="title"
+            [title]="fantastic.title"
+            >{{ fantastic.title }}</a
+          >
+          <p class="publisher">{{ fantastic.publisher }}</p>
+        </div>
+        <div class="card-foot">
+          <p class="price">{{ fantastic.price | currency }}</p>
+        </div>
+      </div>
+    </div>
+  </p-tabPanel>
+</p-tabView>

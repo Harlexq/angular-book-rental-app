@@ -1,13 +1,11 @@
 .header {
   background-color: #fff;
-  height: 70px;
+  height: 80px;
   display: flex;
   align-items: center;
-  box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5);
   .head-brand {
-    h1 {
-      font-size: 25px;
-      font-weight: 600;
+    img {
+      width: 100%;
     }
   }
   .header-inner {
@@ -26,10 +24,10 @@
       background-color: transparent;
       border: none;
       &.active {
-        color: #404eed;
+        color: #f65d4e;
       }
       &:hover {
-        color: #404eed;
+        color: #f65d4e;
       }
 
       .dropdown {
@@ -50,9 +48,118 @@
     }
   }
 
-  .btn-group {
+  .user {
     display: flex;
     align-items: center;
     gap: 15px;
+    .user-content {
+      position: relative;
+      .user-dropdown {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        border-radius: 7px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        i {
+          font-size: 16px;
+        }
+        p {
+          font-weight: 600;
+          font-size: 16px;
+        }
+        &:hover {
+          background-color: rgba(246, 92, 78, 0.712);
+        }
+      }
+      .user-dropdown-content {
+        position: absolute;
+        top: 45px;
+        left: 0;
+        display: none;
+        background-color: #fff;
+        border: 1px solid #f65d4e;
+        min-width: 150px;
+        .dropdown-item {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.navbar {
+  height: 60px;
+  background-color: #f65d4e;
+  display: flex;
+  align-items: center;
+  .navbar-inner {
+    display: flex;
+    align-items: center;
+    .title {
+      flex: 0 1 24%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 15px;
+      font-size: 15px;
+      font-weight: 600;
+      background-color: #cf3324;
+      color: #fff;
+      height: 60px;
+      padding: 0 50px;
+      border: none;
+      cursor: pointer;
+    }
+    .search {
+      flex: 0 1 58%;
+      margin: 0 75px;
+      .form {
+        display: flex;
+        align-items: center;
+        position: relative;
+        .input {
+          width: 100%;
+          padding: 15px 20px;
+          border: none;
+          border-radius: 50px;
+          outline: none;
+          font-size: 15px;
+        }
+        .search-icon {
+          position: absolute;
+          top: 0;
+          right: 0;
+          background-color: transparent;
+          border: none;
+          font-size: 20px;
+          cursor: pointer;
+          width: 52px;
+          height: 48px;
+        }
+      }
+    }
+    .social-nav {
+      flex: 0 1 19%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .social-item {
+        color: #fff;
+        font-size: 18px;
+        padding: 8px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+        &:hover {
+          background-color: #cf3324;
+        }
+      }
+    }
   }
 }

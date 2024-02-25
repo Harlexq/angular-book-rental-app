@@ -1,0 +1,23 @@
+.categories {
+  border: 2px solid #f65d4e;
+  border-top: none;
+  border-radius: 0 0 7px 7px;
+  padding: 10px 25px;
+  .categories-inner {
+    .categories-item {
+      display: block;
+      width: 100%;
+      padding: 5px 0;
+      font-size: 16px;
+      color: #696969;
+      border-bottom: 1px solid #696969;
+      transition: 0.3s;
+      &:last-child {
+        border: none;
+      }
+      &:hover {
+        color: #f65d4e;
+      }
+    }
+  }
+}

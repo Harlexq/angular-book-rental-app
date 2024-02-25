@@ -66,6 +66,17 @@ export class SignupComponent {
     }
   }
 
+  generateToken(length: number): string {
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let token = '';
+    for (let i = 0; i < length; i++) {
+      token += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return token;
+  }
+
   signup() {
     const { rePassword, ...formValue } = this.form.value;
 
@@ -74,10 +85,13 @@ export class SignupComponent {
       today.getMonth() + 1
     }-${today.getFullYear()}`;
 
+    const token = this.generateToken(32);
+
     const model = {
       ...formValue,
       banned: false,
       accountDate: formattedDate,
+      token: token,
     };
     this.http.post<AdminUsers>('adminUsers', model, (res) => {
       this.router.navigateByUrl('/admin/login');

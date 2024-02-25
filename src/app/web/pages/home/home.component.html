@@ -1,41 +1,9 @@
-<ng-container
-  *ngIf="historys.length > 0 || romans.length > 0 || fantastics.length > 0"
->
-  <div *ngFor="let books of [historys, romans, fantastics]; let i = index">
-    <h2 class="page-title">
-      <ng-container *ngIf="i === 0; else history"
-        >Tarih Kategorisi</ng-container
-      >
-      <ng-template #history>
-        <ng-container *ngIf="i === 1; else fantastic"
-          >Roman Kategorisi</ng-container
-        >
-        <ng-template #fantastic>Fantastik Kategorisi</ng-template>
-      </ng-template>
-    </h2>
-    <div class="cards">
-      <div class="card" *ngFor="let item of books">
-        <div class="card-head">
-          <img [src]="item.imageUrl" [alt]="item.title" />
-        </div>
-        <div class="card-body">
-          <h2 class="title">{{ item.title }}</h2>
-          <p class="desc">{{ item.description }}</p>
-        </div>
-        <div class="card-foot">
-          <app-button-control
-            content="Kitabı Gör"
-            [path]="'/book-detail/' + item.id"
-          />
-          <app-button-control
-            color="warning"
-            (click)="rent()"
-            [content]="item.price + ' ₺ / Kirala'"
-          />
-        </div>
-      </div>
-    </div>
+<div class="" style="display: flex; gap: 30px">
+  <div class="" style="flex: 0 1 22.3%">
+    <app-categories />
   </div>
-</ng-container>
-<p-toast></p-toast>
-<p-confirmDialog></p-confirmDialog>
+  <div class="" style="flex: 0 1 80%">
+    <app-carousel />
+    <app-tab />
+  </div>
+</div>

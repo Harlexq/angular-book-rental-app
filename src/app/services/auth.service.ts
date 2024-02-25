@@ -7,8 +7,9 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private router: Router) {}
 
-  checkIsAuth() {
-    if (localStorage.getItem('adminUserToken')) return true;
+  checkIsAuth(): boolean {
+    const token: string = localStorage.getItem('adminUserToken');
+    if (token) return true;
 
     this.router.navigateByUrl('/admin/login');
     return false;

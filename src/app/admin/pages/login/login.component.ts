@@ -45,17 +45,6 @@ export class LoginComponent {
     }
   }
 
-  generateToken(length: number): string {
-    const characters =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    let token = '';
-    for (let i = 0; i < length; i++) {
-      token += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return token;
-  }
-
   login() {
     this.http.get<AdminUsers[]>('adminUsers', (res) => {
       this.userData = res;
@@ -64,11 +53,11 @@ export class LoginComponent {
           user.email === this.form.value.email &&
           user.password === this.form.value.password
       );
+      const token = resFind.token;
       if (resFind) {
         if (resFind.banned) {
           this.userError = 'Kullanıcı Banlandı Giriş Yapamazsınız';
         } else {
-          const token = this.generateToken(32);
           localStorage.setItem('adminUserToken', token);
           this.router.navigateByUrl('/admin');
         }

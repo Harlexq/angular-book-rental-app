@@ -6,4 +6,5 @@ export interface WebUsers {
   email: string;
   password: string;
   banned: boolean;
+  token: string;
 }

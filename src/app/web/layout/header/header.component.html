@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header-inner">
       <a routerLink="/" class="head-brand">
-        <h1>Kitapçı Dayı</h1>
+        <img src="assets/img/logo.svg" alt="" />
       </a>
       <nav class="nav">
         <a
@@ -15,10 +15,55 @@
           {{ item.title }}
         </a>
       </nav>
-      <div class="btn-group">
-        <app-button-control path="/login" content="Giriş Yap" />
-        <app-button-control path="/signup" content="Kayıt Ol" />
+      <div class="user">
+        <ng-container *ngIf="loggedInUsername === null; else showUser">
+          <app-button-control path="/login" content="Giriş Yap" />
+          <app-button-control path="/signup" content="Kayıt Ol" />
+        </ng-container>
+        <ng-template #showUser>
+          <div class="user-content">
+            <button class="user-dropdown">
+              <i class="fa-regular fa-user"></i>
+              <p>{{ loggedInUsername }}</p>
+            </button>
+            <div class="user-dropdown-content">
+              <a routerLink="/profile" class="dropdown-item">Profil</a>
+            </div>
+          </div>
+        </ng-template>
       </div>
+    </div>
+  </div>
+</header>
+<header class="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <div class="title">
+        <i class="fa-solid fa-layer-group"></i>
+        <h2>Kategoriler</h2>
+      </div>
+      <div class="search">
+        <form class="form">
+          <input type="text" placeholder="Kitap Ara" class="input" />
+          <button type="button" class="search-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
+      <nav class="social-nav">
+        <a href="#" class="social-item">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="#" class="social-item">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="#" class="social-item">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="#" class="social-item">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+      </nav>
     </div>
   </div>
 </header>

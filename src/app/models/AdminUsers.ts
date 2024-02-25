@@ -6,4 +6,5 @@ export interface AdminUsers {
   email: string;
   password: string;
   banned: boolean;
+  token: string;
 }
