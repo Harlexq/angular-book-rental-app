@@ -14,7 +14,7 @@ import { HttpClientService } from 'src/app/services/http-client.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class AdminLoginComponent {
   form!: FormGroup;
   passType = 'password';
   userError = '';

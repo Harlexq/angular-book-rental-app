@@ -44,9 +44,32 @@ export class BooksComponent {
     this.paginateBooks();
   }
 
-  rent() {
+  rent(bookId: number) {
     if (localStorage.getItem('webUserToken')) {
-      this.router.navigateByUrl('/rent');
+      this.confirmationService.confirm({
+        message: 'Bu Kitabı Kiralamak İstediğinize Emin Misiniz?',
+        header: 'Kitabı Kirala',
+        icon: 'pi pi-info-circle',
+        acceptButtonStyleClass: 'p-button-danger p-button-text',
+        acceptLabel: 'Evet',
+        rejectLabel: 'Hayır',
+        rejectButtonStyleClass: 'p-button-text p-button-text',
+        accept: () => {
+          this.messageService.add({
+            severity: 'info',
+            summary: 'Kiralama Yönlendirme',
+            detail: 'Giriş Sayfasına Yönlendiriliyorsunuz',
+          });
+          this.router.navigateByUrl(`/rent/${bookId}`);
+        },
+        reject: () => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'İptal Edildi',
+            detail: 'Kitap Kiralama İşlemi İptal Edildi',
+          });
+        },
+      });
     } else {
       this.confirmationService.confirm({
         message:

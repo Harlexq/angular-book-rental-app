@@ -14,10 +14,10 @@
 <table style="overflow-x: auto">
   <thead>
     <tr>
-      <th>Kitap ID'si</th>
+      <th>Kitap ID</th>
+      <th>Kitap Kapak Fotoğrafı</th>
       <th>Kitap İsmi</th>
       <th>Kitap Açıklaması</th>
-      <th>Kitap Kapak Fotoğrafı</th>
       <th>Kitap Yayıncısı</th>
       <th>Kitap Yazarı</th>
       <th>Kitap Kategorisi</th>
@@ -32,37 +32,49 @@
   <tbody *ngIf="books.length > 0">
     <tr *ngFor="let book of books">
       <td>{{ book.id }}</td>
-      <td>{{ book.title }}</td>
+      <td>
+        <div class="img">
+          <img [src]="book.imageUrl" [alt]="book.title" width="50px" />
+        </div>
+      </td>
+      <td>
+        <p class="title">
+          {{ book.title }}
+        </p>
+      </td>
       <td>
         <p class="desc">{{ book.description }}</p>
-      </td>
-      <td class="img">
-        <img [src]="book.imageUrl" [alt]="book.title" width="50px" />
       </td>
       <td>{{ book.publisher }}</td>
       <td>{{ book.author }}</td>
       <td>{{ getCategoryName(book.categoryId) }}</td>
       <td>{{ book.price }}</td>
-      <td>{{ book.publicationDate | date }}</td>
+      <td>{{ book.publicationDate | date : "MMMM, dd, y" : null : "tr" }}</td>
       <td>{{ book.pageNumber }}</td>
       <td>
         <p>{{ book.rentInformation.rent ? "Kiralandı" : "Kiralık" }}</p>
         <p>
-          {{ book.rentInformation.rent ? book.rentInformation.byWhom : "" }}
+          {{
+            book.rentInformation.rent
+              ? getUserName(book.rentInformation.byWhom)
+              : ""
+          }}
         </p>
       </td>
       <td>
-        <app-button-control
-          color="warning"
-          (click)="toggleSidebar(book.id)"
-          content="Düzenle"
-        />
-        <p-button
-          (click)="deleteBook(book.id)"
-          icon="pi pi-times"
-          label="Sil"
-          styleClass="btn btn-danger"
-        />
+        <div class="edit">
+          <app-button-control
+            color="warning"
+            (click)="toggleSidebar(book.id)"
+            content="Düzenle"
+          />
+          <p-button
+            (click)="deleteBook(book.id)"
+            icon="pi pi-times"
+            label="Sil"
+            styleClass="btn btn-danger"
+          />
+        </div>
       </td>
     </tr>
   </tbody>

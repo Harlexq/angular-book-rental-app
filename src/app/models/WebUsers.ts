@@ -7,4 +7,5 @@ export interface WebUsers {
   password: string;
   banned: boolean;
   token: string;
+  rentalBooks: { bookId: number; rentDate: string }[];
 }

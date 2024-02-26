@@ -80,7 +80,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'rent',
+        path: 'rent/:id',
         loadChildren: () =>
           import('./web/pages/rent/rent.module').then((m) => m.RentModule),
       },

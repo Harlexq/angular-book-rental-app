@@ -1,3 +1,12 @@
+<p-sidebar
+  [(visible)]="sidebarVisible"
+  position="right"
+  styleClass="w-30"
+  appSidebar
+>
+  <app-users-feature [selectedUserId]="selectedUserId" />
+</p-sidebar>
+
 <table style="overflow-x: auto">
   <thead>
     <tr>
@@ -6,6 +15,7 @@
       <th>Kullanıcı Soyismi</th>
       <th>Kullanıcı Hesap Oluşturma Tarihi</th>
       <th>Kullanıcı E-Mail Adresi</th>
+      <th>Kiraladığı Kitaplar</th>
       <th>Kullanıcı Düzenle & Sil</th>
     </tr>
   </thead>
@@ -15,24 +25,33 @@
       <td>{{ user.id }}</td>
       <td>{{ user.firstName }}</td>
       <td>{{ user.lastName }}</td>
-      <td>{{ user.accountDate | date }}</td>
+      <td>{{ user.accountDate | date : "MMMM, dd, y" : null : "tr" }}</td>
       <td>{{ user.email }}</td>
       <td>
-        <app-button-control
-          color="warning"
-          [path]="'/admin/edit-book/' + user.id"
-          content="Düzenle"
-        />
-        <p-button
-          (click)="deleteUser($event, user.id)"
-          icon="pi pi-times"
-          label="Sil"
-          styleClass="btn btn-danger"
-        />
-        <p-toast></p-toast>
-        <p-confirmDialog></p-confirmDialog>
+        <ul>
+          <li *ngFor="let userBook of user.rentalBooks">
+            Kitap Adı: <strong>{{ getBooksName(userBook.bookId) }}</strong>
+          </li>
+        </ul>
+      </td>
+      <td>
+        <div class="edit">
+          <app-button-control
+            color="warning"
+            (click)="toggleSidebar(user.id)"
+            content="Düzenle"
+          />
+          <p-button
+            (click)="deleteUser(user.id)"
+            icon="pi pi-times"
+            label="Sil"
+            styleClass="btn btn-danger"
+          />
+        </div>
       </td>
     </tr>
   </tbody>
 </table>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
 <div *ngIf="users.length === 0" class="empty">Kullanıcılar Bulunamadı</div>

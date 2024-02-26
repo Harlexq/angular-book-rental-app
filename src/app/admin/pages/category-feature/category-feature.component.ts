@@ -17,7 +17,7 @@ import { CategoriesComponent } from '../categories/categories.component';
   styleUrls: ['./category-feature.component.scss'],
 })
 export class CategoryFeatureComponent {
-  @Input() selectedBookId: number | null;
+  @Input() selectedCategoryId: number | null;
   form!: FormGroup;
 
   constructor(
@@ -31,16 +31,16 @@ export class CategoryFeatureComponent {
 
   ngOnChanges() {
     this.editCategoryForm();
-    if (this.selectedBookId !== null || this.selectedBookId !== undefined) {
+    if (this.selectedCategoryId !== null && this.selectedCategoryId !== undefined) {
       this.getDetailCategory();
     }
   }
 
   getDetailCategory() {
-    if (this.selectedBookId !== undefined) {
+    if (this.selectedCategoryId !== undefined) {
       this.http.getDetail<Category>(
         'categories',
-        this.selectedBookId,
+        this.selectedCategoryId,
         (res) => {
           this.form.patchValue({
             title: res.title,
@@ -77,7 +77,7 @@ export class CategoryFeatureComponent {
           });
           this.http.put<Category>(
             'categories',
-            this.selectedBookId,
+            this.selectedCategoryId,
             this.form.value,
             () => {
               this.router.navigateByUrl('/admin/categories');

@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { SidebarModule } from 'primeng/sidebar';
+import { UsersFeatureModule } from '../users-feature/users-feature.module';
 
 @NgModule({
   declarations: [UsersComponent],
@@ -19,12 +21,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     ToastModule,
     SharedModule,
     ConfirmDialogModule,
-  ],
-  providers: [
-    {
-      provide: DATE_PIPE_DEFAULT_OPTIONS,
-      useValue: { dateFormat: 'longDate' },
-    },
+    SidebarModule,
+    UsersFeatureModule,
   ],
 })
 export class UsersModule {}

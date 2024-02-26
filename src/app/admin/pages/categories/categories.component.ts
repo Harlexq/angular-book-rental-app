@@ -57,10 +57,10 @@ export class CategoriesComponent {
   }
 
   sidebarVisible: boolean = false;
-  selectedBookId: number | null = null;
+  selectedCategoryId: number | null = null;
 
   toggleSidebar(id?: number) {
-    this.selectedBookId = id || null;
+    this.selectedCategoryId = id || null;
     this.sidebarVisible = !this.sidebarVisible;
   }
 }

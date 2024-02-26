@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Books } from 'src/app/models/Books';
 import { HttpClientService } from 'src/app/services/http-client.service';
 
 @Component({
@@ -8,8 +9,8 @@ import { HttpClientService } from 'src/app/services/http-client.service';
   styleUrls: ['./book-detail.component.scss'],
 })
 export class BookDetailComponent {
-  bookId!: any;
-  book: any;
+  bookId: string = '';
+  book: Books;
 
   constructor(
     private http: HttpClientService,
@@ -22,7 +23,7 @@ export class BookDetailComponent {
 
   getDetailBook() {
     this.bookId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.http.getDetail('books', this.bookId, (res) => {
+    this.http.getDetail<Books>('books', Number(this.bookId), (res) => {
       this.book = res;
     });
   }

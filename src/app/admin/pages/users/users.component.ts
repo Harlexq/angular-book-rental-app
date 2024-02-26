@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Books } from 'src/app/models/Books';
 import { WebUsers } from 'src/app/models/WebUsers';
 import { HttpClientService } from 'src/app/services/http-client.service';
 
@@ -10,6 +11,7 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 })
 export class UsersComponent {
   users: WebUsers[] = [];
+  books: Books[] = [];
 
   constructor(
     private http: HttpClientService,
@@ -19,6 +21,13 @@ export class UsersComponent {
 
   ngOnInit() {
     this.getWebUsers();
+    this.getBooks();
+  }
+
+  getBooks() {
+    this.http.get<Books[]>('books', (res) => {
+      this.books = res;
+    });
   }
 
   getWebUsers() {
@@ -27,9 +36,13 @@ export class UsersComponent {
     });
   }
 
-  deleteUser(event: Event, id: number) {
+  getBooksName(bookId: number): string {
+    const book = this.books.find((b) => b.id === bookId);
+    return book ? book.title : '';
+  }
+
+  deleteUser(id: number) {
     this.confirmationService.confirm({
-      target: event.target as EventTarget,
       message: 'Bu Kullanıcıyı Silmek İstediğinize Emin Misiniz?',
       header: 'Kullanıcı Sil',
       icon: 'pi pi-info-circle',
@@ -43,7 +56,7 @@ export class UsersComponent {
           summary: 'Silindi',
           detail: 'Kullanıcı Silme İşlemi Başarılı',
         });
-        this.http.delete('adminUsers', id, () => {
+        this.http.delete('webUsers', id, () => {
           window.location.reload();
         });
       },
@@ -55,5 +68,13 @@ export class UsersComponent {
         });
       },
     });
+  }
+
+  sidebarVisible: boolean = false;
+  selectedUserId: number;
+
+  toggleSidebar(id: number) {
+    this.selectedUserId = id;
+    this.sidebarVisible = !this.sidebarVisible;
   }
 }

@@ -11,11 +11,11 @@ import { WebUsers } from 'src/app/models/WebUsers';
 import { HttpClientService } from 'src/app/services/http-client.service';
 
 @Component({
-  selector: 'app-signup',
+  selector: 'web-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
-export class SignupComponent {
+export class WebSignupComponent {
   form!: FormGroup;
   passType = 'password';
 
@@ -81,9 +81,9 @@ export class SignupComponent {
     const { rePassword, ...formValue } = this.form.value;
 
     const today = new Date();
-    const formattedDate = `${today.getDate()}-${
-      today.getMonth() + 1
-    }-${today.getFullYear()}`;
+    const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
 
     const token = this.generateToken(32);
 

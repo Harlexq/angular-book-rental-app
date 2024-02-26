@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AdminNavItems } from 'src/app/models/AdminNavItems';
+import { AdminUsers } from 'src/app/models/AdminUsers';
+import { HttpClientService } from 'src/app/services/http-client.service';
 
 @Component({
   selector: 'admin-header',
@@ -7,6 +9,28 @@ import { AdminNavItems } from 'src/app/models/AdminNavItems';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  users: AdminUsers[] = [];
+  username: string = '';
+
+  constructor(private http: HttpClientService) {}
+
+  ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers() {
+    this.http.get<AdminUsers[]>('adminUsers', (res) => {
+      this.users = res;
+      const token = localStorage.getItem('adminUserToken');
+      if (token) {
+        const user = res.find((u) => u.token === token);
+        if (user) {
+          this.username = `${user.firstName} ${user.lastName}`;
+        }
+      }
+    });
+  }
+
   navItems: AdminNavItems[] = [
     {
       id: 1,

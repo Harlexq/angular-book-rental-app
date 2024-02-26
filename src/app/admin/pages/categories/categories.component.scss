@@ -7,10 +7,13 @@ table {
   border-collapse: collapse;
   width: 100%;
 
+  th {
+    padding: 20px 0;
+  }
+
   th,
   td {
     text-align: center;
-    padding: 8px;
     border: 1px solid #1f1f1f;
   }
 
@@ -21,6 +24,16 @@ table {
   thead {
     background-color: #1f1f1f;
     color: #fff;
+  }
+  .title {
+    font-weight: 600;
+  }
+
+  .edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
 }
 

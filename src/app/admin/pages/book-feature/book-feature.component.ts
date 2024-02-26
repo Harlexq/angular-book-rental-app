@@ -69,7 +69,7 @@ export class BookFeatureComponent {
   ngOnChanges() {
     this.addBookForm();
     this.getCategories();
-    if (this.selectedBookId !== null || this.selectedBookId !== undefined) {
+    if (this.selectedBookId !== null && this.selectedBookId !== undefined) {
       this.getDetailBook();
     }
   }

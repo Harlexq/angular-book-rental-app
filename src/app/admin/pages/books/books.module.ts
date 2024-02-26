@@ -24,11 +24,5 @@ import { BookFeatureModule } from '../book-feature/book-feature.module';
     SidebarModule,
     BookFeatureModule,
   ],
-  providers: [
-    {
-      provide: DATE_PIPE_DEFAULT_OPTIONS,
-      useValue: { dateFormat: 'longDate' },
-    },
-  ],
 })
 export class BooksModule {}

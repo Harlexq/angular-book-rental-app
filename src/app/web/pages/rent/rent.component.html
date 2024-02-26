@@ -1,1 +1,31 @@
-<p>rent works!</p>
+<div *ngIf="book">
+  <div class="book-content">
+    <div class="book-img">
+      <img [src]="book.imageUrl" [alt]="book.title" />
+    </div>
+    <div class="book-feature">
+      <h2 class="title">{{ book.title }}</h2>
+      <div class="author">
+        <p><strong>Yazar: </strong>{{ book.author }}</p>
+        <p><strong>Yayıncı: </strong>{{ book.publisher }}</p>
+      </div>
+      <p class="desc">{{ book.description }}</p>
+      <div class="feauture">
+        <p><strong>Kategori: </strong>{{ book.categoryId }}</p>
+        <p><strong>Sayfa Sayısı: </strong>{{ book.pageNumber }}</p>
+        <p>
+          <strong>Yayın Tarihi: </strong
+          >{{ book.publicationDate | date : "MMMM, dd, y" : null : "tr" }}
+        </p>
+      </div>
+      <div class="rent">
+        <app-button-control
+          (click)="rent()"
+          [content]="book.price + ' ₺ / Kirala'"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>

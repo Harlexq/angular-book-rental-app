@@ -8,7 +8,7 @@
   styleClass="w-30"
   appSidebar
 >
-  <app-category-feature [selectedBookId]="selectedBookId" />
+  <app-category-feature [selectedCategoryId]="selectedCategoryId" />
 </p-sidebar>
 
 <table style="overflow-x: auto">
@@ -24,21 +24,27 @@
   <tbody *ngIf="categories.length > 0">
     <tr *ngFor="let category of categories">
       <td>{{ category.id }}</td>
-      <td>{{ category.title }}</td>
+      <td>
+        <div class="title">
+          {{ category.title }}
+        </div>
+      </td>
       <td>{{ category.description }}</td>
       <td>
-        <app-button-control
-          color="warning"
-          (click)="toggleSidebar(category.id)"
-          content="Düzenle"
-        />
-        <p-button
-          (click)="deleteCategory(category.id)"
-          icon="pi pi-times"
-          label="Sil"
-          styleClass="btn btn-danger"
-          [attr.data-id]="category.id"
-        />
+        <div class="edit">
+          <app-button-control
+            color="warning"
+            (click)="toggleSidebar(category.id)"
+            content="Düzenle"
+          />
+          <p-button
+            (click)="deleteCategory(category.id)"
+            icon="pi pi-times"
+            label="Sil"
+            styleClass="btn btn-danger"
+            [attr.data-id]="category.id"
+          />
+        </div>
       </td>
     </tr>
   </tbody>

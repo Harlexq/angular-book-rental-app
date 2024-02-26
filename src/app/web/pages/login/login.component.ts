@@ -10,11 +10,11 @@ import { WebUsers } from 'src/app/models/WebUsers';
 import { HttpClientService } from 'src/app/services/http-client.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'web-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class WebLoginComponent {
   form!: FormGroup;
   passType = 'password';
   userError = '';

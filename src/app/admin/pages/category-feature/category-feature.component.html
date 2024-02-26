@@ -1,40 +1,26 @@
-<ng-container *ngIf="selectedBookId !== null">
-  <form
-    [formGroup]="form"
-    class="form"
-    (ngSubmit)="addCategory(selectedBookId)"
-  >
-    <app-input-control
-      [form]="form"
-      [fb]="newTitle"
-      placeholder="Kategori Başlığını Giriniz"
-    />
-    <app-input-control
-      [form]="form"
-      [fb]="newDescription"
-      placeholder="Kategori Açıklamasını Giriniz"
-    />
-    <app-button-control
-      [disabled]="!form.valid"
-      content="Kategoriyi Güncelle"
-    />
-    <p-toast></p-toast>
-    <p-confirmDialog></p-confirmDialog>
-  </form>
-</ng-container>
-
-<ng-container *ngIf="selectedBookId === null">
-  <form [formGroup]="form" (ngSubmit)="addCategory()" class="form">
-    <app-input-control
-      [form]="form"
-      [fb]="newTitle"
-      placeholder="Kategori Adını Giriniz"
-    />
-    <app-input-control
-      [form]="form"
-      [fb]="newDescription"
-      placeholder="Kategori Açıklamasını Giriniz"
-    />
-    <app-button-control [disabled]="!form.valid" content="Kategori Ekle" />
-  </form>
-</ng-container>
+<form
+  [formGroup]="form"
+  class="form"
+  (ngSubmit)="
+    selectedCategoryId !== null ? addCategory(selectedCategoryId) : addCategory()
+  "
+>
+  <app-input-control
+    [form]="form"
+    [fb]="newTitle"
+    placeholder="Kategori Adını Giriniz"
+  />
+  <app-input-control
+    [form]="form"
+    [fb]="newDescription"
+    placeholder="Kategori Açıklamasını Giriniz"
+  />
+  <app-button-control
+    [disabled]="!form.valid"
+    [content]="
+      selectedCategoryId !== null ? 'Kategoriyi Güncelle' : 'Kategori Ekle'
+    "
+  />
+  <p-toast></p-toast>
+  <p-confirmDialog></p-confirmDialog>
+</form>

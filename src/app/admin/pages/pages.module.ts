@@ -8,6 +8,10 @@ import { CategoriesModule } from './categories/categories.module';
 import { BooksModule } from './books/books.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { registerLocaleData } from '@angular/common';
+import localeTr from '@angular/common/locales/tr';
+
+registerLocaleData(localeTr, 'tr');
 
 @NgModule({
   declarations: [],

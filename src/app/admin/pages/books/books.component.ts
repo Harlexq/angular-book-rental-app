@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Books } from 'src/app/models/Books';
 import { Category } from 'src/app/models/Category';
+import { WebUsers } from 'src/app/models/WebUsers';
 import { HttpClientService } from 'src/app/services/http-client.service';
-
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
@@ -12,6 +12,7 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 export class BooksComponent {
   books: Books[] = [];
   categories: Category[] = [];
+  users: WebUsers[] = [];
 
   constructor(
     private http: HttpClientService,
@@ -21,7 +22,8 @@ export class BooksComponent {
 
   ngOnInit() {
     this.getBooks();
-    this.getCategoty();
+    this.getCategories();
+    this.getUsers();
   }
 
   getBooks() {
@@ -30,15 +32,26 @@ export class BooksComponent {
     });
   }
 
-  getCategoty() {
+  getCategories() {
     this.http.get<Category[]>('categories', (res) => {
       this.categories = res;
+    });
+  }
+
+  getUsers() {
+    this.http.get<WebUsers[]>('webUsers', (res) => {
+      this.users = res;
     });
   }
 
   getCategoryName(categoryId: number): string {
     const category = this.categories.find((c) => c.id === categoryId);
     return category ? category.title : '';
+  }
+
+  getUserName(userId: number): string {
+    const user = this.users.find((b) => b.id === userId);
+    return user ? `${user.firstName} ${user.lastName}` : '';
   }
 
   deleteBook(id: number) {

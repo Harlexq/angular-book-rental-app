@@ -11,6 +11,6 @@ export interface Books {
   pageNumber: number;
   rentInformation: {
     rent: boolean;
-    byWhom: string;
+    byWhom: number;
   };
 }
