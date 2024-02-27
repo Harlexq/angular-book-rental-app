@@ -20,10 +20,12 @@
       </div>
       <div class="rent">
         <app-button-control
-          path="/rent"
+          (click)="rent()"
           [content]="book.price + ' ₺ / Kirala'"
         />
       </div>
     </div>
   </div>
 </div>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>

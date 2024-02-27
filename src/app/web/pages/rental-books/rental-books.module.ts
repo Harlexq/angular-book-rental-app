@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RentComponent } from './rent.component';
+import { RentalBooksComponent } from './rental-books.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
-  declarations: [RentComponent],
+  declarations: [RentalBooksComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
         path: '',
-        component: RentComponent,
+        component: RentalBooksComponent,
       },
     ]),
     SharedModule,
@@ -21,4 +21,4 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     ConfirmDialogModule,
   ],
 })
-export class RentModule {}
+export class RentalBooksModule {}

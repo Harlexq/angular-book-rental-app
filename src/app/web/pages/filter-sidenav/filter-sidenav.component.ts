@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/models/Category';
 import { HttpClientService } from 'src/app/services/http-client.service';
 
@@ -11,7 +12,7 @@ export class FilterSidenavComponent {
   categories: Category[] = [];
   selectedCategories: Category[] = [];
 
-  constructor(private http: HttpClientService) {}
+  constructor(private http: HttpClientService, private router: Router) {}
 
   ngOnInit() {
     this.getCategories();
@@ -21,5 +22,19 @@ export class FilterSidenavComponent {
     this.http.get<Category[]>(`categories`, (res) => {
       this.categories = res;
     });
+  }
+
+  filterBooksByCategory() {
+    if (this.selectedCategories.length > 0) {
+      const selectedCategoryIds = this.selectedCategories.map(
+        (category) => category.id
+      );
+      const queryParams = selectedCategoryIds.join(',');
+      this.router.navigate(['/books'], {
+        queryParams: { categoryId: queryParams },
+      });
+    } else {
+      this.router.navigate(['/books']);
+    }
   }
 }

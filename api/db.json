@@ -3,7 +3,7 @@
     {
       "rentInformation": {
         "rent": true,
-        "byWhom": 1
+        "byWhom": 2
       },
       "title": "Herkes İçin Kısa Osmanlı Tarihi",
       "description": "\n\nHERKES İÇİN KISA OSMANLI TARİHİ Kısa Özet\n\nOsmanlı İmparatorluğu, tarihin gördüğü en büyük imparatorluklardan birisiydi. 16. yüzyılda dünya siyasetine yön vererek, bugünkü dünyanın siyasi ve dini yapısının oluşmasına büyük katkıda bulundu. Osmanlı İmparatorluğu, tarih sahnesinden çekilmesine rağmen hâlâ izleri duruyor. Ancak hayatımızın hemen hemen her safhasında izleriyle karşılaşmamıza rağmen Osmanlı tarihi özellikle akademik dünyanın dışındaki okurlar için hâlâ karanlıklar içerisinde.\n\nSon 50-60 yılda bütün dünyada Osmanlı tarih yazıcılığı büyük aşama kaydetmesine rağmen, akademik araştırmalarda ortaya çıkan sonuçlar ülkemizde kamuoyuna fazla ulaşamadı. Bu kitapta Osmanlı tarihi ana hatlarıyla anlatılırken akademik araştırmaların sonucunda ortaya çıkan bilgilerden hareket edilmiş, ancak konular anlaşılır bir üslupla verilmeye çalışılmıştır.",
@@ -18,8 +18,8 @@
     },
     {
       "rentInformation": {
-        "rent": false,
-        "byWhom": null
+        "rent": true,
+        "byWhom": 2
       },
       "title": "Fantastik Harry Potter Canavarlar Rehberi - Unoffical",
       "description": "SİHİRLİ BİR SAFARİYE ATILIN\n\n 150’den fazla canavar, varlık ve ikisinin arasındaki her şeyden oluşan sarsıcı bir çeşit yelpazesine sahip Unofficial Harry Potter Fantastik Canavarlar Rehberi, Harry Potter serisinin yanı sıra Fantastik Canavarlar filmleri de dâhil olmak üzere büyücü dünyası evreninden bilinen her yaratığı sunar. Bilgiç Mıncıklar, yardımsever ev cinleri, baykuş serpintisi, Akromantula, Kabuluklar ve diğer sihirli yaratıklarla dopdolu olan bu başlık, her yaratığın büyüklüğü, rengi ve alışkanlıkları, buna ek olarak Harry’nin ve Newt Scamander’ın hikâyelerinde nerede rastladığımız da dâhil olmak üzere benzersiz özelliklerini vurguluyor ve bir sonraki dolunaya kadar hayranlarını meşgul etmeyi garanti eden büyücülük dünyası ilmiyle ilgili sihirli bilgiler içeriyor.\n\n \n\nİÇİNDE\n\nPATRONUS BÜYÜLERİ VE ÇEŞİTLİ BİÇİMLERİ\n\n \n\nBİLİNEN VE TESCİL EDİLMEMİŞ ANİMAGİ\n\n \n\nSİHİRLİ HAYVAN ŞEKERLEMELERİ REHBERİ\n\n \n\nVE DAHA FAZLASI VAR !\n\n \n\nMUGGLENET HAKKINDA\n\n \n\nJ.K. Rowling’in bizzat kendisi tarafından “Aziz MuggleNet” olarak adlandırılan site, 1999’dan beri büyücülük dünyasının 1 numaralı kaynağıdır. Her ay bütün kanallardan 100 milyondan fazla okuyucu bu siteye ulaşmaya devam etmektedir. \n\n“Büyükbabamın başyapıtını Uzatma Tılsımından daha iyi genişletiyor.”\n\n-Gelecek Postası için çalışan belli bir Büyüzolog Başdanışmanı\n\n \n\n“Çok iyi araştırılmış, gözünüzden yaş getirecek bir kitap.”\n\n-görmüş geçirmiş bir Sihirli Yaratıkların Bakımı profesörü\n\n \n\n(Tanıtım Bülteninden)",
@@ -217,15 +217,29 @@
       "firstName": "Serhan",
       "lastName": "Bakır",
       "email": "serhanbakir5@gmail.com",
-      "password": "Serhan342.",
+      "password": "123456789",
       "banned": false,
-      "accountDate": "2017-11-01",
-      "token": "gghRzUh8MLrLop4Hup6NO5WAguWjwqjp",
-      "id": 1,
+      "accountDate": "2024-02-27",
+      "token": "p70fb7HOlw9xr6bOmQJRqrdUG5wBGViI",
+      "id": 1
+    },
+    {
+      "firstName": "Harlex",
+      "lastName": "Can",
+      "email": "ajhsbvnas@gmail.com",
+      "password": "123456789",
+      "banned": false,
+      "accountDate": "2024-02-27",
+      "token": "p70fb7HOlw9xr6bOmQJRqrdUG5wBGViI",
+      "id": 2,
       "rentalBooks": [
         {
           "bookId": 1,
-          "rentDate": "2024-02-26"
+          "rentDate": "2024-02-27"
+        },
+        {
+          "bookId": 2,
+          "rentDate": "2024-02-27"
         }
       ]
     }

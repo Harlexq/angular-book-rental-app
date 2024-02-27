@@ -28,11 +28,16 @@
       <td>{{ user.accountDate | date : "MMMM, dd, y" : null : "tr" }}</td>
       <td>{{ user.email }}</td>
       <td>
-        <ul>
-          <li *ngFor="let userBook of user.rentalBooks">
-            Kitap Adı: <strong>{{ getBooksName(userBook.bookId) }}</strong>
-          </li>
-        </ul>
+        <ng-container *ngIf="user.rentalBooks; else noBooks">
+          <ul *ngIf="user.rentalBooks.length > 0">
+            <li *ngFor="let userBook of user.rentalBooks">
+              Kitap Adı: <strong>{{ getBooksName(userBook.bookId) }}</strong>
+            </li>
+          </ul>
+        </ng-container>
+        <ng-template #noBooks>
+          <p>Kiraladığı Kitap Bulunamadı</p>
+        </ng-template>
       </td>
       <td>
         <div class="edit">

@@ -5,7 +5,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { HttpClientService } from 'src/app/services/http-client.service';
 import { UsersComponent } from '../users/users.component';
@@ -19,11 +18,11 @@ import { WebUsers } from 'src/app/models/WebUsers';
 export class UsersFeatureComponent {
   @Input() selectedUserId: number;
   form!: FormGroup;
+  user: WebUsers;
 
   constructor(
     private http: HttpClientService,
     private formBuilder: FormBuilder,
-    private router: Router,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
     private usersComponent: UsersComponent
@@ -36,14 +35,13 @@ export class UsersFeatureComponent {
 
   getDetailUser() {
     this.http.getDetail<WebUsers>('webUsers', this.selectedUserId, (res) => {
+      this.user = res;
       this.form.patchValue({
         firstName: res.firstName,
         lastName: res.lastName,
         email: res.email,
         password: res.password,
         banned: res.banned,
-        accountDate: res.accountDate,
-        token: res.token,
       });
     });
   }
@@ -61,6 +59,7 @@ export class UsersFeatureComponent {
           Validators.maxLength(12),
         ],
       ],
+      banned: [this.user ? this.user.banned : false],
     });
   }
 
@@ -81,12 +80,16 @@ export class UsersFeatureComponent {
           detail: 'Kullanıcı Güncelleme İşlemi Başarılı',
         });
 
+        const updatedUser: WebUsers = {
+          ...this.user,
+          ...this.form.value,
+        };
+
         this.http.put<WebUsers>(
           'webUsers',
           this.selectedUserId,
-          this.form.value,
+          updatedUser,
           () => {
-            this.router.navigateByUrl('/admin/users');
             this.usersComponent.sidebarVisible = false;
             window.location.reload();
           }
@@ -98,6 +101,7 @@ export class UsersFeatureComponent {
           summary: 'İptal Edildi',
           detail: 'Kullanıcı Güncelleme İşlemi İptal Edildi',
         });
+        this.usersComponent.sidebarVisible = false;
       },
     });
   }
@@ -116,5 +120,9 @@ export class UsersFeatureComponent {
 
   get newPassword(): FormControl {
     return this.form.get('password') as FormControl;
+  }
+
+  get newBanned(): FormControl {
+    return this.form.get('banned') as FormControl;
   }
 }

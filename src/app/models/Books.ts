@@ -9,7 +9,7 @@ export interface Books {
   price: number;
   publicationDate: string;
   pageNumber: number;
-  rentInformation: {
+  rentInformation?: {
     rent: boolean;
     byWhom: number;
   };

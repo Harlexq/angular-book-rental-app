@@ -21,7 +21,9 @@
     type="password"
     placeholder="Kullanıcı Şifresini Giriniz"
   />
+  <p-checkbox [formControl]="newBanned" [value]="true" inputId="ny" />
+  <label for="ny" style="margin-left: 5px">Kullanıcıyı Banla</label>
   <app-button-control [disabled]="!form.valid" content="Kullanıcıyı Güncelle" />
-  <p-toast></p-toast>
-  <p-confirmDialog></p-confirmDialog>
 </form>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>

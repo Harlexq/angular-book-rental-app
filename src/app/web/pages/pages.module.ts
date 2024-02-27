@@ -7,8 +7,9 @@ import { BooksModule } from './books/books.module';
 import { FilterSidenavModule } from './filter-sidenav/filter-sidenav.module';
 import { HomeModule } from './home/home.module';
 import { LoginModule } from './login/login.module';
-import { RentModule } from './rent/rent.module';
 import { SignupModule } from './signup/signup.module';
+import { ProfileModule } from './profile/profile.module';
+import { RentalBooksModule } from './rental-books/rental-books.module';
 
 registerLocaleData(localeTr, 'tr');
 
@@ -21,8 +22,9 @@ registerLocaleData(localeTr, 'tr');
     FilterSidenavModule,
     HomeModule,
     LoginModule,
-    RentModule,
+    ProfileModule,
     SignupModule,
+    RentalBooksModule,
   ],
 })
 export class PagesModule {}

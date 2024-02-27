@@ -30,6 +30,11 @@ export class HeaderComponent {
     });
   }
 
+  logout() {
+    localStorage.removeItem('webUserToken');
+    window.location.reload();
+  }
+
   navItems: WebNavItems[] = [
     {
       id: 1,

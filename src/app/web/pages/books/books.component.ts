@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Books } from 'src/app/models/Books';
 import { HttpClientService } from 'src/app/services/http-client.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -20,11 +21,28 @@ export class BooksComponent {
     private http: HttpClientService,
     private router: Router,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.getBooks();
+
+    this.activatedRoute.queryParams.subscribe((params) => {
+      const categoryId = params['categoryId'];
+      if (categoryId) {
+        this.getBooksByCategory(categoryId);
+      } else {
+        this.getBooks();
+      }
+    });
+  }
+
+  getBooksByCategory(categoryId: string) {
+    this.http.get<Books[]>(`books?categoryId=${categoryId}`, (res) => {
+      this.books = res;
+      this.paginateBooks();
+    });
   }
 
   getBooks() {
@@ -60,7 +78,7 @@ export class BooksComponent {
             summary: 'Kiralama Yönlendirme',
             detail: 'Giriş Sayfasına Yönlendiriliyorsunuz',
           });
-          this.router.navigateByUrl(`/rent/${bookId}`);
+          this.router.navigateByUrl(`/book-detail/${bookId}`);
         },
         reject: () => {
           this.messageService.add({

@@ -1,7 +1,8 @@
 <div class="categories">
   <div class="categories-inner">
     <a
-      routerLink="/"
+      [routerLink]="'/books'"
+      [queryParams]="{ categoryId: category.id }"
       class="categories-item"
       *ngFor="let category of categories"
     >

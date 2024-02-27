@@ -80,9 +80,18 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'rent/:id',
+        path: 'profile',
         loadChildren: () =>
-          import('./web/pages/rent/rent.module').then((m) => m.RentModule),
+          import('./web/pages/profile/profile.module').then(
+            (m) => m.ProfileModule
+          ),
+      },
+      {
+        path: 'rental-books',
+        loadChildren: () =>
+          import('./web/pages/rental-books/rental-books.module').then(
+            (m) => m.RentalBooksModule
+          ),
       },
     ],
   },
