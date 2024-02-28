@@ -5,23 +5,44 @@
       [fb]="newFirstName"
       placeholder="Adınızı Giriniz"
     />
+    <ng-container *ngIf="newFirstName.invalid && newFirstName.dirty">
+      <p *ngIf="newFirstName.errors?.['required']">İsim Alanı Zorunludur</p>
+    </ng-container>
     <app-input-control
       [form]="form"
       [fb]="newLastName"
       placeholder="Soydınızı Giriniz"
     />
+    <ng-container *ngIf="newLastName.invalid && newLastName.dirty">
+      <p *ngIf="newLastName.errors?.['required']">Soyisim Alanı Zorunludur</p>
+    </ng-container>
     <app-input-control
       [form]="form"
       [fb]="newEmail"
       type="email"
       placeholder="E-Mail Adresinizi Giriniz"
     />
+    <ng-container *ngIf="newEmail.invalid && newEmail.dirty">
+      <p *ngIf="newEmail.errors?.['required']">E-Mail Adresi Zorunludur</p>
+      <p *ngIf="newEmail.errors?.['email']">
+        E-Mail Adresi Doğru Format'da Olmalıdır
+      </p>
+    </ng-container>
     <app-input-control
       [form]="form"
       [fb]="newPassword"
       type="password"
       placeholder="Şifrenizi Giriniz"
     />
+    <ng-container *ngIf="newEmail.invalid && newEmail.dirty">
+      <p *ngIf="newPassword.errors?.['required']">Şifre Alanı Zorunludur</p>
+      <p *ngIf="newPassword.errors?.['minlength']">
+        Şifreniz Minumum 6 Karakter Olmalıdır
+      </p>
+      <p *ngIf="newPassword.errors?.['maxlength']">
+        Şifreniz Maximum 12 Karakter Olmalıdır
+      </p>
+    </ng-container>
     <app-button-control content="Profili Güncelle" />
   </form>
   <div class="profile-info">

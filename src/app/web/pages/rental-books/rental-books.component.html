@@ -1,21 +1,18 @@
-<!-- <table style="overflow-x: auto">
+<table style="overflow-x: auto">
   <thead>
     <tr>
       <th>Kitap ID</th>
       <th>Kitap Kapak Fotoğrafı</th>
       <th>Kitap İsmi</th>
       <th>Kitap Açıklaması</th>
-      <th>Kitap Yayıncısı</th>
-      <th>Kitap Yazarı</th>
-      <th>Kitap Kategorisi</th>
       <th>Kitap Fiyatı</th>
       <th>Kitap Baskı Tarihi</th>
-      <th>Kitap Sayfa Sayısı</th>
+      <th>Kitab'ı İade Et</th>
     </tr>
   </thead>
 
-  <tbody *ngIf="books.length > 0">
-    <tr *ngFor="let book of books">
+  <tbody *ngIf="rentedBooks.length > 0">
+    <tr *ngFor="let book of rentedBooks">
       <td>{{ book.id }}</td>
       <td>
         <div class="img">
@@ -30,15 +27,20 @@
       <td>
         <p class="desc">{{ book.description }}</p>
       </td>
-      <td>{{ book.publisher }}</td>
-      <td>{{ book.author }}</td>
-      <td>{{ book.categoryId }}</td>
       <td>{{ book.price }}</td>
       <td>{{ book.publicationDate | date : "MMMM, dd, y" : null : "tr" }}</td>
-      <td>{{ book.pageNumber }}</td>
+      <td>
+        <div class="btns">
+          <app-button-control
+            (click)="returnBook(book.id)"
+            color="danger"
+            content="İade Et"
+          />
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
 <p-toast></p-toast>
 <p-confirmDialog></p-confirmDialog>
-<div *ngIf="books.length === 0" class="empty">Kitaplar Bulunamadı</div> -->
+<div *ngIf="rentedBooks.length === 0" class="empty">Kitaplar Bulunamadı</div>

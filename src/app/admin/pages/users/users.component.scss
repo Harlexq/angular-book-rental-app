@@ -4,10 +4,19 @@ table {
 
   th {
     padding: 20px 8px;
+    width: 0%;
   }
 
   td {
     padding: 8px;
+    height: 80px;
+  }
+
+  .user-books {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
   }
 
   th,

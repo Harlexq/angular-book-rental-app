@@ -29,4 +29,35 @@
       }
     }
   }
+
+  .profile {
+    position: relative;
+    cursor: pointer;
+    p {
+      padding: 10px;
+    }
+    &:hover .user-dropdown-content {
+      display: block;
+    }
+    .user-dropdown-content {
+      position: absolute;
+      top: 35px;
+      left: 0;
+      display: none;
+      width: 250px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+      .dropdown-item {
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 10px;
+      }
+    }
+  }
 }

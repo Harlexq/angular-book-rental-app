@@ -20,7 +20,12 @@
           <app-button-control
             color="warning"
             (click)="rent(book.id)"
-            [content]="book.price + ' ₺ / Kirala'"
+            [disabled]="book.rentInformation.byWhom != null"
+            [content]="
+              book.rentInformation.byWhom == null
+                ? book.price + ' ₺ / Kirala'
+                : 'Kiralanamaz'
+            "
           />
         </div>
       </div>

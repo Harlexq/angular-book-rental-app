@@ -31,6 +31,11 @@ export class HeaderComponent {
     });
   }
 
+  logout() {
+    localStorage.removeItem('adminUserToken');
+    window.location.reload();
+  }
+
   navItems: AdminNavItems[] = [
     {
       id: 1,

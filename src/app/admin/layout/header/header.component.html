@@ -15,7 +15,12 @@
           {{ item.title }}
         </a>
       </nav>
-      <div class="profile">{{ username }}</div>
+      <div class="profile">
+        <p>{{ username }}</p>
+        <div class="user-dropdown-content">
+          <button (click)="logout()" class="dropdown-item">Çıkış Yap</button>
+        </div>
+      </div>
     </div>
   </div>
 </header>

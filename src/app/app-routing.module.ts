@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminLayoutComponent,
-    canActivateChild: [() => inject(AuthService).checkIsAuth()],
+    canActivateChild: [() => inject(AuthService).checkIsAuth('adminUserToken')],
     children: [
       {
         path: '',
@@ -85,6 +85,7 @@ const routes: Routes = [
           import('./web/pages/profile/profile.module').then(
             (m) => m.ProfileModule
           ),
+        canActivate: [() => inject(AuthService).checkIsAuth('webUserToken')],
       },
       {
         path: 'rental-books',
@@ -92,6 +93,7 @@ const routes: Routes = [
           import('./web/pages/rental-books/rental-books.module').then(
             (m) => m.RentalBooksModule
           ),
+        canActivate: [() => inject(AuthService).checkIsAuth('webUserToken')],
       },
     ],
   },
