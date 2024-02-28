@@ -11,7 +11,10 @@ export class AuthService {
     const token: string = localStorage.getItem(tokenName);
     if (token) return true;
 
-    this.router.navigateByUrl('/admin/login');
+    tokenName === 'adminUserToken'
+      ? this.router.navigateByUrl('/admin/login')
+      : this.router.navigateByUrl('/login');
+
     return false;
   }
 }
