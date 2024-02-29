@@ -54,24 +54,53 @@ export class RentalBooksComponent {
     });
   }
 
+  calculatePayment(id: number): number {
+    const book = this.rentedBooks.find((book) => book.id === id);
+    const rentedBook = this.user.rentalBooks.find((rb) => rb.bookId === id);
+    if (!rentedBook) return 0;
+    const rentDate = new Date(rentedBook.rentDate);
+    const today = new Date();
+    const timeDiff = Math.abs(today.getTime() - rentDate.getTime());
+    const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    const price = book.price;
+    const totalPrice = days * price;
+    return totalPrice;
+  }
+
   returnBook(id: number) {
     this.confirmationService.confirm({
-      message: 'Bu Kitabı İade Etmek İstediğinize Emin Misiniz?',
-      header: 'Kitabı Sil',
+      message: `Bu Kitabı İade Etmek İstediğinize Emin Misiniz?`,
+      header: 'Kitabı İade Et',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-text',
-      acceptLabel: 'Evet',
+      acceptLabel: `${this.calculatePayment(id)} Öde`,
       rejectLabel: 'Hayır',
       rejectButtonStyleClass: 'p-button-text p-button-text',
       accept: () => {
-        this.messageService.add({
-          severity: 'info',
-          summary: 'İade Etme',
-          detail: 'Kitap İade İşlemi Başarılı',
-        });
-        this.http.put('books', id, {}, () => {
-          window.location.reload();
-        });
+        const bookIndex = this.rentedBooks.findIndex((book) => book.id === id);
+        if (bookIndex !== -1) {
+          this.rentedBooks[bookIndex].rentInformation = {
+            rent: false,
+            byWhom: null,
+          };
+
+          const rentedBookIndex = this.user.rentalBooks.findIndex(
+            (rb) => rb.bookId === id
+          );
+          if (rentedBookIndex !== -1) {
+            this.user.rentalBooks.splice(rentedBookIndex, 1);
+          }
+
+          this.http.put('books', id, this.rentedBooks[bookIndex], () => {});
+
+          this.http.put('webUsers', this.currentUser.id, this.user, () => {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'İade İşlemi Başarılı',
+              detail: 'Kitap başarıyla iade edildi.',
+            });
+          });
+        }
       },
       reject: () => {
         this.messageService.add({

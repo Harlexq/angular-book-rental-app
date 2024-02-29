@@ -40,3 +40,24 @@ body {
 li::marker {
   content: "";
 }
+
+.p-dialog {
+  .p-dialog-header {
+    padding: 10px;
+  }
+  .p-dialog-content {
+    padding: 0 10px;
+  }
+  .p-dialog-footer {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: flex-end;
+    button {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+  }
+}
