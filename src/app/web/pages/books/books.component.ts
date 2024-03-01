@@ -38,15 +38,15 @@ export class BooksComponent {
     });
   }
 
-  getBooksByCategory(categoryId: string) {
-    this.http.get<Books[]>(`books?categoryId=${categoryId}`, (res) => {
+  getBooks() {
+    this.http.get<Books[]>('books', (res) => {
       this.books = res;
       this.paginateBooks();
     });
   }
 
-  getBooks() {
-    this.http.get<Books[]>('books', (res) => {
+  getBooksByCategory(categoryId: string) {
+    this.http.get<Books[]>(`books?categoryId=${categoryId}`, (res) => {
       this.books = res;
       this.paginateBooks();
     });

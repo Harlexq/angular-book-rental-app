@@ -66,13 +66,12 @@ export class WebSignupComponent {
     }
   }
 
-  generateToken(length: number): string {
+  generateToken(lengthToken: number): string {
     const characters =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
     let token = '';
-    for (let i = 0; i < length; i++) {
-      token += characters.charAt(Math.floor(Math.random() * charactersLength));
+    for (let i = 0; i < lengthToken; i++) {
+      token += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     return token;
   }

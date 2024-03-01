@@ -53,14 +53,9 @@ export class AdminLoginComponent {
           user.email === this.form.value.email &&
           user.password === this.form.value.password
       );
-      const token = resFind.token;
       if (resFind) {
-        if (resFind.banned) {
-          this.userError = 'Kullanıcı Banlandı Giriş Yapamazsınız';
-        } else {
-          localStorage.setItem('adminUserToken', token);
-          this.router.navigateByUrl('/admin');
-        }
+        localStorage.setItem('adminUserToken', resFind.token);
+        this.router.navigateByUrl('/admin');
       } else {
         this.userError = 'Kullanıcı Bulunamadı';
       }

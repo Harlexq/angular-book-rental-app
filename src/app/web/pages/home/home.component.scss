@@ -1,0 +1,22 @@
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 30px;
+  .left {
+    flex: 0 1 calc(21.6% - 30px);
+  }
+  .right {
+    flex: 0 1 calc(78.4% - 30px);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .left {
+    flex: 0 1 100% !important;
+  }
+
+  .right {
+    flex: 0 1 100% !important;
+  }
+}

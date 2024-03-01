@@ -14,24 +14,27 @@
         E-Mail Adresi Doğru Format'da Olmalıdır
       </p>
     </ng-container>
-    <app-input-control
-      [fb]="newPassword"
-      [type]="passType"
-      [form]="form"
-      placeholder="Şifrenizi Giriniz"
-    />
-    <ng-container *ngIf="newPassword.invalid && newPassword.dirty">
-      <p *ngIf="newPassword.errors?.['required']">Şifre Alanı Zorunludur</p>
-    </ng-container>
-    <p>{{ userError }}</p>
-    <button type="button" (click)="passwordShow()" class="password-btn">
-      <ng-container *ngIf="passType == 'password'; else textInput">
-        <i class="fa-regular fa-eye"></i>
+    <div class="password">
+      <app-input-control
+        [fb]="newPassword"
+        [type]="passType"
+        [form]="form"
+        placeholder="Şifrenizi Giriniz"
+      />
+      <ng-container *ngIf="newPassword.invalid && newPassword.dirty">
+        <p *ngIf="newPassword.errors?.['required']">Şifre Alanı Zorunludur</p>
       </ng-container>
-      <ng-template #textInput>
-        <i #textInput class="fa-regular fa-eye-slash"></i
-      ></ng-template>
-    </button>
+      <p>{{ userError }}</p>
+      <button type="button" (click)="passwordShow()" class="password-btn">
+        <ng-container *ngIf="passType == 'password'; else textInput">
+          <i class="fa-regular fa-eye"></i>
+        </ng-container>
+        <ng-template #textInput>
+          <i #textInput class="fa-regular fa-eye-slash"></i
+        ></ng-template>
+      </button>
+    </div>
     <app-button-control [disabled]="!form.valid" content="Giriş Yap" />
+    <a class="to-link" routerLink="/admin/login">Hesabın Yokmu?</a>
   </form>
 </div>

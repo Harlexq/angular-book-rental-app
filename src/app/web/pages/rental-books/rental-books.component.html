@@ -1,11 +1,11 @@
 <table style="overflow-x: auto">
   <thead>
     <tr>
-      <th>Kitap ID</th>
       <th>Kitap Kapak Fotoğrafı</th>
       <th>Kitap İsmi</th>
       <th>Kitap Açıklaması</th>
       <th>Kitap Fiyatı</th>
+      <th>Kitap Yazarı</th>
       <th>Kitap Baskı Tarihi</th>
       <th>Kitab'ı İade Et</th>
     </tr>
@@ -13,7 +13,6 @@
 
   <tbody *ngIf="rentedBooks.length > 0">
     <tr *ngFor="let book of rentedBooks">
-      <td>{{ book.id }}</td>
       <td>
         <div class="img">
           <img [src]="book.imageUrl" [alt]="book.title" width="50px" />
@@ -28,6 +27,7 @@
         <p class="desc">{{ book.description }}</p>
       </td>
       <td>{{ book.price }}</td>
+      <td>{{ book.author }}</td>
       <td>{{ book.publicationDate | date : "MMMM, dd, y" : null : "tr" }}</td>
       <td>
         <div class="btns">

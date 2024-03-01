@@ -10,7 +10,6 @@
   border-radius: 5px;
   box-shadow: 1px 1px 14px 0px rgba(136, 136, 136, 0.75);
   padding: 25px;
-  position: relative;
   .title {
     color: #1f1f1f;
     font-size: 20px;
@@ -25,16 +24,29 @@
     }
   }
 
-  .password-btn {
-    position: absolute;
-    top: 148px;
-    left: 453px;
-    background-color: #404eed;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 7px;
-    color: #fff;
+  .password {
+    position: relative;
+    .password-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #404eed;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      padding: 7px;
+      color: #fff;
+      font-size: 15px;
+    }
+  }
+
+  .to-link {
     font-size: 15px;
+    margin-top: 15px;
+    display: block;
+    color: #404eed;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

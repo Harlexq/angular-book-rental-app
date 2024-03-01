@@ -29,9 +29,8 @@ export class FilterSidenavComponent {
       const selectedCategoryIds = this.selectedCategories.map(
         (category) => category.id
       );
-      const queryParams = selectedCategoryIds.join(',');
       this.router.navigate(['/books'], {
-        queryParams: { categoryId: queryParams },
+        queryParams: { categoryId: selectedCategoryIds },
       });
     } else {
       this.router.navigate(['/books']);

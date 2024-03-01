@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Books } from 'src/app/models/Books';
 import { WebUsers } from 'src/app/models/WebUsers';
@@ -13,14 +13,13 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 export class BookDetailComponent {
   bookId: string = '';
   book: Books;
-  users: WebUsers[] = [];
-  userFind: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpClientService,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -31,13 +30,6 @@ export class BookDetailComponent {
     this.bookId = this.activatedRoute.snapshot.paramMap.get('id');
     this.http.getDetail<Books>('books', Number(this.bookId), (res) => {
       this.book = res;
-    });
-  }
-
-  getUsers() {
-    this.http.get<WebUsers[]>('webUsers', (res) => {
-      this.users = res;
-      this.userFind = res.find((u) => u.token);
     });
   }
 
@@ -57,7 +49,7 @@ export class BookDetailComponent {
           this.http.get<WebUsers[]>('webUsers', (res) => {
             const currentUser = res.find((user) => user.token === token);
 
-            if (this.book.rentInformation.rent) {
+            if (this.book.rentInformation.rent == false) {
               this.messageService.add({
                 severity: 'error',
                 summary: 'Hata',
@@ -105,6 +97,32 @@ export class BookDetailComponent {
             severity: 'error',
             summary: 'İptal Edildi',
             detail: 'Kitap Kiralama İşlemi İptal Edildi',
+          });
+        },
+      });
+    } else {
+      this.confirmationService.confirm({
+        message:
+          'Bir Kitap Kiralamak İçin Öncelikle Giriş Yapmalısınız Giriş Yapmak İstediğinize Emin Misiniz?',
+        header: 'Giriş Yap',
+        icon: 'pi pi-info-circle',
+        acceptButtonStyleClass: 'p-button-danger p-button-text',
+        acceptLabel: 'Evet',
+        rejectLabel: 'Hayır',
+        rejectButtonStyleClass: 'p-button-text p-button-text',
+        accept: () => {
+          this.messageService.add({
+            severity: 'info',
+            summary: 'İptal E',
+            detail: 'Giriş Sayfasına Yönlendiriliyorsunuz',
+          });
+          this.router.navigateByUrl('/login');
+        },
+        reject: () => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'İptal Edildi',
+            detail: 'Giriş Yapma İşlemi İptal Edildi',
           });
         },
       });

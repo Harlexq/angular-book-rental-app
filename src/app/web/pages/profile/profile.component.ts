@@ -40,8 +40,6 @@ export class ProfileComponent {
           firstName: this.currentUser.firstName,
           lastName: this.currentUser.lastName,
           email: this.currentUser.email,
-          password: this.currentUser.password,
-          accountDate: this.currentUser.accountDate,
         });
       }
     });
@@ -52,15 +50,6 @@ export class ProfileComponent {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(12),
-        ],
-      ],
-      accountDate: [''],
     });
   }
 

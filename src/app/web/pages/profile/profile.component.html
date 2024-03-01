@@ -28,36 +28,21 @@
         E-Mail Adresi Doğru Format'da Olmalıdır
       </p>
     </ng-container>
-    <app-input-control
-      [form]="form"
-      [fb]="newPassword"
-      type="password"
-      placeholder="Şifrenizi Giriniz"
-    />
-    <ng-container *ngIf="newEmail.invalid && newEmail.dirty">
-      <p *ngIf="newPassword.errors?.['required']">Şifre Alanı Zorunludur</p>
-      <p *ngIf="newPassword.errors?.['minlength']">
-        Şifreniz Minumum 6 Karakter Olmalıdır
-      </p>
-      <p *ngIf="newPassword.errors?.['maxlength']">
-        Şifreniz Maximum 12 Karakter Olmalıdır
-      </p>
-    </ng-container>
     <app-button-control content="Profili Güncelle" />
   </form>
   <div class="profile-info">
     <p>
-      Adınız: <strong> {{ form.get("firstName").value }}</strong>
+      Adınız: <strong> {{ currentUser.firstName }}</strong>
     </p>
     <p>
-      Soyadınız: <strong> {{ form.get("lastName").value }}</strong>
+      Soyadınız: <strong> {{ currentUser.lastName }}</strong>
     </p>
     <p>
-      E-Mail Adresiniz: <strong> {{ form.get("email").value }}</strong>
+      E-Mail Adresiniz: <strong> {{ currentUser.email }}</strong>
     </p>
     <p>
       Hesap Oluşturma Tarihi:
-      <strong> {{ form.get("accountDate").value }}</strong>
+      <strong> {{ currentUser.accountDate }}</strong>
     </p>
   </div>
 </div>

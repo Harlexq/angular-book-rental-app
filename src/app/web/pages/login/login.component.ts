@@ -18,7 +18,6 @@ export class WebLoginComponent {
   form!: FormGroup;
   passType = 'password';
   userError = '';
-  userData: WebUsers[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,9 +43,9 @@ export class WebLoginComponent {
       this.passType = 'password';
     }
   }
+
   login() {
     this.http.get<WebUsers[]>('webUsers', (res) => {
-      this.userData = res;
       const resFind = res.find(
         (user) =>
           user.email === this.form.value.email &&
@@ -56,8 +55,7 @@ export class WebLoginComponent {
         if (resFind.banned) {
           this.userError = 'Kullanıcı Banlandı Giriş Yapamazsınız';
         } else {
-          const token = resFind.token;
-          localStorage.setItem('webUserToken', token);
+          localStorage.setItem('webUserToken', resFind.token);
           this.router.navigateByUrl('/');
         }
       } else {

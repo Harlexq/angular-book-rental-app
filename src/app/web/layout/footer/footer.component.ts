@@ -20,6 +20,18 @@ export class FooterComponent {
     this.getBooks();
   }
 
+  getCategories() {
+    this.http.get<Category[]>('categories', (res) => {
+      this.categories = res.slice(0, 6);
+    });
+  }
+
+  getBooks() {
+    this.http.get<Books[]>('books', (res) => {
+      this.books = res.slice(0, 6);
+    });
+  }
+
   navItems: WebNavItems[] = [
     {
       id: 1,
@@ -42,16 +54,4 @@ export class FooterComponent {
       path: '/contact',
     },
   ];
-
-  getCategories() {
-    this.http.get<Category[]>('categories', (res) => {
-      this.categories = res.slice(0, 6);
-    });
-  }
-
-  getBooks() {
-    this.http.get<Books[]>('books', (res) => {
-      this.books = res.slice(0, 6);
-    });
-  }
 }

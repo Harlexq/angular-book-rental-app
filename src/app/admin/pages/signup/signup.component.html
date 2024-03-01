@@ -30,21 +30,31 @@
         E-Mail Adresi Doğru Format'da Olmalıdır
       </p>
     </ng-container>
-    <app-input-control
-      [fb]="newPassword"
-      [type]="passType"
-      [form]="form"
-      placeholder="Şifrenizi Giriniz"
-    />
-    <ng-container *ngIf="newPassword.invalid && newPassword.dirty">
-      <p *ngIf="newPassword.errors?.['required']">Şifre Alanı Zorunludur</p>
-      <p *ngIf="newPassword.errors?.['minlength']">
-        Şifreniz Minumum 6 Karakter Olmalıdır
-      </p>
-      <p *ngIf="newPassword.errors?.['maxlength']">
-        Şifreniz Maximum 12 Karakter Olmalıdır
-      </p>
-    </ng-container>
+    <div class="password">
+      <app-input-control
+        [fb]="newPassword"
+        [type]="passType"
+        [form]="form"
+        placeholder="Şifrenizi Giriniz"
+      />
+      <ng-container *ngIf="newPassword.invalid && newPassword.dirty">
+        <p *ngIf="newPassword.errors?.['required']">Şifre Alanı Zorunludur</p>
+        <p *ngIf="newPassword.errors?.['minlength']">
+          Şifreniz Minumum 6 Karakter Olmalıdır
+        </p>
+        <p *ngIf="newPassword.errors?.['maxlength']">
+          Şifreniz Maximum 12 Karakter Olmalıdır
+        </p>
+      </ng-container>
+      <button type="button" (click)="passwordShow()" class="password-btn">
+        <ng-container *ngIf="passType == 'password'; else textInput">
+          <i class="fa-regular fa-eye"></i>
+        </ng-container>
+        <ng-template #textInput>
+          <i #textInput class="fa-regular fa-eye-slash"></i
+        ></ng-template>
+      </button>
+    </div>
     <app-input-control
       [fb]="newRePassword"
       [type]="passType"
@@ -56,14 +66,7 @@
         Şifreler Birbirine Eşit Olmalıdır
       </p>
     </ng-container>
-    <button type="button" (click)="passwordShow()" class="password-btn">
-      <ng-container *ngIf="passType == 'password'; else textInput">
-        <i class="fa-regular fa-eye"></i>
-      </ng-container>
-      <ng-template #textInput>
-        <i #textInput class="fa-regular fa-eye-slash"></i
-      ></ng-template>
-    </button>
     <app-button-control [disabled]="!form.valid" content="Kayıt Ol" />
+    <a class="to-link" routerLink="/admin/login">Zaten Bir Hesabın Varmı?</a>
   </form>
 </div>

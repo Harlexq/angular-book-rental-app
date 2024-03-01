@@ -63,8 +63,7 @@ export class RentalBooksComponent {
     const timeDiff = Math.abs(today.getTime() - rentDate.getTime());
     const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
     const price = book.price;
-    const totalPrice = days * price;
-    return totalPrice;
+    return days * price;
   }
 
   returnBook(id: number) {
@@ -87,6 +86,7 @@ export class RentalBooksComponent {
           const rentedBookIndex = this.user.rentalBooks.findIndex(
             (rb) => rb.bookId === id
           );
+
           if (rentedBookIndex !== -1) {
             this.user.rentalBooks.splice(rentedBookIndex, 1);
           }

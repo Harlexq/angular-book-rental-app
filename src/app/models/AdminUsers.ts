@@ -5,6 +5,5 @@ export interface AdminUsers {
   accountDate: string;
   email: string;
   password: string;
-  banned: boolean;
   token: string;
 }
