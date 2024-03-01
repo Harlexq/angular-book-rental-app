@@ -12,6 +12,10 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 export class UsersComponent {
   users: WebUsers[] = [];
   books: Books[] = [];
+  pagedUsers: WebUsers[] = [];
+  rows: number = 10;
+  first: number = 0;
+  rowSize: number[] = [10, 20, 30];
 
   constructor(
     private http: HttpClientService,
@@ -33,7 +37,18 @@ export class UsersComponent {
   getWebUsers() {
     this.http.get<WebUsers[]>('webUsers', (res) => {
       this.users = res;
+      this.paginateUsers();
     });
+  }
+
+  paginateUsers() {
+    this.pagedUsers = this.users.slice(this.first, this.first + this.rows);
+  }
+
+  onPageChange(event: any) {
+    this.first = event.first;
+    this.rows = event.rows;
+    this.paginateUsers();
   }
 
   getBooksName(bookId: number): string {

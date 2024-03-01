@@ -10,6 +10,10 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 })
 export class CategoriesComponent {
   categories: Category[] = [];
+  pagedCategories: Category[] = [];
+  rows: number = 10;
+  first: number = 0;
+  rowSize: number[] = [10, 20, 30];
 
   constructor(
     private http: HttpClientService,
@@ -24,7 +28,21 @@ export class CategoriesComponent {
   getCategories() {
     this.http.get<Category[]>('categories', (res) => {
       this.categories = res;
+      this.paginateCategories();
     });
+  }
+
+  paginateCategories() {
+    this.pagedCategories = this.categories.slice(
+      this.first,
+      this.first + this.rows
+    );
+  }
+
+  onPageChange(event: any) {
+    this.first = event.first;
+    this.rows = event.rows;
+    this.paginateCategories();
   }
 
   deleteCategory(id: number) {

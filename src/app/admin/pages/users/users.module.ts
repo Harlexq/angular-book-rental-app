@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { SidebarModule } from 'primeng/sidebar';
 import { UsersFeatureModule } from '../users-feature/users-feature.module';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [UsersComponent],
@@ -23,6 +24,7 @@ import { UsersFeatureModule } from '../users-feature/users-feature.module';
     ConfirmDialogModule,
     SidebarModule,
     UsersFeatureModule,
+    PaginatorModule,
   ],
 })
 export class UsersModule {}

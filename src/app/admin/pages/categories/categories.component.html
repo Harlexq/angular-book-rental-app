@@ -21,8 +21,8 @@
     </tr>
   </thead>
 
-  <tbody *ngIf="categories.length > 0">
-    <tr *ngFor="let category of categories">
+  <tbody *ngIf="pagedCategories.length > 0">
+    <tr *ngFor="let category of pagedCategories">
       <td>{{ category.id }}</td>
       <td>
         <div class="title">
@@ -49,6 +49,14 @@
     </tr>
   </tbody>
 </table>
+<p-paginator
+  [rows]="rows"
+  [totalRecords]="categories.length"
+  [rowsPerPageOptions]="rowSize"
+  (onPageChange)="onPageChange($event)"
+/>
 <p-toast></p-toast>
 <p-confirmDialog></p-confirmDialog>
-<div *ngIf="categories.length === 0" class="empty">Kategoriler Bulunamadı</div>
+<div *ngIf="pagedCategories.length === 0" class="empty">
+  Kategoriler Bulunamadı
+</div>

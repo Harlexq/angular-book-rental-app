@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { SidebarModule } from 'primeng/sidebar';
 import { CategoryFeatureModule } from '../category-feature/category-feature.module';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [CategoriesComponent],
@@ -26,6 +27,7 @@ import { CategoryFeatureModule } from '../category-feature/category-feature.modu
     ToastModule,
     SidebarModule,
     CategoryFeatureModule,
+    PaginatorModule
   ],
   providers: [ConfirmationService, MessageService],
 })

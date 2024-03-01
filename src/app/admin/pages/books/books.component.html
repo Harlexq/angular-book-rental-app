@@ -29,8 +29,8 @@
     </tr>
   </thead>
 
-  <tbody *ngIf="books.length > 0">
-    <tr *ngFor="let book of books">
+  <tbody *ngIf="pagedBooks.length > 0">
+    <tr *ngFor="let book of pagedBooks">
       <td>{{ book.id }}</td>
       <td>
         <div class="img">
@@ -79,6 +79,12 @@
     </tr>
   </tbody>
 </table>
+<p-paginator
+  [rows]="rows"
+  [totalRecords]="books.length"
+  [rowsPerPageOptions]="rowSize"
+  (onPageChange)="onPageChange($event)"
+/>
 <p-toast></p-toast>
 <p-confirmDialog></p-confirmDialog>
-<div *ngIf="books.length === 0" class="empty">Kitaplar Bulunamadı</div>
+<div *ngIf="pagedBooks.length === 0" class="empty">Kitaplar Bulunamadı</div>

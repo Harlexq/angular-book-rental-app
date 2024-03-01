@@ -20,8 +20,8 @@
     </tr>
   </thead>
 
-  <tbody *ngIf="users.length > 0">
-    <tr *ngFor="let user of users">
+  <tbody *ngIf="pagedUsers.length > 0">
+    <tr *ngFor="let user of pagedUsers">
       <td>{{ user.id }}</td>
       <td>{{ user.firstName }}</td>
       <td>{{ user.lastName }}</td>
@@ -57,6 +57,12 @@
     </tr>
   </tbody>
 </table>
+<p-paginator
+  [rows]="rows"
+  [totalRecords]="users.length"
+  [rowsPerPageOptions]="rowSize"
+  (onPageChange)="onPageChange($event)"
+/>
 <p-toast></p-toast>
 <p-confirmDialog></p-confirmDialog>
-<div *ngIf="users.length === 0" class="empty">Kullanıcılar Bulunamadı</div>
+<div *ngIf="pagedUsers.length === 0" class="empty">Kullanıcılar Bulunamadı</div>

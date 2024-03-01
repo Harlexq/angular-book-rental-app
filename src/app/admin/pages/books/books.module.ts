@@ -7,6 +7,7 @@ import { ToastModule } from 'primeng/toast';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SidebarModule } from 'primeng/sidebar';
 import { BookFeatureModule } from '../book-feature/book-feature.module';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [BooksComponent],
@@ -23,6 +24,7 @@ import { BookFeatureModule } from '../book-feature/book-feature.module';
     ToastModule,
     SidebarModule,
     BookFeatureModule,
+    PaginatorModule,
   ],
 })
 export class BooksModule {}

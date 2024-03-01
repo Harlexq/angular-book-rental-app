@@ -13,6 +13,10 @@ export class BooksComponent {
   books: Books[] = [];
   categories: Category[] = [];
   users: WebUsers[] = [];
+  pagedBooks: Books[] = [];
+  rows: number = 10;
+  first: number = 0;
+  rowSize: number[] = [10, 20, 30];
 
   constructor(
     private http: HttpClientService,
@@ -29,7 +33,18 @@ export class BooksComponent {
   getBooks() {
     this.http.get<Books[]>('books', (res) => {
       this.books = res;
+      this.paginateBooks();
     });
+  }
+
+  paginateBooks() {
+    this.pagedBooks = this.books.slice(this.first, this.first + this.rows);
+  }
+
+  onPageChange(event: any) {
+    this.first = event.first;
+    this.rows = event.rows;
+    this.paginateBooks();
   }
 
   getCategories() {
