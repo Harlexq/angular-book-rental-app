@@ -6,6 +6,8 @@ import { AdminModule } from './admin/admin.module';
 import { WebModule } from './web/web.module';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorHandlerInterceptor } from './interceptors/error-handler.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,5 +20,12 @@ import { ToastModule } from 'primeng/toast';
     ToastModule,
   ],
   bootstrap: [AppComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerInterceptor,
+      multi: true,
+    }, // Interceptor'ı sağlayıcı listesine ekledik
+  ],
 })
 export class AppModule {}

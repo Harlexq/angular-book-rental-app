@@ -12,9 +12,9 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(
-    request: HttpRequest<unknown>,
+    request: HttpRequest<any>,
     next: HttpHandler
-  ): Observable<HttpEvent<unknown>> {
+  ): Observable<HttpEvent<any>> {
     let token =
       localStorage.getItem('adminUserToken') ||
       localStorage.getItem('webUserToken');

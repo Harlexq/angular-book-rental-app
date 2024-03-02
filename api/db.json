@@ -34,8 +34,8 @@
     },
     {
       "rentInformation": {
-        "rent": true,
-        "byWhom": 1
+        "rent": false,
+        "byWhom": null
       },
       "title": "Nutuk - Gençler İçin Fotoğraflarla",
       "description": "Nutuk - Gençler İçin Fotoğraflarla Kitap Açıklaması\n\nKurtuluş Savaşı'nın önderi, Türkiye Cumhuriyeti'nin kurucusu Gazi Mustafa Kemal Atatürk'ün kaleme aldığı Nutuk, 19 Mayıs 1919'da, Mustafa Kemal Bandırma vapuru ile Samsun'a çıktığında ülkenin genel durumunu değerlendirmesiyle başlıyor. Türkiye Cumhuriyeti'nin küllerinden yeniden doğuş hikâyesini merak eden genç yaşlı herkese hitap eden kitap, araştırma-tarih türünde yayımlanıyor. Tarihin tozlu sayfalarına yolculuğa çıkacağınız Nutuk - Gençler İçin Fotoğraflarla eserinde daha neler bulacağınızdan kısaca bahsedelim.\n\n \n\n\"Nutuk - Gençler İçin Fotoğraflarla\" adlı kitabı neden okumalısınız?\n\n\"1919 yılı Mayıs'ın 19'ncu günü Samsun'a çıktım.\" cümlesiyle başlayan Nutuk, 1. Dünya Savaşı'nda mağlup olan Osmanlı Devleti'nin imzaladığı Mondros Ateşkes Antlaşması sonrası ülkenin genel durumunu, Samsun'a çıkış ve sonrasında gerçekleşen kongreleri, Türkiye Büyük Millet Meclisi'nin açılışını, Kurtuluş Savaşı'nın hazırlıklarını ve tüm savaşları, Lozan'a giden yolu, Cumhuriyet'in ilanını sonrasında peşi sıra gelen devrimleri içeriyor ve gençliğe hitabe ile sona eriyor. 600 sayfadan oluşan kitapta anlatılan olaylar belgelerle desteklenmiş ve kronolojik bir sırayla ilerliyor. Nutuk'un orijinalinin dili, yazıldığı dönem nedeniyle oldukça ağır ancak bu versiyonunda dili oldukça sadeleştirilerek yayımlanıyor. Bu sayede akıcı bir şekilde okuyabiliyorsunuz. Yeni Türkiye Cumhuriyeti'nin tarih sahnesinde yeniden varoluş hikâyesini birinci ağızdan okuma şansını elde etmek için Gazi Mustafa Kemal Atatürk'ün Nutuk - Gençler İçin Fotoğraflarla kitabını okumalısınız.\n\n \n\nBunları biliyor muydunuz?\n\nGazi Mustafa Kemal Atatürk, 1927 yazını Nutuk eserini yazmaya ayırır. Ankara'da başladığı yazım süreci, aralıksız 32 saati bulur. İçeriği kaleme alan yaverler Gazi Mustafa Kemal Atatürk'e ayak uydurabilmek için 8 saatte 1 değişir. Bu yoğun tempo sonucu Gazi Mustafa Kemal Atatürk kalp rahatsızlığı geçirir ve bir süre çalışmalarına ara verir. 1927 Haziran sonu ve Eylül sonu çalışmalarını İstanbul'da sürdürür ve Nutuk'un yazım sürecini tamamlar. Nutuk ilk defa 15 Ekim 1927'de Cumhuriyet Halk Fırkasının İkinci Büyük Kurultayında Gazi Mustafa Kemal Atatürk tarafından okunmaya başlanır. Okunması 6 günde, toplam 36 saat 33 dakikada tamamlanır. Nutuk, o kadar ilgi görür ki ilk okunduğu yıllarda Almanca, Fransızca ve İngilizce; sonrasında Rusça, Farsça, Kazakça, Türkmence, Yunanca baskıları yapılır. Gazi Mustafa Kemal Atatürk'ün Nutuk eseri, Türkiye İş Bankası Kültür Yayınları tarafından özellikle gençler için fotoğraflarla zenginleştirilerek 2010 yılında okuyuculara sunulur.\n\n \n\nBu kitabı sevenler için diğer önerilerimiz\n\nGazi Mustafa Kemal Atatürk'ün Nutuk - Gençler İçin Fotoğraflarla eserini okuduktan sonra, Turgut Özakman'ın Şu Çılgın Türkler'ini, Cumhuriyet Türk Mucizesi'ni, Cumhuriyet - Türk Mucizesi 2'sini, Halil İnalcık'ın Millî Mücadele Tarihi 1908 - 1923'ünü ve İmparatorluktan Cumhuriyete'sini de okumanızı öneririz.",
@@ -220,13 +220,7 @@
       "banned": false,
       "accountDate": "2024-02-27",
       "token": "avasvajvnasjncjhashkcbahksbcahgvschgv",
-      "id": 1,
-      "rentalBooks": [
-        {
-          "bookId": 3,
-          "rentDate": "2024-02-29"
-        }
-      ]
+      "id": 1
     },
     {
       "firstName": "Harlex",
