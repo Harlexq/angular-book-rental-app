@@ -1,17 +1,22 @@
 .main {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 30px;
-  .left {
-    flex: 0 1 calc(21.6% - 30px);
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+    .left {
+      flex: 0 1 calc(70% - 30px);
+    }
+    .right {
+      flex: 0 1 calc(30% - 30px);
+    }
   }
-  .right {
-    flex: 0 1 calc(78.4% - 30px);
+  .tab-main {
+    margin: 25px 0;
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1024px) {
   .left {
     flex: 0 1 100% !important;
   }

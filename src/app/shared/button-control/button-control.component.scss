@@ -10,12 +10,14 @@
   font-weight: bold;
   border: none;
   cursor: pointer;
+  width: 100%;
+  display: block;
 
   &.btn-primary {
-    background-color: #404eed;
+    background-color: #62ab00;
     transition: 0.3s;
     &:hover {
-      background-color: #2e39bb;
+      background-color: #7fc524;
     }
 
     &:disabled {

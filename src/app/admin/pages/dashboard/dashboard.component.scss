@@ -1,0 +1,24 @@
+.main {
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 30px;
+    .left {
+      flex: 0 1 calc(25% - 30px);
+    }
+    .right {
+      flex: 0 1 calc(75% - 30px);
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .left {
+    flex: 0 1 100% !important;
+  }
+
+  .right {
+    flex: 0 1 100% !important;
+  }
+}

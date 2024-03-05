@@ -1,1 +1,10 @@
-<p>dashboard works!</p>
+<main class="main">
+  <div class="content">
+    <div class="left">
+      <app-rent-books />
+    </div>
+    <div class="right">
+      <p-chart type="bar" [data]="basicData" [options]="basicOptions" />
+    </div>
+  </div>
+</main>

@@ -25,7 +25,7 @@ import { ErrorHandlerInterceptor } from './interceptors/error-handler.intercepto
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorHandlerInterceptor,
       multi: true,
-    }, // Interceptor'ı sağlayıcı listesine ekledik
+    },
   ],
 })
 export class AppModule {}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Category } from 'src/app/models/Category';
 import { WebNavItems } from 'src/app/models/WebNavItems';
 import { WebUsers } from 'src/app/models/WebUsers';
 import { HttpClientService } from 'src/app/services/http-client.service';
@@ -10,11 +11,13 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 })
 export class HeaderComponent {
   loggedInUsername: string | null = null;
+  categories: Category[] = [];
 
   constructor(private http: HttpClientService) {}
 
   ngOnInit() {
     this.getUsers();
+    this.getCategories();
   }
 
   getUsers() {
@@ -33,6 +36,12 @@ export class HeaderComponent {
   logout() {
     localStorage.removeItem('webUserToken');
     window.location.reload();
+  }
+
+  getCategories() {
+    this.http.get<Category[]>('categories', (res) => {
+      this.categories = res;
+    });
   }
 
   navItems: WebNavItems[] = [

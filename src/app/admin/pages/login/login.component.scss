@@ -11,10 +11,12 @@
   box-shadow: 1px 1px 14px 0px rgba(136, 136, 136, 0.75);
   padding: 25px;
   position: relative;
+  width: 550px;
   .title {
     color: #1f1f1f;
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
+    margin-bottom: 15px;
   }
 
   ::ng-deep {
@@ -31,7 +33,7 @@
       position: absolute;
       top: 5px;
       right: 5px;
-      background-color: #404eed;
+      background-color: #62ab00;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -45,7 +47,7 @@
     font-size: 15px;
     margin-top: 15px;
     display: block;
-    color: #404eed;
+    color: #62ab00;
     &:hover {
       text-decoration: underline;
     }

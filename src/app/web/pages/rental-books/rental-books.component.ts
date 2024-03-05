@@ -99,6 +99,7 @@ export class RentalBooksComponent {
               summary: 'İade İşlemi Başarılı',
               detail: 'Kitap başarıyla iade edildi.',
             });
+            window.location.reload();
           });
         }
       },

@@ -14,40 +14,6 @@
     justify-content: space-between;
   }
 
-  .nav {
-    display: flex;
-    align-items: center;
-    .nav-item {
-      font-weight: 600;
-      padding: 30px 15px;
-      transition: 0.3s;
-      background-color: transparent;
-      border: none;
-      &.active {
-        color: #f65d4e;
-      }
-      &:hover {
-        color: #f65d4e;
-      }
-
-      .dropdown {
-        position: relative;
-        &:hover .dropdown-content {
-          display: block;
-        }
-        .dropdown-content {
-          position: absolute;
-          top: 0;
-          left: 0;
-          display: none;
-          .dropdown-item {
-            background-color: #1f1f1f;
-          }
-        }
-      }
-    }
-  }
-
   .user {
     display: flex;
     align-items: center;
@@ -75,7 +41,7 @@
           font-size: 16px;
         }
         &:hover {
-          background-color: rgba(246, 92, 78, 0.712);
+          background-color: rgba(78, 246, 92, 0.712);
         }
       }
       .user-dropdown-content {
@@ -84,7 +50,7 @@
         left: 0;
         display: none;
         background-color: #fff;
-        border: 1px solid #f65d4e;
+        border: 1px solid #62ab00;
         min-width: 250px;
         border-radius: 5px;
         .dropdown-item {
@@ -98,7 +64,7 @@
           text-align: left;
           cursor: pointer;
           &:hover {
-            color: #f65d4e;
+            color: #62ab00;
           }
         }
       }
@@ -108,43 +74,94 @@
 
 .navbar {
   height: 60px;
-  background-color: #f65d4e;
+  background-color: #62ab00;
   display: flex;
   align-items: center;
   .navbar-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .title {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 15px;
-      font-size: 15px;
-      font-weight: 600;
-      background-color: #cf3324;
-      color: #fff;
-      height: 60px;
-      padding: 0 50px;
-      border: none;
-      cursor: pointer;
-    }
-    .social-nav {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      .social-item {
+    .categories {
+      flex: 0 1 20%;
+      position: relative;
+      &:hover .category-content {
+        display: block;
+      }
+      .category-btn {
+        background-color: transparent;
+        border: 2px solid #fff;
+        padding: 18px 10px;
+        width: 100%;
         color: #fff;
-        font-size: 18px;
-        padding: 8px;
-        border-radius: 50%;
+        font-size: 22px;
+        border-radius: 2px;
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+      }
+      .category-content {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        background-color: #fff;
+        width: 100%;
+        border: 2px solid #62ab00;
+        border-top: none;
+        padding: 2px 20px;
+        z-index: 999;
+        .category-item {
+          display: block;
+          padding: 10px 20px;
+          font-size: 16px;
+          color: #333;
+          transition: 0.4s;
+          position: relative;
+          &:hover {
+            color: #62ab00;
+          }
+          &:hover::before {
+            width: 100%;
+          }
+          &::before {
+            content: "";
+            width: 0%;
+            height: 2px;
+            background-color: #62ab00;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: 0.4s;
+          }
+        }
+      }
+    }
+    .nav {
+      .nav-item {
+        color: #fff;
+        font-weight: 600;
+        font-size: 16px;
+        padding: 8px;
         transition: 0.3s;
         &:hover {
-          background-color: #cf3324;
+          color: #333;
         }
+      }
+    }
+    .support {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      i {
+        font-size: 30px;
+        color: #fff;
+      }
+      .support-text {
+        color: #fff;
+        font-weight: 600;
+        font-size: 18px;
       }
     }
   }

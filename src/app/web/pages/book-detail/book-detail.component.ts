@@ -49,7 +49,11 @@ export class BookDetailComponent {
           this.http.get<WebUsers[]>('webUsers', (res) => {
             const currentUser = res.find((user) => user.token === token);
 
-            if (this.book.rentInformation.rent == false) {
+            if (!this.book.rentInformation) {
+              this.book.rentInformation = { rent: false, byWhom: null };
+            }
+
+            if (this.book.rentInformation.rent === true) {
               this.messageService.add({
                 severity: 'error',
                 summary: 'Hata',
@@ -113,7 +117,7 @@ export class BookDetailComponent {
         accept: () => {
           this.messageService.add({
             severity: 'info',
-            summary: 'İptal E',
+            summary: 'İptal Edildi',
             detail: 'Giriş Sayfasına Yönlendiriliyorsunuz',
           });
           this.router.navigateByUrl('/login');

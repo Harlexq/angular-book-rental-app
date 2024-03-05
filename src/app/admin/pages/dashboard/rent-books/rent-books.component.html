@@ -1,0 +1,22 @@
+<h2>Kiralanmış Kitaplar</h2>
+<table style="overflow-x: auto">
+  <thead>
+    <tr>
+      <th>Kitap Fotoğrafı</th>
+      <th>Kitap Adı</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let book of books">
+      <ng-container *ngIf="book.rentInformation && book.rentInformation.rent">
+        <td>
+          <div class="img">
+            <img [src]="book.imageUrl" [alt]="book.title" />
+          </div>
+        </td>
+        <td>{{ book.title }}</td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>
