@@ -12,12 +12,21 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 export class HeaderComponent {
   loggedInUsername: string | null = null;
   categories: Category[] = [];
+  mobileMenu: boolean = false;
 
   constructor(private http: HttpClientService) {}
 
   ngOnInit() {
     this.getUsers();
     this.getCategories();
+  }
+
+  menuShow() {
+    this.mobileMenu = !this.mobileMenu;
+  }
+
+  menuClose() {
+    this.mobileMenu = false;
   }
 
   getUsers() {

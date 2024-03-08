@@ -7,56 +7,59 @@
   <app-users-feature [selectedUserId]="selectedUserId" />
 </p-sidebar>
 
-<table style="overflow-x: auto">
-  <thead>
-    <tr>
-      <th>Kullanıcı ID'si</th>
-      <th>Kullanıcı İsmi</th>
-      <th>Kullanıcı Soyismi</th>
-      <th>Kullanıcı Hesap Oluşturma Tarihi</th>
-      <th>Kullanıcı E-Mail Adresi</th>
-      <th>Kiraladığı Kitaplar</th>
-      <th>Kullanıcı Düzenle & Sil</th>
-    </tr>
-  </thead>
+<div style="overflow-x: auto">
+  <table>
+    <thead>
+      <tr>
+        <th>Kullanıcı ID'si</th>
+        <th>Kullanıcı İsmi</th>
+        <th>Kullanıcı Soyismi</th>
+        <th>Kullanıcı Hesap Oluşturma Tarihi</th>
+        <th>Kullanıcı E-Mail Adresi</th>
+        <th>Kiraladığı Kitaplar</th>
+        <th>Kullanıcı Düzenle & Sil</th>
+      </tr>
+    </thead>
 
-  <tbody *ngIf="pagedUsers.length > 0">
-    <tr *ngFor="let user of pagedUsers">
-      <td>{{ user.id }}</td>
-      <td>{{ user.firstName }}</td>
-      <td>{{ user.lastName }}</td>
-      <td>{{ user.accountDate | date : "MMMM, dd, y" : null : "tr" }}</td>
-      <td>{{ user.email }}</td>
-      <td>
-        <ul class="user-books">
-          <ng-container *ngIf="user.rentalBooks.length > 0; else noBooks">
-            <li *ngFor="let userBook of user.rentalBooks">
-              Kitap Adı: <strong>{{ getBooksName(userBook.bookId) }}</strong>
-            </li>
-          </ng-container>
-          <ng-template #noBooks>
-            <li>Kitap Bulunamadı</li>
-          </ng-template>
-        </ul>
-      </td>
-      <td>
-        <div class="edit">
-          <app-button-control
-            color="warning"
-            (click)="toggleSidebar(user.id)"
-            content="Düzenle"
-          />
-          <p-button
-            (click)="deleteUser(user.id)"
-            icon="pi pi-times"
-            label="Sil"
-            styleClass="btn btn-danger"
-          />
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <tbody *ngIf="pagedUsers.length > 0">
+      <tr *ngFor="let user of pagedUsers">
+        <td>{{ user.id }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.accountDate | date : "MMMM, dd, y" : null : "tr" }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <ul class="user-books">
+            <ng-container *ngIf="user.rentalBooks.length > 0; else noBooks">
+              <li *ngFor="let userBook of user.rentalBooks">
+                Kitap Adı: <strong>{{ getBooksName(userBook.bookId) }}</strong>
+              </li>
+            </ng-container>
+            <ng-template #noBooks>
+              <li>Kitap Bulunamadı</li>
+            </ng-template>
+          </ul>
+        </td>
+        <td>
+          <div class="edit">
+            <app-button-control
+              color="warning"
+              (click)="toggleSidebar(user.id)"
+              content="Düzenle"
+            />
+            <p-button
+              (click)="deleteUser(user.id)"
+              icon="pi pi-times"
+              label="Sil"
+              styleClass="btn btn-danger"
+            />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <p-paginator
   [rows]="rows"
   [totalRecords]="users.length"

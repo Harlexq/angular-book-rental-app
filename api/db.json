@@ -2,8 +2,8 @@
   "books": [
     {
       "rentInformation": {
-        "rent": false,
-        "byWhom": null
+        "rent": true,
+        "byWhom": 2
       },
       "title": "Herkes İçin Kısa Osmanlı Tarihi",
       "description": "\n\nHERKES İÇİN KISA OSMANLI TARİHİ Kısa Özet\n\nOsmanlı İmparatorluğu, tarihin gördüğü en büyük imparatorluklardan birisiydi. 16. yüzyılda dünya siyasetine yön vererek, bugünkü dünyanın siyasi ve dini yapısının oluşmasına büyük katkıda bulundu. Osmanlı İmparatorluğu, tarih sahnesinden çekilmesine rağmen hâlâ izleri duruyor. Ancak hayatımızın hemen hemen her safhasında izleriyle karşılaşmamıza rağmen Osmanlı tarihi özellikle akademik dünyanın dışındaki okurlar için hâlâ karanlıklar içerisinde.\n\nSon 50-60 yılda bütün dünyada Osmanlı tarih yazıcılığı büyük aşama kaydetmesine rağmen, akademik araştırmalarda ortaya çıkan sonuçlar ülkemizde kamuoyuna fazla ulaşamadı. Bu kitapta Osmanlı tarihi ana hatlarıyla anlatılırken akademik araştırmaların sonucunda ortaya çıkan bilgilerden hareket edilmiş, ancak konular anlaşılır bir üslupla verilmeye çalışılmıştır.",
@@ -222,6 +222,22 @@
       "token": "LLvIwfwZSGaaX97Ltuc0LOwDtt8X0HTT",
       "id": 1,
       "rentalBooks": []
+    },
+    {
+      "firstName": "deneme",
+      "lastName": "deneme",
+      "email": "deneme@gmail.com",
+      "password": "123456789",
+      "banned": false,
+      "accountDate": "2024-03-06",
+      "token": "4UGyT3mucvtIlueMxeRqNXH0BA6tjJbR",
+      "id": 2,
+      "rentalBooks": [
+        {
+          "bookId": 1,
+          "rentDate": "2024-03-06"
+        }
+      ]
     }
   ]
 }

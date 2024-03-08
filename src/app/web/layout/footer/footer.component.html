@@ -18,9 +18,13 @@
       <menu class="menu">
         <h2>Kategoriler</h2>
         <nav class="nav">
-          <a class="nav-item" *ngFor="let category of categories">{{
-            category.title
-          }}</a>
+          <a
+            class="nav-item"
+            *ngFor="let category of categories"
+            routerLink="/books/"
+            [queryParams]="{ categoryId: category.id }"
+            >{{ category.title }}</a
+          >
         </nav>
       </menu>
       <menu class="menu">

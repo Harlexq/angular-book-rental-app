@@ -6,6 +6,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    flex-wrap: wrap;
     .footer-brand {
       img {
         max-width: 100%;
@@ -19,6 +20,7 @@
         color: #62ab00;
       }
       .nav {
+        margin: 10px 0;
         .nav-item {
           display: block;
           color: #fff;
@@ -41,5 +43,15 @@
   height: 80px;
   a {
     color: #62ab00;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .footer-brand {
+    margin-bottom: 35px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
   }
 }

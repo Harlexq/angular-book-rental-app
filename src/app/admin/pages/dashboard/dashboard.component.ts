@@ -10,7 +10,6 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 })
 export class DashboardComponent {
   basicData: any;
-  basicOptions: any;
   books: Books[] = [];
   categories: Category[] = [];
 

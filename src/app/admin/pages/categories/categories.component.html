@@ -11,44 +11,47 @@
   <app-category-feature [selectedCategoryId]="selectedCategoryId" />
 </p-sidebar>
 
-<table style="overflow-x: auto">
-  <thead>
-    <tr>
-      <th>Kategori ID'si</th>
-      <th>Kategori İsmi</th>
-      <th>Kategori Açıklaması</th>
-      <th>Düzenle & Sil</th>
-    </tr>
-  </thead>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Kategori ID'si</th>
+        <th>Kategori İsmi</th>
+        <th>Kategori Açıklaması</th>
+        <th>Düzenle & Sil</th>
+      </tr>
+    </thead>
 
-  <tbody *ngIf="pagedCategories.length > 0">
-    <tr *ngFor="let category of pagedCategories">
-      <td>{{ category.id }}</td>
-      <td>
-        <div class="title">
-          {{ category.title }}
-        </div>
-      </td>
-      <td>{{ category.description }}</td>
-      <td>
-        <div class="edit">
-          <app-button-control
-            color="warning"
-            (click)="toggleSidebar(category.id)"
-            content="Düzenle"
-          />
-          <p-button
-            (click)="deleteCategory(category.id)"
-            icon="pi pi-times"
-            label="Sil"
-            styleClass="btn btn-danger"
-            [attr.data-id]="category.id"
-          />
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <tbody *ngIf="pagedCategories.length > 0">
+      <tr *ngFor="let category of pagedCategories">
+        <td>{{ category.id }}</td>
+        <td>
+          <div class="title">
+            {{ category.title }}
+          </div>
+        </td>
+        <td>{{ category.description }}</td>
+        <td>
+          <div class="edit">
+            <app-button-control
+              color="warning"
+              (click)="toggleSidebar(category.id)"
+              content="Düzenle"
+            ></app-button-control>
+            <p-button
+              (click)="deleteCategory(category.id)"
+              icon="pi pi-times"
+              label="Sil"
+              styleClass="btn btn-danger"
+              [attr.data-id]="category.id"
+            ></p-button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <p-paginator
   [rows]="rows"
   [totalRecords]="categories.length"

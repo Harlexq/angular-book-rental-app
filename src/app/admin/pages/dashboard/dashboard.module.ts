@@ -4,9 +4,10 @@ import { DashboardComponent } from './dashboard.component';
 import { RouterModule } from '@angular/router';
 import { ChartModule } from 'primeng/chart';
 import { RentBooksComponent } from './rent-books/rent-books.component';
+import { UserCountComponent } from './user-count/user-count.component';
 
 @NgModule({
-  declarations: [DashboardComponent, RentBooksComponent],
+  declarations: [DashboardComponent, RentBooksComponent, UserCountComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([

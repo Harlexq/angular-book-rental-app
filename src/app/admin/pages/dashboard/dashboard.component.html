@@ -4,7 +4,10 @@
       <app-rent-books />
     </div>
     <div class="right">
-      <p-chart type="bar" [data]="basicData" [options]="basicOptions" />
+      <app-user-count />
     </div>
+  </div>
+  <div class="chart">
+    <p-chart type="bar" [data]="basicData" />
   </div>
 </main>

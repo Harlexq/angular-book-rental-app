@@ -11,11 +11,20 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 export class HeaderComponent {
   users: AdminUsers[] = [];
   username: string = '';
+  mobileMenu: boolean = false;
 
   constructor(private http: HttpClientService) {}
 
   ngOnInit(): void {
     this.getUsers();
+  }
+
+  menuShow() {
+    this.mobileMenu = !this.mobileMenu;
+  }
+
+  menuClose() {
+    this.mobileMenu = false;
   }
 
   getUsers() {

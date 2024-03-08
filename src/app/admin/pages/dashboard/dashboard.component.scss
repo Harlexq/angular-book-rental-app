@@ -5,11 +5,17 @@
     align-items: flex-start;
     gap: 30px;
     .left {
-      flex: 0 1 calc(25% - 30px);
+      flex: 0 1 calc(50% - 30px);
+      width: 50%;
     }
     .right {
-      flex: 0 1 calc(75% - 30px);
+      flex: 0 1 calc(50% - 30px);
+      width: 50%;
     }
+  }
+
+  .chart {
+    margin-top: 50px;
   }
 }
 
