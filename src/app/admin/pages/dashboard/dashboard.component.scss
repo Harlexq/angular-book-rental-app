@@ -16,6 +16,14 @@
 
   .chart {
     margin-top: 50px;
+    ::ng-deep {
+      p-chart {
+        canvas {
+          width: 100% !important;
+          height: auto !important;
+        }
+      }
+    }
   }
 }
 

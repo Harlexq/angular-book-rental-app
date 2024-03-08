@@ -107,6 +107,10 @@
         font-size: 16px;
         font-weight: 600;
         padding: 10px;
+        transition: 0.3s;
+        &:hover {
+          color: #62ab00;
+        }
       }
     }
   }

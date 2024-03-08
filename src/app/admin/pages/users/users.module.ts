@@ -8,6 +8,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { SidebarModule } from 'primeng/sidebar';
 import { UsersFeatureModule } from '../users-feature/users-feature.module';
 import { PaginatorModule } from 'primeng/paginator';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [UsersComponent],
@@ -25,6 +26,7 @@ import { PaginatorModule } from 'primeng/paginator';
     SidebarModule,
     UsersFeatureModule,
     PaginatorModule,
+    TableModule,
   ],
 })
 export class UsersModule {}

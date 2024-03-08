@@ -11,76 +11,73 @@
   <app-book-feature [selectedBookId]="selectedBookId" />
 </p-sidebar>
 
-<div class="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Kitap ID</th>
-        <th>Kitap Kapak Fotoğrafı</th>
-        <th>Kitap İsmi</th>
-        <th>Kitap Açıklaması</th>
-        <th>Kitap Yayıncısı</th>
-        <th>Kitap Yazarı</th>
-        <th>Kitap Kategorisi</th>
-        <th>Kitap Fiyatı</th>
-        <th>Kitap Baskı Tarihi</th>
-        <th>Kitap Sayfa Sayısı</th>
-        <th>Kitap Kira Bilgisi</th>
-        <th>Düzenle & Sil</th>
-      </tr>
-    </thead>
-
-    <tbody *ngIf="pagedBooks.length > 0">
-      <tr *ngFor="let book of pagedBooks">
-        <td>{{ book.id }}</td>
-        <td>
-          <div class="img">
-            <img [src]="book.imageUrl" [alt]="book.title" width="50px" />
-          </div>
-        </td>
-        <td>
-          <p class="title">
-            {{ book.title }}
-          </p>
-        </td>
-        <td>
-          <p class="desc">{{ book.description }}</p>
-        </td>
-        <td>{{ book.publisher }}</td>
-        <td>{{ book.author }}</td>
-        <td>{{ getCategoryName(book.categoryId) }}</td>
-        <td>{{ book.price }}</td>
-        <td>{{ book.publicationDate | date : "MMMM, dd, y" : null : "tr" }}</td>
-        <td>{{ book.pageNumber }}</td>
-        <td>
-          <p>{{ book.rentInformation.rent ? "Kiralandı" : "Kiralık" }}</p>
-          <p>
-            {{
-              book.rentInformation.rent
-                ? getUserName(book.rentInformation.byWhom)
-                : ""
-            }}
-          </p>
-        </td>
-        <td>
-          <div class="edit">
-            <app-button-control
-              color="warning"
-              (click)="toggleSidebar(book.id)"
-              content="Düzenle"
-            />
-            <p-button
-              (click)="deleteBook(book.id)"
-              icon="pi pi-times"
-              label="Sil"
-              styleClass="btn btn-danger"
-            />
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<p-table [value]="pagedBooks">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Kitap ID</th>
+      <th>Kitap Kapak Fotoğrafı</th>
+      <th>Kitap İsmi</th>
+      <th>Kitap Açıklaması</th>
+      <th>Kitap Yayıncısı</th>
+      <th>Kitap Yazarı</th>
+      <th>Kitap Kategorisi</th>
+      <th>Kitap Fiyatı</th>
+      <th>Kitap Baskı Tarihi</th>
+      <th>Kitap Sayfa Sayısı</th>
+      <th>Kitap Kira Bilgisi</th>
+      <th>Düzenle & Sil</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-book>
+    <tr>
+      <td>{{ book.id }}</td>
+      <td>
+        <div class="img">
+          <img [src]="book.imageUrl" [alt]="book.title" width="50px" />
+        </div>
+      </td>
+      <td>
+        <p class="title">
+          {{ book.title }}
+        </p>
+      </td>
+      <td>
+        <p class="desc">{{ book.description }}</p>
+      </td>
+      <td>{{ book.publisher }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ getCategoryName(book.categoryId) }}</td>
+      <td>{{ book.price }}</td>
+      <td>{{ book.publicationDate | date : "MMMM, dd, y" : null : "tr" }}</td>
+      <td>{{ book.pageNumber }}</td>
+      <td>
+        <p>{{ book.rentInformation.rent ? "Kiralandı" : "Kiralık" }}</p>
+        <p>
+          {{
+            book.rentInformation.rent
+              ? getUserName(book.rentInformation.byWhom)
+              : ""
+          }}
+        </p>
+      </td>
+      <td>
+        <div class="edit">
+          <app-button-control
+            color="warning"
+            (click)="toggleSidebar(book.id)"
+            content="Düzenle"
+          />
+          <p-button
+            (click)="deleteBook(book.id)"
+            icon="pi pi-times"
+            label="Sil"
+            styleClass="btn btn-danger"
+          />
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
 
 <p-paginator
   [rows]="rows"
@@ -90,4 +87,3 @@
 />
 <p-toast></p-toast>
 <p-confirmDialog></p-confirmDialog>
-<div *ngIf="pagedBooks.length === 0" class="empty">Kitaplar Bulunamadı</div>

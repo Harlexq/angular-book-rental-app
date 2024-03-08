@@ -10,6 +10,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { SidebarModule } from 'primeng/sidebar';
 import { CategoryFeatureModule } from '../category-feature/category-feature.module';
 import { PaginatorModule } from 'primeng/paginator';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [CategoriesComponent],
@@ -27,7 +28,8 @@ import { PaginatorModule } from 'primeng/paginator';
     ToastModule,
     SidebarModule,
     CategoryFeatureModule,
-    PaginatorModule
+    PaginatorModule,
+    TableModule,
   ],
   providers: [ConfirmationService, MessageService],
 })
