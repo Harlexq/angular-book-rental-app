@@ -10,6 +10,8 @@ import { LoginModule } from './login/login.module';
 import { SignupModule } from './signup/signup.module';
 import { ProfileModule } from './profile/profile.module';
 import { RentalBooksModule } from './rental-books/rental-books.module';
+import { BlogsModule } from './blogs/blogs.module';
+import { BlogDetailModule } from './blog-detail/blog-detail.module';
 
 registerLocaleData(localeTr, 'tr');
 
@@ -25,6 +27,8 @@ registerLocaleData(localeTr, 'tr');
     ProfileModule,
     SignupModule,
     RentalBooksModule,
+    BlogsModule,
+    BlogDetailModule,
   ],
 })
 export class PagesModule {}

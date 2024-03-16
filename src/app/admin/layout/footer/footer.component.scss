@@ -11,6 +11,7 @@
     .menu {
       flex: 0 1 25%;
       .nav-title {
+        margin-bottom: 15px;
         font-size: 25px;
         font-weight: 600;
         color: #62ab00;
@@ -26,7 +27,6 @@
         }
       }
       .nav {
-        margin-top: 15px;
         .nav-item {
           display: block;
           color: #ffff;
@@ -35,6 +35,22 @@
           transition: 0.4s;
           &:hover {
             color: #62ab00;
+          }
+        }
+      }
+      .contact {
+        .contact-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: #fff;
+          font-size: 18px;
+          padding: 8px 0;
+          a {
+            color: #fff;
+            &:hover {
+              text-decoration: underline;
+            }
           }
         }
       }

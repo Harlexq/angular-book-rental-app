@@ -9,6 +9,8 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 })
 export class UserCountComponent {
   users: WebUsers[] = [];
+  bannedUserCount: number = 0;
+  totalUserCount: number = 0;
   data: any;
 
   constructor(private http: HttpClientService) {}
@@ -20,31 +22,30 @@ export class UserCountComponent {
   getUsers() {
     this.http.get<WebUsers[]>('webUsers', (res) => {
       this.users = res;
+      this.countUsers();
       this.chartUsers();
     });
   }
 
-  chartUsers() {
-    const userCounts = this.users.length;
+  countUsers() {
+    this.totalUserCount = this.users.length;
+    this.bannedUserCount = this.users.filter(
+      (user) => user.banned === true
+    ).length;
+  }
 
+  chartUsers() {
     this.data = {
-      labels: ['Kullanıcılar'],
+      labels: ['Toplam Kullanıcılar', 'Banlı Kullanıcılar'],
       datasets: [
         {
           label: 'Kullanıcı Sayısı',
-          data: [userCounts],
+          data: [this.totalUserCount, this.bannedUserCount],
           backgroundColor: [
-            'rgba(255, 159, 64, 0.2)',
             'rgba(75, 192, 192, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 99, 132, 0.2)',
           ],
-          borderColor: [
-            'rgb(255, 159, 64)',
-            'rgb(75, 192, 192)',
-            'rgb(54, 162, 235)',
-            'rgb(153, 102, 255)',
-          ],
+          borderColor: ['rgb(75, 192, 192)', 'rgb(255, 99, 132)'],
           borderWidth: 1,
         },
       ],

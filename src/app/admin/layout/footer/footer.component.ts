@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AdminFooterNavItems } from 'src/app/models/AdminFooterNavItems';
+import { Category } from 'src/app/models/Category';
+import { HttpClientService } from 'src/app/services/http-client.service';
+import { CategoriesComponent } from '../../pages/categories/categories.component';
 
 @Component({
   selector: 'admin-footer',
@@ -7,6 +10,22 @@ import { AdminFooterNavItems } from 'src/app/models/AdminFooterNavItems';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
+  categories: Category[] = [];
+
+  constructor(
+    private http: HttpClientService,
+  ) {}
+
+  ngOnInit() {
+    this.getCategories();
+  }
+
+  getCategories() {
+    this.http.get<Category[]>('categories', (res) => {
+      this.categories = res.slice(0, 6);
+    });
+  }
+
   navItems: AdminFooterNavItems[] = [
     {
       id: 1,
@@ -27,6 +46,16 @@ export class FooterComponent {
       id: 4,
       title: 'Kullanıcılar',
       path: '/admin/users',
+    },
+    {
+      id: 5,
+      title: 'Bloglar',
+      path: '/admin/blogs',
+    },
+    {
+      id: 6,
+      title: 'Site Ayarları',
+      path: '/admin/settings',
     },
   ];
 }

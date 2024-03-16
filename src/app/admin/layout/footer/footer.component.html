@@ -16,26 +16,31 @@
         </nav>
       </menu>
       <menu class="menu">
-        <h2 class="nav-title">Sayfalar</h2>
+        <h2 class="nav-title">Kategoriler</h2>
         <nav class="nav">
           <a
-            [routerLink]="item.path"
+            routerLink="/admin/categories"
             class="nav-item"
-            *ngFor="let item of navItems"
-            >{{ item.title }}</a
+            *ngFor="let category of categories"
           >
+            {{ category.title }}
+          </a>
         </nav>
       </menu>
       <menu class="menu">
-        <h2 class="nav-title">Sayfalar</h2>
-        <nav class="nav">
-          <a
-            [routerLink]="item.path"
-            class="nav-item"
-            *ngFor="let item of navItems"
-            >{{ item.title }}</a
-          >
-        </nav>
+        <h2 class="nav-title">İletişim Bilgileri</h2>
+        <div class="contact">
+          <div class="contact-item">
+            <strong>E-Mail:</strong>
+            <a href="mailto:serhanbakir5@gmail.com" target="_blank">
+              serhanbakir5@gmail.com
+            </a>
+          </div>
+          <div class="contact-item">
+            <strong>Telefon No:</strong>
+            <a href="tel:05555555555" target="_blank">0555 555 55 55</a>
+          </div>
+        </div>
       </menu>
     </div>
   </div>

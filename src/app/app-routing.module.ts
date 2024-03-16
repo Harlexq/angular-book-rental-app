@@ -34,6 +34,18 @@ const routes: Routes = [
         loadChildren: () =>
           import('./admin/pages/users/users.module').then((m) => m.UsersModule),
       },
+      {
+        path: 'blogs',
+        loadChildren: () =>
+          import('./admin/pages/blogs/blogs.module').then((m) => m.BlogsModule),
+      },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('./admin/pages/settings/settings.module').then(
+            (m) => m.SettingsModule
+          ),
+      },
     ],
   },
   {
@@ -94,6 +106,25 @@ const routes: Routes = [
             (m) => m.RentalBooksModule
           ),
         canActivate: [() => inject(AuthService).checkIsAuth('webUserToken')],
+      },
+      {
+        path: 'blogs',
+        loadChildren: () =>
+          import('./web/pages/blogs/blogs.module').then((m) => m.BlogsModule),
+      },
+      {
+        path: 'blog-detail/:id',
+        loadChildren: () =>
+          import('./web/pages/blog-detail/blog-detail.module').then(
+            (m) => m.BlogDetailModule
+          ),
+      },
+      {
+        path: 'contact',
+        loadChildren: () =>
+          import('./web/pages/contact/contact.module').then(
+            (m) => m.ContactModule
+          ),
       },
     ],
   },

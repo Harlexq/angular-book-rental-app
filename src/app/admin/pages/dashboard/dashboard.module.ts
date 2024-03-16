@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { ChartModule } from 'primeng/chart';
 import { RentBooksComponent } from './rent-books/rent-books.component';
 import { UserCountComponent } from './user-count/user-count.component';
+import { PaginatorModule } from 'primeng/paginator';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [DashboardComponent, RentBooksComponent, UserCountComponent],
@@ -17,6 +19,8 @@ import { UserCountComponent } from './user-count/user-count.component';
       },
     ]),
     ChartModule,
+    PaginatorModule,
+    TableModule,
   ],
 })
 export class DashboardModule {}

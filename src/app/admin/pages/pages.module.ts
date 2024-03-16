@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import localeTr from '@angular/common/locales/tr';
+import { BlogsModule } from './blogs/blogs.module';
+import { SettingsModule } from './settings/settings.module';
 
 registerLocaleData(localeTr, 'tr');
 
@@ -25,6 +27,8 @@ registerLocaleData(localeTr, 'tr');
     BooksModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    BlogsModule,
+    SettingsModule,
   ],
 })
 export class PagesModule {}

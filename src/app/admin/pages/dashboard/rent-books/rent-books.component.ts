@@ -9,6 +9,10 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 })
 export class RentBooksComponent {
   books: Books[] = [];
+  pagedBooks: Books[] = [];
+  rows: number = 3;
+  first: number = 0;
+  rowSize: number[] = [3];
 
   constructor(private http: HttpClientService) {}
 
@@ -18,7 +22,18 @@ export class RentBooksComponent {
 
   getBooks() {
     this.http.get<Books[]>('books', (res) => {
-      this.books = res;
+      this.books = res.filter((b) => b.rentInformation.rent === true);
+      this.paginateBooks();
     });
+  }
+
+  paginateBooks() {
+    this.pagedBooks = this.books.slice(this.first, this.first + this.rows);
+  }
+
+  onPageChange(event: any) {
+    this.first = event.first;
+    this.rows = event.rows;
+    this.paginateBooks();
   }
 }

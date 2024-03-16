@@ -59,7 +59,7 @@ export class UsersFeatureComponent {
           Validators.maxLength(12),
         ],
       ],
-      banned: [this.user ? this.user.banned : false],
+      banned: [false],
     });
   }
 

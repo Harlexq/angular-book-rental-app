@@ -66,5 +66,15 @@ export class HeaderComponent {
       title: 'Kullanıcılar',
       path: '/admin/users',
     },
+    {
+      id: 5,
+      title: 'Bloglar',
+      path: '/admin/blogs',
+    },
+    {
+      id: 6,
+      title: 'Site Ayarları',
+      path: '/admin/settings',
+    },
   ];
 }
