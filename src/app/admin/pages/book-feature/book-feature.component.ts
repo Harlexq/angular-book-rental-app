@@ -182,7 +182,6 @@ export class BookFeatureComponent {
             this.booksComponent.sidebarVisible = false;
             window.location.reload();
           });
-          this.booksComponent.sidebarVisible = false;
         },
         reject: () => {
           this.messageService.add({

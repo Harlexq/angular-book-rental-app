@@ -111,15 +111,7 @@ export class BlogFeatureComponent {
             detail: 'Blog Güncelleme İşlemi Başarılı',
           });
 
-          const model = {
-            rentInformation: {
-              rent: false,
-              byWhom: null,
-            },
-            ...this.form.value,
-          };
-
-          this.http.put<Blogs>('blogs', id, model, () => {
+          this.http.put<Blogs>('blogs', id, this.form.value, () => {
             this.router.navigateByUrl('/admin/blogs');
             this.blogsComponent.sidebarVisible = false;
             window.location.reload();
@@ -150,15 +142,7 @@ export class BlogFeatureComponent {
             detail: 'Blog Ekleme İşlemi Başarılı',
           });
 
-          const model = {
-            rentInformation: {
-              rent: false,
-              byWhom: null,
-            },
-            ...this.form.value,
-          };
-
-          this.http.post<Blogs>('blogs', model, (res) => {
+          this.http.post<Blogs>('blogs', this.form.value, (res) => {
             this.router.navigateByUrl('/admin/blogs');
             this.blogsComponent.sidebarVisible = false;
             window.location.reload();

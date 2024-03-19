@@ -1,1 +1,27 @@
-<p>settings works!</p>
+<div class="content">
+  <div class="left">avasva</div>
+  <div class="right">
+    <form [formGroup]="form" class="form" (ngSubmit)="updateSettings()">
+      <app-input-control
+        [form]="form"
+        [fb]="newPhone"
+        type="tel"
+        placeholder="Telefon Numarasını Giriniz"
+      />
+      <app-input-control
+        [form]="form"
+        [fb]="newEmail"
+        type="email"
+        placeholder="E-Mail Adresini Giriniz"
+      />
+      <app-input-control
+        [form]="form"
+        [fb]="newAddress"
+        placeholder="Firma Adresinizi Giriniz"
+      />
+      <app-button-control [disabled]="!form.valid" content="Güncelle" />
+      <p-toast></p-toast>
+      <p-confirmDialog></p-confirmDialog>
+    </form>
+  </div>
+</div>

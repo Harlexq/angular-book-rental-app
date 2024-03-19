@@ -343,5 +343,11 @@
         }
       ]
     }
-  ]
+  ],
+  "settings": {
+    "id": 1,
+    "phone": "05527822701",
+    "email": "serhanbakir5@gmail.com",
+    "address": "Gaziantep/Şehitkamil"
+  }
 }

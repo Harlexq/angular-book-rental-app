@@ -1,0 +1,14 @@
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 30px;
+  .left {
+    flex: 0 1 calc(50% - 30px);
+    width: 50%;
+  }
+  .right {
+    flex: 0 1 calc(50% - 30px);
+    width: 50%;
+  }
+}
