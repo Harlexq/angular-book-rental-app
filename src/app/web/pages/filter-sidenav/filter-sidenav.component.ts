@@ -12,14 +12,14 @@ export class FilterSidenavComponent {
   categories: Category[] = [];
   selectedCategories: Category[] = [];
 
-  constructor(private http: HttpClientService, private router: Router) {}
+  constructor(private router: Router, private http: HttpClientService) {}
 
   ngOnInit() {
     this.getCategories();
   }
 
   getCategories() {
-    this.http.get<Category[]>(`categories`, (res) => {
+    this.http.get<Category[]>(`categoryReadAll`, (res) => {
       this.categories = res;
     });
   }

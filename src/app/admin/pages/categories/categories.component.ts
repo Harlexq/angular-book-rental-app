@@ -26,7 +26,7 @@ export class CategoriesComponent {
   }
 
   getCategories() {
-    this.http.get<Category[]>('categories', (res) => {
+    this.http.get<Category[]>(`categoryReadAll`, (res) => {
       this.categories = res;
       this.paginateCategories();
     });
@@ -60,7 +60,8 @@ export class CategoriesComponent {
           summary: 'Silindi',
           detail: 'Kategori Silme İşlemi Başarılı',
         });
-        this.http.delete('categories', id, () => {
+
+        this.http.delete<Category[]>(`categoryDelete`, id, (res) => {
           window.location.reload();
         });
       },

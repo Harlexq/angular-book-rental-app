@@ -13,9 +13,9 @@ import { ActivatedRoute } from '@angular/router';
 export class BooksComponent {
   books: Books[] = [];
   pagedBooks: Books[] = [];
-  rows: number = 10;
+  rows: number = 9;
   first: number = 0;
-  rowSize: number[] = [10, 20, 30];
+  rowSize: number[] = [9, 18, 27, 36];
 
   constructor(
     private http: HttpClientService,
@@ -39,14 +39,14 @@ export class BooksComponent {
   }
 
   getBooks() {
-    this.http.get<Books[]>('books', (res) => {
+    this.http.get<Books[]>(`bookReadAll`, (res) => {
       this.books = res;
       this.paginateBooks();
     });
   }
 
   getBooksByCategory(categoryId: string) {
-    this.http.get<Books[]>(`books?categoryId=${categoryId}`, (res) => {
+    this.http.get<Books[]>(`bookReadAll?categoryId=${categoryId}`, (res) => {
       this.books = res;
       this.paginateBooks();
     });

@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Books } from 'src/app/models/Books';
 import { Category } from 'src/app/models/Category';
@@ -22,14 +21,14 @@ export class DashboardComponent {
   }
 
   getBooks() {
-    this.http.get<Books[]>('books', (res) => {
+    this.http.get<Books[]>(`bookReadAll`, (res) => {
       this.books = res;
       this.updateChartData();
     });
   }
 
   getCategories() {
-    this.http.get<Category[]>('categories', (res) => {
+    this.http.get<Category[]>(`categoryReadAll`, (res) => {
       this.categories = res;
       this.updateChartData();
     });

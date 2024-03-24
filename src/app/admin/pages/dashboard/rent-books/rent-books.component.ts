@@ -21,8 +21,8 @@ export class RentBooksComponent {
   }
 
   getBooks() {
-    this.http.get<Books[]>('books', (res) => {
-      this.books = res.filter((b) => b.rentInformation.rent === true);
+    this.http.get<Books[]>(`bookReadAll`, (res) => {
+      this.books = res.filter((b) => b.isRented === true);
       this.paginateBooks();
     });
   }

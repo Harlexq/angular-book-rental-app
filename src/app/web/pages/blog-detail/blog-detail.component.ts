@@ -9,7 +9,7 @@ import { HttpClientService } from 'src/app/services/http-client.service';
   styleUrls: ['./blog-detail.component.scss'],
 })
 export class BlogDetailComponent {
-  bookId: string = '';
+  blogId: string = '';
   blog: Blogs;
 
   constructor(
@@ -22,8 +22,8 @@ export class BlogDetailComponent {
   }
 
   getDetailBook() {
-    this.bookId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.http.getDetail<Blogs>('blogs', Number(this.bookId), (res) => {
+    this.blogId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.http.getDetail<Blogs>('blogRead', Number(this.blogId), (res) => {
       this.blog = res;
     });
   }

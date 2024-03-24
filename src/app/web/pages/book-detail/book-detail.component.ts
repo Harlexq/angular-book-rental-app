@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Books } from 'src/app/models/Books';
+import { Category } from 'src/app/models/Category';
 import { WebUsers } from 'src/app/models/WebUsers';
 import { HttpClientService } from 'src/app/services/http-client.service';
 
@@ -13,6 +14,7 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 export class BookDetailComponent {
   bookId: string = '';
   book: Books;
+  categories: Category[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -24,13 +26,25 @@ export class BookDetailComponent {
 
   ngOnInit() {
     this.getDetailBook();
+    this.getCategories();
   }
 
   getDetailBook() {
     this.bookId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.http.getDetail<Books>('books', Number(this.bookId), (res) => {
+    this.http.getDetail<Books>('bookRead', Number(this.bookId), (res) => {
       this.book = res;
     });
+  }
+
+  getCategories() {
+    this.http.get<Category[]>('categoryReadAll', (res) => {
+      this.categories = res;
+    });
+  }
+
+  getCategoryName(categoryId: number): string {
+    const category = this.categories.find((c) => c.id === categoryId);
+    return category ? category.title : '';
   }
 
   rent() {
@@ -46,14 +60,10 @@ export class BookDetailComponent {
         rejectLabel: 'Hayır',
         rejectButtonStyleClass: 'p-button-text p-button-text',
         accept: () => {
-          this.http.get<WebUsers[]>('webUsers', (res) => {
+          this.http.get<WebUsers[]>('webUserReadAll', (res) => {
             const currentUser = res.find((user) => user.token === token);
 
-            if (!this.book.rentInformation) {
-              this.book.rentInformation = { rent: false, byWhom: null };
-            }
-
-            if (this.book.rentInformation.rent === true) {
+            if (this.book.isRented === true) {
               this.messageService.add({
                 severity: 'error',
                 summary: 'Hata',
@@ -77,17 +87,26 @@ export class BookDetailComponent {
               rentDate: formattedDate,
             };
 
-            if (!currentUser.rentalBooks) {
-              currentUser.rentalBooks = [];
-            }
-
             currentUser.rentalBooks.push(rentedBook);
 
-            this.book.rentInformation.rent = true;
-            this.book.rentInformation.byWhom = currentUser.id;
+            this.book.isRented = true;
+            this.book.rentedFrom = currentUser.id;
 
-            this.http.put('webUsers', currentUser.id, currentUser, () => {});
-            this.http.put('books', this.book.id, this.book, () => {});
+            this.http.put<WebUsers>(
+              'webUserUpdate',
+              currentUser.id,
+              currentUser,
+              () => {}
+            );
+
+            this.http.put<Books>(
+              'bookUpdate',
+              this.book.id,
+              this.book,
+              (res) => {
+                window.location.reload();
+              }
+            );
 
             this.messageService.add({
               severity: 'info',

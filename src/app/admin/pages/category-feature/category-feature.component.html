@@ -19,11 +19,19 @@
       [fb]="newTitle"
       placeholder="Kategori Adını Giriniz"
     />
+    <ng-container *ngIf="newTitle.invalid && newTitle.dirty">
+      <p *ngIf="newTitle.errors?.['required']">Kategori Adı Zorunludur</p>
+    </ng-container>
     <app-input-control
       [form]="form"
       [fb]="newDescription"
       placeholder="Kategori Açıklamasını Giriniz"
     />
+    <ng-container *ngIf="newDescription.invalid && newDescription.dirty">
+      <p *ngIf="newDescription.errors?.['required']">
+        Kategori Açıklaması Zorunludur
+      </p>
+    </ng-container>
     <app-button-control
       [disabled]="!form.valid"
       [content]="

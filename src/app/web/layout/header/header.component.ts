@@ -30,9 +30,8 @@ export class HeaderComponent {
   }
 
   getUsers() {
-    this.http.get<WebUsers[]>('webUsers', (res) => {
+    this.http.get<WebUsers[]>('webUserReadAll', (res) => {
       const token = localStorage.getItem('webUserToken');
-
       if (token) {
         const loggedInUser = res.find((user) => user.token === token);
         if (loggedInUser) {
@@ -48,7 +47,7 @@ export class HeaderComponent {
   }
 
   getCategories() {
-    this.http.get<Category[]>('categories', (res) => {
+    this.http.get<Category[]>('categoryReadAll', (res) => {
       this.categories = res;
     });
   }

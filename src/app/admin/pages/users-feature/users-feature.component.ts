@@ -34,7 +34,7 @@ export class UsersFeatureComponent {
   }
 
   getDetailUser() {
-    this.http.getDetail<WebUsers>('webUsers', this.selectedUserId, (res) => {
+    this.http.getDetail<WebUsers>('webUserRead', this.selectedUserId, (res) => {
       this.user = res;
       this.form.patchValue({
         firstName: res.firstName,
@@ -86,10 +86,10 @@ export class UsersFeatureComponent {
         };
 
         this.http.put<WebUsers>(
-          'webUsers',
+          `webUserUpdate`,
           this.selectedUserId,
           updatedUser,
-          () => {
+          (res) => {
             this.usersComponent.sidebarVisible = false;
             window.location.reload();
           }

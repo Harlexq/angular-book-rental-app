@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -10,8 +10,8 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Books } from 'src/app/models/Books';
 import { Category } from 'src/app/models/Category';
-import { HttpClientService } from 'src/app/services/http-client.service';
 import { BooksComponent } from '../books/books.component';
+import { HttpClientService } from 'src/app/services/http-client.service';
 
 @Component({
   selector: 'app-book-feature',
@@ -23,6 +23,8 @@ export class BookFeatureComponent {
   form!: FormGroup;
   editorDescription: string = '';
   categories: Category[] = [];
+  image: string = '';
+  selectedFile: File | null = null;
 
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -58,12 +60,12 @@ export class BookFeatureComponent {
   };
 
   constructor(
-    private http: HttpClientService,
     private formBuilder: FormBuilder,
     private router: Router,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private booksComponent: BooksComponent
+    private booksComponent: BooksComponent,
+    private http: HttpClientService
   ) {}
 
   ngOnChanges() {
@@ -75,23 +77,23 @@ export class BookFeatureComponent {
   }
 
   getCategories() {
-    this.http.get<Category[]>('categories', (res) => {
+    this.http.get<Category[]>('categoryReadAll', (res) => {
       this.categories = res;
     });
   }
 
   getDetailBook() {
     if (this.selectedBookId !== undefined) {
-      this.http.getDetail<Books>('books', this.selectedBookId, (res) => {
+      this.http.getDetail<Books>(`bookRead`, this.selectedBookId, (res) => {
+        this.image = res.image;
         this.form.patchValue({
           title: res.title,
           description: res.description,
-          imageUrl: res.imageUrl,
           publisher: res.publisher,
           author: res.author,
           price: res.price,
           categoryId: res.categoryId,
-          publicationDate: res.publicationDate,
+          publishDate: res.publishDate,
           pageNumber: res.pageNumber,
         });
       });
@@ -102,14 +104,18 @@ export class BookFeatureComponent {
     this.form = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      imageUrl: ['', Validators.required],
+      image: [''],
       publisher: ['', Validators.required],
       author: ['', Validators.required],
       price: ['', Validators.required],
-      publicationDate: ['', Validators.required],
+      publishDate: ['', Validators.required],
       pageNumber: ['', Validators.required],
       categoryId: ['', Validators.required],
     });
+  }
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0] as File;
   }
 
   addBook(id?: number) {
@@ -130,15 +136,18 @@ export class BookFeatureComponent {
             detail: 'Kitap Güncelleme İşlemi Başarılı',
           });
 
-          const model = {
-            rentInformation: {
-              rent: false,
-              byWhom: null,
-            },
-            ...this.form.value,
-          };
+          const formData = new FormData();
+          formData.append('title', this.form.get('title').value);
+          formData.append('description', this.form.get('description').value);
+          formData.append('image', this.selectedFile);
+          formData.append('publisher', this.form.get('publisher').value);
+          formData.append('author', this.form.get('author').value);
+          formData.append('categoryId', this.form.get('categoryId').value);
+          formData.append('price', this.form.get('price').value);
+          formData.append('publishDate', this.form.get('publishDate').value);
+          formData.append('pageNumber', this.form.get('pageNumber').value);
 
-          this.http.put<Books>('books', id, model, () => {
+          this.http.put<any>(`bookUpdate`, id, formData, (res) => {
             this.router.navigateByUrl('/admin/books');
             this.booksComponent.sidebarVisible = false;
             window.location.reload();
@@ -169,15 +178,18 @@ export class BookFeatureComponent {
             detail: 'Kitap Ekleme İşlemi Başarılı',
           });
 
-          const model = {
-            rentInformation: {
-              rent: false,
-              byWhom: null,
-            },
-            ...this.form.value,
-          };
+          const formData = new FormData();
+          formData.append('title', this.form.get('title').value);
+          formData.append('description', this.form.get('description').value);
+          formData.append('image', this.selectedFile);
+          formData.append('publisher', this.form.get('publisher').value);
+          formData.append('author', this.form.get('author').value);
+          formData.append('categoryId', this.form.get('categoryId').value);
+          formData.append('price', this.form.get('price').value);
+          formData.append('publishDate', this.form.get('publishDate').value);
+          formData.append('pageNumber', this.form.get('pageNumber').value);
 
-          this.http.post<Books>('books', model, (res) => {
+          this.http.post<any>(`bookCreate`, formData, (res) => {
             this.router.navigateByUrl('/admin/books');
             this.booksComponent.sidebarVisible = false;
             window.location.reload();
@@ -202,8 +214,8 @@ export class BookFeatureComponent {
     return this.form.get('description') as FormControl;
   }
 
-  get newImageUrl(): FormControl {
-    return this.form.get('imageUrl') as FormControl;
+  get newImage(): FormControl {
+    return this.form.get('image') as FormControl;
   }
 
   get newPublisher(): FormControl {
@@ -222,8 +234,8 @@ export class BookFeatureComponent {
     return this.form.get('price') as FormControl;
   }
 
-  get newPublicationDate(): FormControl {
-    return this.form.get('publicationDate') as FormControl;
+  get newPublishDate(): FormControl {
+    return this.form.get('publishDate') as FormControl;
   }
 
   get newPageNumber(): FormControl {

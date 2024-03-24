@@ -13,7 +13,9 @@ export class FooterComponent {
   categories: Category[] = [];
   books: Books[] = [];
 
-  constructor(private http: HttpClientService) {}
+  constructor(
+    private http: HttpClientService
+  ) {}
 
   ngOnInit() {
     this.getCategories();
@@ -21,13 +23,13 @@ export class FooterComponent {
   }
 
   getCategories() {
-    this.http.get<Category[]>('categories', (res) => {
+    this.http.get<Category[]>('categoryReadAll', (res) => {
       this.categories = res.slice(0, 6);
     });
   }
 
   getBooks() {
-    this.http.get<Books[]>('books', (res) => {
+    this.http.get<Books[]>('bookReadAll', (res) => {
       this.books = res.slice(0, 6);
     });
   }

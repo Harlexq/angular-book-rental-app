@@ -21,8 +21,8 @@ export class WebSignupComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClientService,
-    private router: Router
+    private router: Router,
+    private http: HttpClientService
   ) {}
 
   ngOnInit() {
@@ -92,7 +92,8 @@ export class WebSignupComponent {
       accountDate: formattedDate,
       token: token,
     };
-    this.http.post<WebUsers>('webUsers', model, (res) => {
+
+    this.http.post<WebUsers>(`webUserCreate`, model, () => {
       this.router.navigateByUrl('/login');
     });
   }

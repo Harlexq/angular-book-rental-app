@@ -31,7 +31,10 @@ export class CategoryFeatureComponent {
 
   ngOnChanges() {
     this.editCategoryForm();
-    if (this.selectedCategoryId !== null && this.selectedCategoryId !== undefined) {
+    if (
+      this.selectedCategoryId !== null &&
+      this.selectedCategoryId !== undefined
+    ) {
       this.getDetailCategory();
     }
   }
@@ -39,7 +42,7 @@ export class CategoryFeatureComponent {
   getDetailCategory() {
     if (this.selectedCategoryId !== undefined) {
       this.http.getDetail<Category>(
-        'categories',
+        `categoryRead`,
         this.selectedCategoryId,
         (res) => {
           this.form.patchValue({
@@ -75,8 +78,9 @@ export class CategoryFeatureComponent {
             summary: 'Güncellendi',
             detail: 'Kategori Güncelleme İşlemi Başarılı',
           });
+
           this.http.put<Category>(
-            'categories',
+            `categoryUpdate`,
             this.selectedCategoryId,
             this.form.value,
             () => {
@@ -111,7 +115,7 @@ export class CategoryFeatureComponent {
             detail: 'Kategori Ekleme İşlemi Başarılı',
           });
 
-          this.http.post<Category>('categories', this.form.value, (res) => {
+          this.http.post<Category>(`categoryCreate`, this.form.value, () => {
             this.router.navigateByUrl('/admin/categories');
             this.categoriesComponent.sidebarVisible = false;
             window.location.reload();

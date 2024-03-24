@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -23,8 +22,7 @@ export class SettingsComponent {
     private formBuilder: FormBuilder,
     private http: HttpClientService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService,
-    private httpClient: HttpClient
+    private confirmationService: ConfirmationService
   ) {}
 
   ngOnInit(): void {
@@ -67,7 +65,6 @@ export class SettingsComponent {
           summary: 'Güncellendi',
           detail: 'Ayarları Güncelleme İşlemi Başarılı',
         });
-        this.httpClient.put('settings', this.form.value).subscribe((res) => {});
       },
       reject: () => {
         this.messageService.add({

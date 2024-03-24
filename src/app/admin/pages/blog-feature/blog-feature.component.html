@@ -13,13 +13,28 @@
       [fb]="newTitle"
       placeholder="Blog Adını Giriniz"
     />
+    <ng-container *ngIf="newTitle.invalid && newTitle.dirty">
+      <p *ngIf="newTitle.errors?.['required']">Blog Adı Zorunludur</p>
+    </ng-container>
     <angular-editor [formControl]="newDescription" [config]="editorConfig" />
+    <ng-container *ngIf="newDescription.invalid && newDescription.dirty">
+      <p *ngIf="newDescription.errors?.['required']">
+        Blog Açıklaması Zorunludur
+      </p>
+    </ng-container>
     <app-input-control
       [form]="form"
-      [fb]="newImageUrl"
-      placeholder="Blog Kapak Fotoğrafı Linkini Giriniz"
+      [fb]="newImage"
+      type="file"
+      (change)="onFileSelected($event)"
     />
-    <app-input-control [form]="form" [fb]="newPublisher" type="date" />
+    <img [src]="image" alt="" width="80px" />
+    <app-input-control [form]="form" [fb]="newpublishDate" type="date" />
+    <ng-container *ngIf="newpublishDate.invalid && newpublishDate.dirty">
+      <p *ngIf="newpublishDate.errors?.['required']">
+        Blog Yayın Tarihi Zorunludur
+      </p>
+    </ng-container>
     <app-button-control
       [disabled]="!form.valid"
       [content]="selectedBlogId !== null ? 'Bloğu Güncelle' : 'Blog Ekle'"

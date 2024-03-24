@@ -20,7 +20,7 @@ export class UserCountComponent {
   }
 
   getUsers() {
-    this.http.get<WebUsers[]>('webUsers', (res) => {
+    this.http.get<WebUsers[]>(`webUserReadAll`, (res) => {
       this.users = res;
       this.countUsers();
       this.chartUsers();

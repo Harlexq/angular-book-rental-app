@@ -32,7 +32,7 @@ export class ProfileComponent {
 
   getUsers() {
     const token = localStorage.getItem('webUserToken');
-    this.http.get<WebUsers[]>('webUsers', (res) => {
+    this.http.get<WebUsers[]>(`webUserReadAll`, (res) => {
       this.currentUser = res.find((user) => user.token === token);
 
       if (this.currentUser) {
@@ -72,11 +72,12 @@ export class ProfileComponent {
           ...this.currentUser,
           ...this.form.value,
         };
+
         this.http.put<WebUsers>(
-          'webUsers',
+          `webUserUpdate`,
           this.currentUser.id,
           updatedUser,
-          () => {
+          (res) => {
             window.location.reload();
           }
         );

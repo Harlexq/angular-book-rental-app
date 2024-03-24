@@ -10,31 +10,31 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 export class TabComponent {
   romans: Books[] = [];
   historys: Books[] = [];
-  fantastics: Books[] = [];
+  classics: Books[] = [];
 
   constructor(private http: HttpClientService) {}
 
   ngOnInit() {
     this.getRomans();
     this.getHistorys();
-    this.getFantastics();
+    this.getClassic();
   }
 
   getRomans() {
-    this.http.get<Books[]>('books?categoryId=1', (res) => {
+    this.http.get<Books[]>(`bookReadAll?categoryId=1`, (res) => {
       this.romans = res.slice(0, 10);
     });
   }
 
   getHistorys() {
-    this.http.get<Books[]>('books?categoryId=5', (res) => {
+    this.http.get<Books[]>(`bookReadAll?categoryId=5`, (res) => {
       this.historys = res.slice(0, 10);
     });
   }
 
-  getFantastics() {
-    this.http.get<Books[]>('books?categoryId=4', (res) => {
-      this.fantastics = res.slice(0, 10);
+  getClassic() {
+    this.http.get<Books[]>(`bookReadAll?categoryId=12`, (res) => {
+      this.classics = res.slice(0, 10);
     });
   }
 }

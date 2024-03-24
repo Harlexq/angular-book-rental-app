@@ -3,7 +3,7 @@
     <h2>Önerilen Kitaplar</h2>
     <article class="book-item" *ngFor="let book of books">
       <div class="book-img">
-        <img [src]="book.imageUrl" alt="" />
+        <img [src]="book.image" alt="" />
       </div>
       <div class="book-info">
         <p class="book-category">{{ categoryName(book.categoryId) }}</p>

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AdminFooterNavItems } from 'src/app/models/AdminFooterNavItems';
 import { Category } from 'src/app/models/Category';
 import { HttpClientService } from 'src/app/services/http-client.service';
-import { CategoriesComponent } from '../../pages/categories/categories.component';
 
 @Component({
   selector: 'admin-footer',
@@ -12,16 +11,14 @@ import { CategoriesComponent } from '../../pages/categories/categories.component
 export class FooterComponent {
   categories: Category[] = [];
 
-  constructor(
-    private http: HttpClientService,
-  ) {}
+  constructor(private http: HttpClientService) {}
 
   ngOnInit() {
     this.getCategories();
   }
 
   getCategories() {
-    this.http.get<Category[]>('categories', (res) => {
+    this.http.get<Category[]>('categoryReadAll', (res) => {
       this.categories = res.slice(0, 6);
     });
   }

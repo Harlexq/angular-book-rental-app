@@ -2,7 +2,7 @@
   .content {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     gap: 30px;
     .left {
       flex: 0 1 calc(70% - 30px);

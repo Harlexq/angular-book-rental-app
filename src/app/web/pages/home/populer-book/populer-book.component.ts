@@ -13,7 +13,7 @@ export class PopulerBookComponent {
   constructor(private http: HttpClientService) {}
 
   ngOnInit() {
-    this.http.get<Books[]>('books', (res) => {
+    this.http.get<Books[]>(`bookReadAll`, (res) => {
       this.books = res.slice(0, 1);
     });
   }

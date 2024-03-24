@@ -27,7 +27,7 @@
       <td>{{ blog.id }}</td>
       <td>
         <div class="img">
-          <img [src]="blog.imageUrl" [alt]="blog.title" width="50px" />
+          <img [src]="blog.image" [alt]="blog.title" width="50px" />
         </div>
       </td>
       <td>
@@ -36,9 +36,9 @@
         </p>
       </td>
       <td>
-        <p class="desc">{{ blog.description }}</p>
+        <p class="desc" [innerHTML]="blog.description"></p>
       </td>
-      <td>{{ blog.publicationDate }}</td>
+      <td>{{ blog.publishDate }}</td>
       <td>
         <div class="edit">
           <app-button-control

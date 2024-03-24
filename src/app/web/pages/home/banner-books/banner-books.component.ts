@@ -20,7 +20,7 @@ export class BannerBooksComponent {
   }
 
   getBooks() {
-    this.http.get<Books[]>('books', (res) => {
+    this.http.get<Books[]>(`bookReadAll`, (res) => {
       this.books = this.shuffle(res).slice(0, 2);
     });
   }
@@ -43,7 +43,7 @@ export class BannerBooksComponent {
   }
 
   getCategories() {
-    this.http.get<Category[]>('categories', (res) => {
+    this.http.get<Category[]>(`categoryReadAll`, (res) => {
       this.categories = res;
     });
   }

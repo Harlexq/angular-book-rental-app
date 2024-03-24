@@ -26,7 +26,7 @@ export class BlogsComponent {
   }
 
   getBlogs() {
-    this.http.get<Blogs[]>('blogs', (res) => {
+    this.http.get<Blogs[]>('blogReadAll', (res) => {
       this.blogs = res;
       this.paginateBlogs();
     });
@@ -57,7 +57,8 @@ export class BlogsComponent {
           summary: 'Silindi',
           detail: 'Blog Silme İşlemi Başarılı',
         });
-        this.http.delete('blogs', id, () => {
+
+        this.http.delete<Blogs>('blogDelete', id, (res) => {
           window.location.reload();
         });
       },

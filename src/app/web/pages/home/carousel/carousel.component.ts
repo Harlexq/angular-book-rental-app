@@ -8,13 +8,13 @@ import { HttpClientService } from 'src/app/services/http-client.service';
   styleUrls: ['./carousel.component.scss'],
 })
 export class CarouselComponent {
-  images: Banner[] = [];
+  banners: Banner[] = [];
 
   constructor(private http: HttpClientService) {}
 
   ngOnInit() {
-    this.http.get<Banner[]>('banners', (res) => {
-      this.images = res;
+    this.http.get<Banner[]>(`bannerReadAll`, (res) => {
+      this.banners = res;
     });
   }
 }

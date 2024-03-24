@@ -45,7 +45,7 @@ export class WebLoginComponent {
   }
 
   login() {
-    this.http.get<WebUsers[]>('webUsers', (res) => {
+    this.http.get<WebUsers[]>(`webUserReadAll`, (res) => {
       const resFind = res.find(
         (user) =>
           user.email === this.form.value.email &&

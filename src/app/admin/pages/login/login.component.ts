@@ -46,7 +46,7 @@ export class AdminLoginComponent {
   }
 
   login() {
-    this.http.get<AdminUsers[]>('adminUsers', (res) => {
+    this.http.get<AdminUsers[]>(`adminUserReadAll`, (res) => {
       this.userData = res;
       const resFind = res.find(
         (user) =>

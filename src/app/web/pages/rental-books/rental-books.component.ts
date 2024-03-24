@@ -27,7 +27,7 @@ export class RentalBooksComponent {
   getUsers() {
     const token = localStorage.getItem('webUserToken');
     if (token) {
-      this.http.get<WebUsers[]>('webUsers', (res) => {
+      this.http.get<WebUsers[]>(`webUserReadAll`, (res) => {
         this.currentUser = res.find((user) => user.token === token);
         if (this.currentUser) {
           this.getUserDetail();
@@ -37,7 +37,7 @@ export class RentalBooksComponent {
   }
 
   getUserDetail() {
-    this.http.getDetail<WebUsers>('webUsers', this.currentUser.id, (res) => {
+    this.http.getDetail<WebUsers>(`webUserRead`, this.currentUser.id, (res) => {
       this.user = res;
       if (this.user.rentalBooks && this.user.rentalBooks.length > 0) {
         const bookIds = this.user.rentalBooks.map((rb) => rb.bookId);
@@ -48,7 +48,7 @@ export class RentalBooksComponent {
 
   getBooks(bookIds: number[]) {
     bookIds.forEach((bookId) => {
-      this.http.getDetail<Books>('books', bookId, (res) => {
+      this.http.getDetail<Books>(`bookRead`, bookId, (res) => {
         this.rentedBooks.push(res);
       });
     });
@@ -78,10 +78,8 @@ export class RentalBooksComponent {
       accept: () => {
         const bookIndex = this.rentedBooks.findIndex((book) => book.id === id);
         if (bookIndex !== -1) {
-          this.rentedBooks[bookIndex].rentInformation = {
-            rent: false,
-            byWhom: null,
-          };
+          this.rentedBooks[bookIndex].isRented = false;
+          this.rentedBooks[bookIndex].rentedFrom = null;
 
           const rentedBookIndex = this.user.rentalBooks.findIndex(
             (rb) => rb.bookId === id
@@ -91,16 +89,26 @@ export class RentalBooksComponent {
             this.user.rentalBooks.splice(rentedBookIndex, 1);
           }
 
-          this.http.put('books', id, this.rentedBooks[bookIndex], () => {});
+          this.http.put<Books>(
+            `bookUpdate`,
+            id,
+            this.rentedBooks[bookIndex],
+            (res) => {}
+          );
 
-          this.http.put('webUsers', this.currentUser.id, this.user, () => {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'İade İşlemi Başarılı',
-              detail: 'Kitap başarıyla iade edildi.',
-            });
-            window.location.reload();
-          });
+          this.http.put<WebUsers>(
+            `webUserUpdate`,
+            this.currentUser.id,
+            this.user,
+            (res) => {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'İade İşlemi Başarılı',
+                detail: 'Kitap başarıyla iade edildi.',
+              });
+              window.location.reload();
+            }
+          );
         }
       },
       reject: () => {

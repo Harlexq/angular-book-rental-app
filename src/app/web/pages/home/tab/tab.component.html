@@ -3,7 +3,7 @@
     <div class="card-container">
       <div class="card" *ngFor="let roman of romans">
         <a [routerLink]="'book-detail/' + roman.id" class="card-head">
-          <img [src]="roman.imageUrl" [alt]="roman.title" />
+          <img [src]="roman.image" [alt]="roman.title" />
         </a>
         <div class="card-body">
           <a
@@ -24,7 +24,7 @@
     <div class="card-container">
       <div class="card" *ngFor="let history of historys">
         <a [routerLink]="'book-detail/' + history.id" class="card-head">
-          <img [src]="history.imageUrl" [alt]="history.title" />
+          <img [src]="history.image" [alt]="history.title" />
         </a>
         <div class="card-body">
           <a
@@ -41,23 +41,23 @@
       </div>
     </div>
   </p-tabPanel>
-  <p-tabPanel header="Fantastik Kitaplar">
+  <p-tabPanel header="Klasik Kitaplar">
     <div class="card-container">
-      <div class="card" *ngFor="let fantastic of fantastics">
-        <a [routerLink]="'book-detail/' + fantastic.id" class="card-head">
-          <img [src]="fantastic.imageUrl" [alt]="fantastic.title" />
+      <div class="card" *ngFor="let classic of classics">
+        <a [routerLink]="'book-detail/' + classic.id" class="card-head">
+          <img [src]="classic.image" [alt]="classic.title" />
         </a>
         <div class="card-body">
           <a
-            [routerLink]="'book-detail/' + fantastic.id"
+            [routerLink]="'book-detail/' + classic.id"
             class="title"
-            [title]="fantastic.title"
-            >{{ fantastic.title }}</a
+            [title]="classic.title"
+            >{{ classic.title }}</a
           >
-          <p class="publisher">{{ fantastic.publisher }}</p>
+          <p class="publisher">{{ classic.publisher }}</p>
         </div>
         <div class="card-foot">
-          <p class="price">{{ fantastic.price | currency }}</p>
+          <p class="price">{{ classic.price | currency }}</p>
         </div>
       </div>
     </div>

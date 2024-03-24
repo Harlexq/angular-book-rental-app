@@ -1,7 +1,7 @@
 export interface Blogs {
   id: number;
-  imageUrl: string;
+  image: string;
   title: string;
   description: string;
-  publicationDate: string;
+  publishDate: string;
 }

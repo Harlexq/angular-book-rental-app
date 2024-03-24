@@ -28,7 +28,7 @@ export class HeaderComponent {
   }
 
   getUsers() {
-    this.http.get<AdminUsers[]>('adminUsers', (res) => {
+    this.http.get<AdminUsers[]>('adminUserReadAll', (res) => {
       this.users = res;
       const token = localStorage.getItem('adminUserToken');
       if (token) {

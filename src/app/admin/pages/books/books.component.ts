@@ -31,7 +31,7 @@ export class BooksComponent {
   }
 
   getBooks() {
-    this.http.get<Books[]>('books', (res) => {
+    this.http.get<Books[]>(`bookReadAll`, (res) => {
       this.books = res;
       this.paginateBooks();
     });
@@ -48,13 +48,13 @@ export class BooksComponent {
   }
 
   getCategories() {
-    this.http.get<Category[]>('categories', (res) => {
+    this.http.get<Category[]>(`categoryReadAll`, (res) => {
       this.categories = res;
     });
   }
 
   getUsers() {
-    this.http.get<WebUsers[]>('webUsers', (res) => {
+    this.http.get<WebUsers[]>(`webUserReadAll`, (res) => {
       this.users = res;
     });
   }
@@ -84,7 +84,8 @@ export class BooksComponent {
           summary: 'Silindi',
           detail: 'Kitap Silme İşlemi Başarılı',
         });
-        this.http.delete('books', id, () => {
+
+        this.http.delete<Books>(`bookDelete`, id, (res) => {
           window.location.reload();
         });
       },

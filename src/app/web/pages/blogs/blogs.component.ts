@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmationService, MessageService } from 'primeng/api';
 import { Blogs } from 'src/app/models/Blogs';
 import { HttpClientService } from 'src/app/services/http-client.service';
 
@@ -16,19 +14,14 @@ export class BlogsComponent {
   first: number = 0;
   rowSize: number[] = [8, 16, 24];
 
-  constructor(
-    private http: HttpClientService,
-    private router: Router,
-    private confirmationService: ConfirmationService,
-    private messageService: MessageService
-  ) {}
+  constructor(private http: HttpClientService) {}
 
   ngOnInit() {
-    this.getBooks();
+    this.getBlogs();
   }
 
-  getBooks() {
-    this.http.get<Blogs[]>('blogs', (res) => {
+  getBlogs() {
+    this.http.get<Blogs[]>('blogReadAll', (res) => {
       this.blogs = res;
       this.paginateBlogs();
     });
@@ -42,60 +35,5 @@ export class BlogsComponent {
     this.first = event.first;
     this.rows = event.rows;
     this.paginateBlogs();
-  }
-
-  rent(bookId: number) {
-    if (localStorage.getItem('webUserToken')) {
-      this.confirmationService.confirm({
-        message: 'Bu Bloğu Kiralamak İstediğinize Emin Misiniz?',
-        header: 'Bloğu Kirala',
-        icon: 'pi pi-info-circle',
-        acceptButtonStyleClass: 'p-button-danger p-button-text',
-        acceptLabel: 'Evet',
-        rejectLabel: 'Hayır',
-        rejectButtonStyleClass: 'p-button-text p-button-text',
-        accept: () => {
-          this.messageService.add({
-            severity: 'info',
-            summary: 'Kiralama Yönlendirme',
-            detail: 'Giriş Sayfasına Yönlendiriliyorsunuz',
-          });
-          this.router.navigateByUrl(`/book-detail/${bookId}`);
-        },
-        reject: () => {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'İptal Edildi',
-            detail: 'Blog Kiralama İşlemi İptal Edildi',
-          });
-        },
-      });
-    } else {
-      this.confirmationService.confirm({
-        message:
-          'Bir Blog Kiralamak İçin Öncelikle Giriş Yapmalısınız Giriş Yapmak İstediğinize Emin Misiniz?',
-        header: 'Giriş Yap',
-        icon: 'pi pi-info-circle',
-        acceptButtonStyleClass: 'p-button-danger p-button-text',
-        acceptLabel: 'Evet',
-        rejectLabel: 'Hayır',
-        rejectButtonStyleClass: 'p-button-text p-button-text',
-        accept: () => {
-          this.messageService.add({
-            severity: 'info',
-            summary: 'İptal E',
-            detail: 'Giriş Sayfasına Yönlendiriliyorsunuz',
-          });
-          this.router.navigateByUrl('/login');
-        },
-        reject: () => {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'İptal Edildi',
-            detail: 'Giriş Yapma İşlemi İptal Edildi',
-          });
-        },
-      });
-    }
   }
 }

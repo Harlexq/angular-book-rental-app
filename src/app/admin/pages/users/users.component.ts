@@ -29,13 +29,13 @@ export class UsersComponent {
   }
 
   getBooks() {
-    this.http.get<Books[]>('books', (res) => {
+    this.http.get<Books[]>(`bookReadAll`, (res) => {
       this.books = res;
     });
   }
 
   getWebUsers() {
-    this.http.get<WebUsers[]>('webUsers', (res) => {
+    this.http.get<WebUsers[]>('webUserReadAll', (res) => {
       this.users = res;
       this.paginateUsers();
     });
@@ -71,7 +71,8 @@ export class UsersComponent {
           summary: 'Silindi',
           detail: 'Kullanıcı Silme İşlemi Başarılı',
         });
-        this.http.delete('webUsers', id, () => {
+
+        this.http.delete<Books>('webUserRead', id, (res) => {
           window.location.reload();
         });
       },

@@ -91,7 +91,8 @@ export class AdminSignupComponent {
       accountDate: formattedDate,
       token: token,
     };
-    this.http.post<AdminUsers>('adminUsers', model, (res) => {
+
+    this.http.post<AdminUsers>(`adminUserCreate`, model, (res) => {
       this.router.navigateByUrl('/admin/login');
     });
   }

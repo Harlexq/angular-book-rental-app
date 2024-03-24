@@ -8,9 +8,9 @@ import {
 import { Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { HttpClientService } from 'src/app/services/http-client.service';
 import { BlogsComponent } from '../blogs/blogs.component';
 import { Blogs } from 'src/app/models/Blogs';
+import { HttpClientService } from 'src/app/services/http-client.service';
 
 @Component({
   selector: 'app-blog-feature',
@@ -21,6 +21,8 @@ export class BlogFeatureComponent {
   @Input() selectedBlogId: number | null;
   form!: FormGroup;
   editorDescription: string = '';
+  selectedFile: File | null = null;
+  image: string = '';
 
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -56,12 +58,12 @@ export class BlogFeatureComponent {
   };
 
   constructor(
-    private http: HttpClientService,
     private formBuilder: FormBuilder,
     private router: Router,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private blogsComponent: BlogsComponent
+    private blogsComponent: BlogsComponent,
+    private http: HttpClientService
   ) {}
 
   ngOnChanges() {
@@ -73,12 +75,12 @@ export class BlogFeatureComponent {
 
   getDetailBlog() {
     if (this.selectedBlogId !== undefined) {
-      this.http.getDetail<Blogs>('blogs', this.selectedBlogId, (res) => {
+      this.http.getDetail<Blogs>(`blogRead`, this.selectedBlogId, (res) => {
+        this.image = res.image;
         this.form.patchValue({
           title: res.title,
           description: res.description,
-          imageUrl: res.imageUrl,
-          publicationDate: res.publicationDate,
+          publishDate: res.publishDate,
         });
       });
     }
@@ -88,9 +90,13 @@ export class BlogFeatureComponent {
     this.form = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      imageUrl: ['', Validators.required],
-      publicationDate: ['', Validators.required],
+      image: [''],
+      publishDate: ['', Validators.required],
     });
+  }
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0] as File;
   }
 
   addBlog(id?: number) {
@@ -111,7 +117,13 @@ export class BlogFeatureComponent {
             detail: 'Blog Güncelleme İşlemi Başarılı',
           });
 
-          this.http.put<Blogs>('blogs', id, this.form.value, () => {
+          const formData = new FormData();
+          formData.append('image', this.selectedFile);
+          formData.append('title', this.form.get('title').value);
+          formData.append('description', this.form.get('description').value);
+          formData.append('publishDate', this.form.get('publishDate').value);
+
+          this.http.put<any>(`blogUpdate`, id, formData, () => {
             this.router.navigateByUrl('/admin/blogs');
             this.blogsComponent.sidebarVisible = false;
             window.location.reload();
@@ -142,12 +154,18 @@ export class BlogFeatureComponent {
             detail: 'Blog Ekleme İşlemi Başarılı',
           });
 
-          this.http.post<Blogs>('blogs', this.form.value, (res) => {
+          const formData = new FormData();
+          formData.append('image', this.selectedFile);
+          formData.append('title', this.form.get('title').value);
+          formData.append('description', this.form.get('description').value);
+          formData.append('publishDate', this.form.get('publishDate').value);
+
+          this.http.post<any>(`blogCreate`, formData, (res) => {
+            console.log(res);
             this.router.navigateByUrl('/admin/blogs');
             this.blogsComponent.sidebarVisible = false;
             window.location.reload();
           });
-          this.blogsComponent.sidebarVisible = false;
         },
         reject: () => {
           this.messageService.add({
@@ -168,11 +186,11 @@ export class BlogFeatureComponent {
     return this.form.get('description') as FormControl;
   }
 
-  get newImageUrl(): FormControl {
-    return this.form.get('imageUrl') as FormControl;
+  get newImage(): FormControl {
+    return this.form.get('image') as FormControl;
   }
 
-  get newPublisher(): FormControl {
-    return this.form.get('publicationDate') as FormControl;
+  get newpublishDate(): FormControl {
+    return this.form.get('publishDate') as FormControl;
   }
 }
